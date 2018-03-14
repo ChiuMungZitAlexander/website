@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/ChiuMungZitAlexander/website/issues"
   },
-  "homepage": "https://github.com/ChiuMungZitAlexander/website#readme"
+  "homepage": "https://github.com/ChiuMungZitAlexander/website#readme",
+  "dependencies": {
+    "express": "^4.16.3"
+  }
 }
