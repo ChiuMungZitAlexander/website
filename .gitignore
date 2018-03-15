@@ -1,2 +1,5 @@
+# development related
 /node_modules/
+
+#vscode config
 /.vscode/
