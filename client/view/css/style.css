@@ -1,5 +1,4 @@
 @import "flex.css";
-
 html,
 body {
     background-color: linen;
@@ -17,18 +16,22 @@ header {
     width: 100%;
 }
 
-header > .nav-group {
+header:hover {
+    background-color: rgba(255, 255, 255, 0);
+}
+
+header>.nav-group {
     min-width: 480px;
     width: 75%;
 }
 
-.nav-group > nav {
+.nav-group>nav {
     height: 100%;
     margin-left: 25px;
     width: 80px;
 }
 
-header > .lang {
+header>.lang {
     background-color: lime;
     flex-shrink: 0;
 }
