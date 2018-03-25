@@ -1,0 +1,23 @@
+.df {
+    display: flex;
+}
+
+.fcn {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: nowrap;
+}
+
+.frn {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: nowrap;
+}
+
+.ai-c {
+    align-items: center;
+}
+
+.jc-c {
+    justify-content: center;
+}
