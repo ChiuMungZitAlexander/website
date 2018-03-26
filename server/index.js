@@ -7,20 +7,20 @@ const router = express.Router()
 
 app.use('/', express.static(path.resolve(__dirname, '../client')));
 
-router.use(function timeLog (req, res, next) {
+app.use(function timeLog(req, res, next) {
 	console.log('Time: ', Date.now());
 	next();
 });
 
-router.get('', function (req, res) {
-	res.redirect('/index')
+app.get('/', function (req, res) {
+	res.redirect('/index');
 });
 
-router.get('index', function (req, res) {
+app.get('/index', function (req, res) {
 	res.sendFile(path.resolve('client/view/index.html'));
-})
+});
 
-const server = http.createServer(app).listen(80, 'localhost', function () {
+const server = http.createServer(app).listen(3000, 'localhost', function () {
 	const host = server.address().address;
 	const port = server.address().port;
 
