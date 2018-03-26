@@ -6,7 +6,7 @@ const app = express();
 app.use('/', express.static(path.resolve(__dirname, '../client')));
 
 app.get('/', function (req, res) {
-	res.sendFile(path.resolve('../client/view/index.html'));
+	res.sendFile(path.resolve('client/view/index.html'));
 });
 
 const server = http.createServer(app).listen(80, 'localhost', function () {
