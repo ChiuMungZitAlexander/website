@@ -1,82 +1,51 @@
 @import "flex.css";
 html,
 body {
-    background-color: linen;
-    background-image: url('../img/bg.jpg');
-    background-repeat: no-repeat;
-    background-size: cover;
+    align-items: center;
     display: flex;
     flex-direction: column;
     height: 100%;
+    justify-content: center;
     margin: 0;
     padding: 0;
     width: 100%;
 }
 
-header {
-    background-color: rgba(255, 255, 255, 0);
-    color: white;
-    height: 78px;
-    min-width: 768px;
-    transition: all .3s ease-out;
-    width: 100%;
+h1 {
+    text-align: center;
 }
 
-header>.nav-group {
-    justify-content: space-between;
-    min-width: 480px;
-    width: 100%;
+h2 {
+    margin-right: 10px;
 }
 
-.nav-group>nav {
-    border-top: 4px solid transparent;
-    border-bottom: 4px solid transparent;
-    box-sizing: border-box;
-    cursor: pointer;
-    font-size: 14px;
-    font-weight: bolder;
-    height: 100%;
-    margin: 0 20px;
-    transition: all .1s ease-out;
-    width: 120px;
+.square {
+    animation: rotate 1s infinite;
+    -webkit-animation: rotate 1s infinite;
+    background-color: lightblue;
+    border-radius: 5px;
+    height: 15px;
+    margin-right: 5px;
+    width: 15px;
 }
 
-.nav-group>nav:hover {
-    border-top: 4px solid lightblue;
+.second-square {
+    animation-delay: 0.2s;
 }
 
-header>.lang {
-    background-color: lime;
-    flex-shrink: 0;
+.third-square {
+    animation-delay: 0.4s;
 }
 
-.name-box {
-    flex-grow: 1;
+
+@keyframes rotate
+{
+    from {transform: rotate(0deg);}
+    to {transform: rotate(90deg);}
 }
 
-.name-box>p {
-    color: white;
-    font-family: 'Times New Roman', Times, serif;
-    font-size: 56px;
-    font-weight: 500;
-    text-shadow: 1px 1px 5px black;
-}
-
-.icon-start>p {
-    color: white;
-    margin: 0;
-}
-
-.icon-start>.si-glyph-arrow-thin-up {
-    animation: opacity-modifier 0.6s infinite alternate;
-    transform: rotate(180deg);
-}
-
-@keyframes opacity-modifier {
-    from {
-        opacity: 1;
-    }
-    to {
-        opacity: 0.5;
-    }
+@-webkit-keyframes mymove /*Safari and Chrome*/
+{
+    from {transform: rotate(0deg);}
+    to {transform: rotate(90deg);}
 }
