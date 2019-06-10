@@ -1,0 +1,41 @@
+{
+  "name": "website",
+  "version": "1.0.0",
+  "description": "Website of Alexander Zhao",
+  "main": "index.js",
+  "scripts": {
+    "dev": "webpack -d --watch",
+    "server": "node ./server/index.js",
+    "build": "webpack -p"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/ChiuMungZitAlexander/website.git"
+  },
+  "keywords": [
+    "Alexander",
+    "Zhao"
+  ],
+  "author": "Alexander Zhao",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/ChiuMungZitAlexander/website/issues"
+  },
+  "homepage": "https://github.com/ChiuMungZitAlexander/website#readme",
+  "dependencies": {
+    "react": "^16.8.6",
+    "react-dom": "^16.8.6",
+    "react-router-dom": "^5.0.1"
+  },
+  "devDependencies": {
+    "@types/react": "^16.8.19",
+    "@types/react-dom": "^16.8.4",
+    "@types/react-router-dom": "^4.3.3",
+    "awesome-typescript-loader": "^5.2.1",
+    "source-map-loader": "^0.2.4",
+    "tslint": "^5.17.0",
+    "typescript": "^3.5.1",
+    "webpack": "^4.33.0",
+    "webpack-cli": "^3.3.3"
+  }
+}
