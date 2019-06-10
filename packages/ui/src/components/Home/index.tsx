@@ -4,7 +4,7 @@ import { Link } from 'react-router-dom'
 import { BannerHOC } from '../BannerHOC'
 
 const Home = () => <div>
-  Home
+  谁家的小赖皮终于重构了网站
   <Link to="/AboutMe">To AboutMe</Link>
 </div>
 

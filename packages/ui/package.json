@@ -4,9 +4,8 @@
   "description": "Website of Alexander Zhao",
   "main": "index.js",
   "scripts": {
-    "dev": "webpack -d --watch",
-    "server": "node ./server/index.js",
-    "build": "webpack -p"
+    "start": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack -d --watch",
+    "build": "cross-env TS_NODE_PROJECT=\"tsconfig-for-webpack-config.json\" webpack -p"
   },
   "repository": {
     "type": "git",
@@ -23,16 +22,25 @@
   },
   "homepage": "https://github.com/ChiuMungZitAlexander/website#readme",
   "dependencies": {
+    "less": "^3.9.0",
     "react": "^16.8.6",
     "react-dom": "^16.8.6",
     "react-router-dom": "^5.0.1"
   },
   "devDependencies": {
+    "@types/node": "^12.0.7",
     "@types/react": "^16.8.19",
     "@types/react-dom": "^16.8.4",
     "@types/react-router-dom": "^4.3.3",
+    "@types/webpack": "^4.4.32",
     "awesome-typescript-loader": "^5.2.1",
+    "cross-env": "^5.2.0",
+    "css-loader": "^2.1.1",
+    "less-loader": "^5.0.0",
     "source-map-loader": "^0.2.4",
+    "style-loader": "^0.23.1",
+    "ts-node": "^8.2.0",
+    "tsconfig-paths": "^3.8.0",
     "tslint": "^5.17.0",
     "typescript": "^3.5.1",
     "webpack": "^4.33.0",
