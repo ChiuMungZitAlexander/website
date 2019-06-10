@@ -1,6 +1,10 @@
-# development related
-/node_modules/
-package-lock.json
+# Logs
+logs
+*.Logs
 
-#vscode config
-/.vscode/
+# Compiled directory and file
+build/
+bundle.js
+
+# Dependency directories
+node_modules/

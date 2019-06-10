@@ -1,27 +1,18 @@
-const path = require('path')
 const express = require('express');
+const bodyParser = require('body-parser');
+const path = require('path');
 
 const app = express();
-const router = express.Router()
 
-app.use('/', express.static(path.resolve(__dirname, '../client')));
+const PORT = process.env.PORT || 8080;
 
-app.use(function timeLog(req, res, next) {
-	console.log('Time: ', Date.now());
-	next();
+app.use(bodyParser.json());
+app.use(express.static(`${__dirname}/../dist`));
+
+app.get('*', (req, res) => {
+  res.sendFile(path.resolve(`${__dirname}/../dist/index.html`));
 });
 
-app.get('/', function (req, res) {
-	res.redirect('/index');
-});
-
-app.get('/index', function (req, res) {
-	res.sendFile(path.resolve('client/view/index.html'));
-});
-
-const server = app.listen(80, function () {
-	const host = server.address().address;
-	const port = server.address().port;
-
-	console.log(`App listening at http://${host}:${port}`);
+app.listen(PORT, () => {
+  console.log(`listening on port ${PORT}!`);
 });
