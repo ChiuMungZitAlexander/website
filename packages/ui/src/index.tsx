@@ -7,5 +7,5 @@ import './styles/index.less'
 
 ReactDOM.render(
   <App />,
-  document.getElementById("example")
+  document.getElementById("app")
 )

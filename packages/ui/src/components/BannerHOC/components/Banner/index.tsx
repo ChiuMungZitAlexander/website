@@ -1,5 +1,6 @@
 import * as React from "react"
 import {
+  Link,
   withRouter,
   RouteComponentProps
 } from 'react-router-dom'
@@ -8,21 +9,36 @@ import * as classnames from 'classnames'
 type TParams = { pathname?: string }
 
 const Banner = ({ location }: RouteComponentProps<TParams>) => <ul className="banner-item-list">
-  <li className={classnames("banner-item", { active: location.pathname === '/' })}>
-    HOME
-  </li>
-  <li className={classnames("banner-item", { active: location.pathname === 'aboutme' })}>
+  <Link
+    to="/"
+    className={classnames("banner-item", { active: location.pathname === '/' })}
+  >
+    Home
+  </Link>
+  <Link
+    to="/aboutme"
+    className={classnames("banner-item", { active: location.pathname === '/aboutme' })}
+  >
     ABOUT ME
-  </li>
-  <li className={classnames("banner-item", { active: location.pathname === 'tutorials' })}>
+  </Link>
+  <Link
+    to="/tutorials"
+    className={classnames("banner-item", { active: location.pathname === '/tutorials' })}
+  >
     TUTORIALS
-  </li>
-  <li className={classnames("banner-item", { active: location.pathname === 'tblogs' })}>
+  </Link>
+  <Link
+    to="/tblogs"
+    className={classnames("banner-item", { active: location.pathname === '/tblogs' })}
+  >
     T BLOGS
-  </li>
-  <li className={classnames("banner-item", { active: location.pathname === 'tools' })}>
-    TOOLS
-  </li>
+  </Link>
+  <Link
+    to="/games"
+    className={classnames("banner-item", { active: location.pathname === '/games' })}
+  >
+    GAMES
+  </Link>
 </ul>
 
 export default withRouter(Banner)

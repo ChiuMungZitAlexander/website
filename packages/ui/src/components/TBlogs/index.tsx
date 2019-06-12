@@ -2,8 +2,8 @@ import * as React from "react"
 
 import { BannerHOC } from '../BannerHOC'
 
-const AboutMe = () => <div>
+const TBlogs = () => <div>
   About Me
 </div>
 
-export default BannerHOC(AboutMe)
+export default BannerHOC(TBlogs)
