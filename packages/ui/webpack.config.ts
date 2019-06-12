@@ -40,8 +40,18 @@ const config: webpack.Configuration = {
               strictMath: true,
               noIeCompat: true,
             }
-          },
-        ],
+          }
+        ]
+      },
+
+      {
+        test: /\.(jpe?g|png|gif|svg)$/i, 
+        loader: "file-loader"
+      },
+
+      {
+        test: /\.(woff|woff2|eot|ttf|otf)$/,
+        loader: 'url-loader'
       }
     ]
   },
