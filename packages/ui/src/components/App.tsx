@@ -1,4 +1,4 @@
-import * as React from "react"
+import * as React from 'react'
 import {
   HashRouter as Router, Switch, Route
 } from 'react-router-dom'
@@ -8,6 +8,7 @@ import AboutMe from './AboutMe'
 import Tutorials from './Tutorials'
 import TBlogs from './TBlogs'
 import Games from './Games'
+import Page404 from './Page404'
 
 export const App = () => <Router>
   <Switch>
@@ -16,5 +17,6 @@ export const App = () => <Router>
     <Route path="/tutorials" exact component={Tutorials} />
     <Route path="/tblogs" exact component={TBlogs} />
     <Route path="/games" exact component={Games} />
+    <Route component={Page404} />
   </Switch>
 </Router>
