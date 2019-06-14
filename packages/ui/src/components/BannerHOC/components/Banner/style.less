@@ -1,22 +1,44 @@
 .banner-item-list {
   align-items: center;
   display: flex;
+  flex-grow: 1;
   flex-direction: column;
   list-style: none;
   padding: 1rem 0;
 
   .banner-item {
     color: darkslategray;
-    cursor: pointer;
+    display: flex;
+    flex-wrap: wrap;
     font-family: 'code_bold';
     font-size: 1rem;
-    padding: 1rem 0;
-    transition: 0.2s;
+    padding: 0;
 
-    &:hover,
-    &.active {
-      color: gainsboro;
+    .social-link {
+      margin: 0 0.2rem;
+    }
+  }
+
+  .banner-menu-container {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    flex-grow: 1;
+    justify-content: center;
+    
+    .menu-item {
+      color: darkslategray;
+      cursor: pointer;
+      font-family: 'code_bold';
+      font-size: 1rem;
+      padding: 1rem 0;
       transition: 0.2s;
+
+      &:hover,
+      &.active {
+        color: gainsboro;
+        transition: 0.2s;
+      }
     }
   }
 }

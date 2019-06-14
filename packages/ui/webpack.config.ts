@@ -48,7 +48,16 @@ const config: webpack.Configuration = {
 
       {
         test: /\.(jpe?g|png|gif|svg)$/i,
-        loader: "file-loader"
+        loader: "file-loader",
+        options: {
+          name(file) {
+            if (process.env.NODE_ENV === 'production') {
+              return '[path][name].[ext]'
+            }
+
+            return '[hash].[ext]'
+          }
+        }
       },
 
       {

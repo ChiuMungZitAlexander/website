@@ -6,42 +6,50 @@ import {
 } from 'react-router-dom'
 import * as classnames from 'classnames'
 
-import Home from 'icons/Home'
+import Github from 'icons/socials/Github'
+import Facebook from 'icons/socials/Facebook'
+import LinkedIn from 'icons/socials/LinkedIn'
 
-interface TParams { pathname?: string }
+import ITEMS from './items';
 
-const Banner = ({ location }: RouteComponentProps<TParams>) => <ul className='banner-item-list'>
-  <Link
-    to='/'
-    className={classnames('banner-item', { active: location.pathname === '/' })}
-  >
-    Home
-    {sessionStorage.getItem('collapsedMenu') === 'true' && <Home fill="gainsboro" />}
-  </Link>
-  <Link
-    to='/aboutme'
-    className={classnames('banner-item', { active: location.pathname === '/aboutme' })}
-  >
-    ABOUT ME
-  </Link>
-  <Link
-    to='/tutorials'
-    className={classnames('banner-item', { active: location.pathname === '/tutorials' })}
-  >
-    TUTORIALS
-  </Link>
-  <Link
-    to='/tblogs'
-    className={classnames('banner-item', { active: location.pathname === '/tblogs' })}
-  >
-    T BLOGS
-  </Link>
-  <Link
-    to='/games'
-    className={classnames('banner-item', { active: location.pathname === '/games' })}
-  >
-    GAMES
-  </Link>
-</ul>
+interface BannerProps { pathname?: string }
+// interface BannerState { collapsedMenu: boolean }
+
+class Banner extends React.Component<RouteComponentProps<BannerProps>, {}> {
+  onCollapse = () => {
+    
+  }
+
+  render() {
+    return (
+      <ul className='banner-item-list'>
+        <li className='banner-item'>
+          <a className='social-link'><Github width='1.5rem' fill='darkslategray' /></a>
+          <a className='social-link'><Facebook width='1.5rem' fill='darkslategray' /></a>
+          <a className='social-link'><LinkedIn width='1.5rem' fill='darkslategray' /></a>
+        </li>
+        <div className='banner-menu-container'>
+          {
+            ITEMS.map(item => (
+              <Link
+                key={item.key}
+                to={item.to}
+                className={classnames('menu-item', { active: location.pathname === item.pathname })}
+              >
+                {item.label}
+              </Link>
+            ))
+          }
+        </div>
+        <li
+          className='banner-item'
+          onClick={this.onCollapse}
+        >
+          collapse
+        </li>
+      </ul>
+    )
+  }
+}
 
 export default withRouter(Banner)
