@@ -8,7 +8,7 @@ import * as classnames from 'classnames'
 
 import Home from 'icons/Home'
 
-type TParams = { pathname?: string }
+interface TParams { pathname?: string }
 
 const Banner = ({ location }: RouteComponentProps<TParams>) => <ul className='banner-item-list'>
   <Link
@@ -16,7 +16,7 @@ const Banner = ({ location }: RouteComponentProps<TParams>) => <ul className='ba
     className={classnames('banner-item', { active: location.pathname === '/' })}
   >
     Home
-    <Home fill="gainsboro" />
+    {sessionStorage.getItem('collapsedMenu') === 'true' && <Home fill="gainsboro" />}
   </Link>
   <Link
     to='/aboutme'
