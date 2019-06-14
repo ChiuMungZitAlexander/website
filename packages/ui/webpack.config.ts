@@ -1,7 +1,6 @@
 import path from 'path';
 import webpack from 'webpack';
 
-
 const config: webpack.Configuration = {
   entry: "./src/index.tsx",
   output: {
@@ -14,7 +13,10 @@ const config: webpack.Configuration = {
 
   resolve: {
     // Add '.ts' and '.tsx' as resolvable extensions.
-    extensions: [".ts", ".tsx", ".js", ".json"]
+    extensions: [".ts", ".tsx", ".js", ".json"],
+    alias: {
+      icons: path.resolve(__dirname, 'assets/icons'),
+    }
   },
 
   module: {
@@ -45,7 +47,7 @@ const config: webpack.Configuration = {
       },
 
       {
-        test: /\.(jpe?g|png|gif|svg)$/i, 
+        test: /\.(jpe?g|png|gif|svg)$/i,
         loader: "file-loader"
       },
 
