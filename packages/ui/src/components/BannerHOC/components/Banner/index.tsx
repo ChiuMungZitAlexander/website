@@ -6,6 +6,8 @@ import {
 } from 'react-router-dom'
 import * as classnames from 'classnames'
 
+import Home from 'icons/Home'
+
 type TParams = { pathname?: string }
 
 const Banner = ({ location }: RouteComponentProps<TParams>) => <ul className='banner-item-list'>
@@ -14,6 +16,7 @@ const Banner = ({ location }: RouteComponentProps<TParams>) => <ul className='ba
     className={classnames('banner-item', { active: location.pathname === '/' })}
   >
     Home
+    <Home fill="gainsboro" />
   </Link>
   <Link
     to='/aboutme'
