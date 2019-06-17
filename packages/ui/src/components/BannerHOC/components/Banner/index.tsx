@@ -11,6 +11,7 @@ import { AppContextConsumer } from 'src/Context'
 import Github from 'icons/socials/Github'
 import Facebook from 'icons/socials/Facebook'
 import LinkedIn from 'icons/socials/LinkedIn'
+import DoubleArrow from 'icons/DoubleArrow'
 
 import ITEMS from './items';
 
@@ -24,9 +25,15 @@ class Banner extends React.Component<RouteComponentProps<IBannerProps>> {
           ({ isMenuCollapsed, toggleMenu }) => (
             <ul className='banner-item-list'>
               <li className='banner-item'>
-                <a className='social-link'><Github width='1.5rem' fill='darkslategray' /></a>
-                <a className='social-link'><Facebook width='1.5rem' fill='darkslategray' /></a>
-                <a className='social-link'><LinkedIn width='1.5rem' fill='darkslategray' /></a>
+                <a className='social-link'>
+                  <Github height='1.5rem' width='1.5rem' fill='darkslategray' />
+                </a>
+                <a className='social-link'>
+                  <Facebook height='1.5rem' width='1.5rem' fill='darkslategray' />
+                </a>
+                <a className='social-link'>
+                  <LinkedIn height='1.5rem' width='1.5rem' fill='darkslategray' />
+                </a>
               </li>
               <div className='banner-menu-container'>
                 {
@@ -45,7 +52,9 @@ class Banner extends React.Component<RouteComponentProps<IBannerProps>> {
                 className='banner-item'
                 onClick={toggleMenu}
               >
-                {isMenuCollapsed ? 'yes' : 'no'}
+                <div className={classnames('collapse-button', { 'collapsed': isMenuCollapsed })}>
+                  <DoubleArrow width='1.5rem' fill='darkslategray' />
+                </div>
               </li>
             </ul>
           )
