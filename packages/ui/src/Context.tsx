@@ -5,7 +5,11 @@ interface IAppContext {
   toggleMenu: () => void,
 }
 
-interface IContext {
+interface IContextProps {
+  children: React.ReactElement,
+}
+
+interface IContextState {
   isMenuCollapsed: boolean,
 }
 
@@ -14,7 +18,7 @@ const ctx = React.createContext<IAppContext | null>(null)
 const AppContextProvider = ctx.Provider
 export const AppContextConsumer = ctx.Consumer
 
-class Context extends React.Component<React.ElementType, IContext> {
+class Context extends React.Component<IContextProps, IContextState> {
   state = {
     isMenuCollapsed: /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent),
   }

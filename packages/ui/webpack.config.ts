@@ -16,6 +16,7 @@ const config: webpack.Configuration = {
     extensions: [".ts", ".tsx", ".js", ".json"],
     alias: {
       icons: path.resolve(__dirname, 'assets/icons'),
+      src: path.resolve(__dirname, 'src'),
     }
   },
 

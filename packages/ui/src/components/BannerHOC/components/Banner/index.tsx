@@ -6,7 +6,7 @@ import {
 } from 'react-router-dom'
 import * as classnames from 'classnames'
 
-import { AppContextConsumer } from '../../../../Context'
+import { AppContextConsumer } from 'src/Context'
 
 import Github from 'icons/socials/Github'
 import Facebook from 'icons/socials/Facebook'
@@ -14,9 +14,9 @@ import LinkedIn from 'icons/socials/LinkedIn'
 
 import ITEMS from './items';
 
-interface BannerProps { pathname?: string }
+interface IBannerProps { pathname?: string }
 
-class Banner extends React.Component<RouteComponentProps<BannerProps>, {}> {
+class Banner extends React.Component<RouteComponentProps<IBannerProps>> {
   render() {
     return (
       <AppContextConsumer>
