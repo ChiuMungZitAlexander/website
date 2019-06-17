@@ -11,6 +11,7 @@ import { AppContextConsumer } from 'src/Context'
 import Github from 'icons/socials/Github'
 import Facebook from 'icons/socials/Facebook'
 import LinkedIn from 'icons/socials/LinkedIn'
+import Home from 'icons/Home'
 import DoubleArrow from 'icons/DoubleArrow'
 
 import ITEMS from './items';
@@ -25,13 +26,25 @@ class Banner extends React.Component<RouteComponentProps<IBannerProps>> {
           ({ isMenuCollapsed, toggleMenu }) => (
             <ul className='banner-item-list'>
               <li className='banner-item'>
-                <a className='social-link'>
+                <a
+                  className='social-link'
+                  href='https://github.com/ChiuMungZitAlexander'
+                  target='_blank'
+                >
                   <Github height='1.5rem' width='1.5rem' fill='darkslategray' />
                 </a>
-                <a className='social-link'>
+                <a
+                  className='social-link'
+                  href='https://www.facebook.com/alexander.chiu.319'
+                  target='_blank'
+                >
                   <Facebook height='1.5rem' width='1.5rem' fill='darkslategray' />
                 </a>
-                <a className='social-link'>
+                <a 
+                  className='social-link'
+                  href='https://www.linkedin.com/in/alexandermengzhezhao/'
+                  target='_blank'
+                >
                   <LinkedIn height='1.5rem' width='1.5rem' fill='darkslategray' />
                 </a>
               </li>
@@ -43,7 +56,11 @@ class Banner extends React.Component<RouteComponentProps<IBannerProps>> {
                       to={item.to}
                       className={classnames('menu-item', { active: location.pathname === item.pathname })}
                     >
-                      {item.label}
+                      {
+                        isMenuCollapsed
+                          ? <Home />
+                          : item.label
+                      }
                     </Link>
                   ))
                 }

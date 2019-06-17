@@ -8,9 +8,9 @@ import Banner from './components/Banner/'
 export const BannerHOC = (WrappedComp: React.ComponentType, withBG?: boolean) => () => (
   <AppContextConsumer>
     {
-      ({ isMenuCollapsed, toggleMenu }) => (
-        <div className="wrapped-banner-container">
-          <div className="banner-wrapper">
+      ({ isMenuCollapsed }) => (
+        <div className='wrapped-banner-container'>
+          <div className={classnames('banner-wrapper', { 'collapsed': isMenuCollapsed })}>
             <Banner />
           </div>
           <div className={classnames('content-wrapper', { 'with-bg': withBG })}>
