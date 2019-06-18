@@ -6,4 +6,4 @@ const Home = () => <div className="home-container">
   Home
 </div>
 
-export default BannerHOC(Home, true)
+export default BannerHOC(Home)

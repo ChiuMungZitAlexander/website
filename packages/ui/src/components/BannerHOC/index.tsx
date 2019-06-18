@@ -5,7 +5,7 @@ import { AppContextConsumer } from 'src/Context'
 
 import Banner from './components/Banner/'
 
-export const BannerHOC = (WrappedComp: React.ComponentType, withBG?: boolean) => () => (
+export const BannerHOC = (WrappedComp: React.ComponentType) => () => (
   <AppContextConsumer>
     {
       ({ isMenuCollapsed }) => (
@@ -13,7 +13,7 @@ export const BannerHOC = (WrappedComp: React.ComponentType, withBG?: boolean) =>
           <div className={classnames('banner-wrapper', { 'collapsed': isMenuCollapsed })}>
             <Banner />
           </div>
-          <div className={classnames('content-wrapper', { 'with-bg': withBG })}>
+          <div className='content-wrapper'>
             <WrappedComp />
           </div>
         </div>

@@ -11,7 +11,6 @@ import { AppContextConsumer } from 'src/Context'
 import Github from 'icons/socials/Github'
 import Facebook from 'icons/socials/Facebook'
 import LinkedIn from 'icons/socials/LinkedIn'
-import Home from 'icons/Home'
 import DoubleArrow from 'icons/DoubleArrow'
 
 import ITEMS from './items';
@@ -31,21 +30,21 @@ class Banner extends React.Component<RouteComponentProps<IBannerProps>> {
                   href='https://github.com/ChiuMungZitAlexander'
                   target='_blank'
                 >
-                  <Github height='1.5rem' width='1.5rem' fill='darkslategray' />
+                  <Github className='banner-icon' />
                 </a>
                 <a
                   className='social-link'
                   href='https://www.facebook.com/alexander.chiu.319'
                   target='_blank'
                 >
-                  <Facebook height='1.5rem' width='1.5rem' fill='darkslategray' />
+                  <Facebook className='banner-icon' />
                 </a>
                 <a 
                   className='social-link'
                   href='https://www.linkedin.com/in/alexandermengzhezhao/'
                   target='_blank'
                 >
-                  <LinkedIn height='1.5rem' width='1.5rem' fill='darkslategray' />
+                  <LinkedIn className='banner-icon' />
                 </a>
               </li>
               <div className='banner-menu-container'>
@@ -58,7 +57,7 @@ class Banner extends React.Component<RouteComponentProps<IBannerProps>> {
                     >
                       {
                         isMenuCollapsed
-                          ? <Home />
+                          ? item.icon(location.pathname === item.pathname)
                           : item.label
                       }
                     </Link>
