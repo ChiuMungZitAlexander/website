@@ -1,5 +1,7 @@
-import path from 'path';
-import webpack from 'webpack';
+import path from 'path'
+import webpack from 'webpack'
+import MiniCssExtractPlugin from 'mini-css-extract-plugin'
+import HtmlWebpackPlugin  from 'html-webpack-plugin'
 
 const config: webpack.Configuration = {
   entry: "./src/index.tsx",
@@ -32,7 +34,10 @@ const config: webpack.Configuration = {
         test: /\.less$/,
         use: [
           {
-            loader: 'style-loader', // creates style nodes from JS strings
+            loader: MiniCssExtractPlugin.loader,
+            options: {
+              hmr: process.env.NODE_ENV === 'development'
+            }
           },
           {
             loader: 'css-loader', // translates CSS into CommonJS
@@ -67,6 +72,19 @@ const config: webpack.Configuration = {
       }
     ]
   },
+
+  plugins: [
+    new MiniCssExtractPlugin({
+      // Options similar to the same options in webpackOptions.output
+      // both options are optional
+      filename: '[name].css',
+      chunkFilename: '[id].css',
+    }),
+    new HtmlWebpackPlugin({
+      template: 'src/index.ejs',
+      inject: 'body',
+    }),
+  ],
 
   // When importing a module whose path matches one of the following, just
   // assume a corresponding global variable exists and use that instead.
