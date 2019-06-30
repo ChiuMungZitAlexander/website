@@ -1,4 +1,5 @@
 .about-me-container {
+  align-items: center;
   background-image: url(../../../assets/backgrounds/bg-2.jpg);
   background-position: 50% 90%;
   background-repeat: no-repeat;
@@ -6,9 +7,28 @@
   display: flex;
   flex: 1;
   flex-direction: column;
+  padding: 1.5rem;
 
-  .content {
-    flex: 1;
-    overflow-y: scroll;
+  .paragraph {
+    color: white;
+    font-family: 'code_bold';
+    margin-top: .5rem;
+    text-align: center;
+
+    &.emphasize {
+      position: relative;
+
+      &:after {
+        background: purple;
+        bottom: 5px;
+        content: '';
+        height: 10px;
+        left: 0;
+        opacity: .1;
+        position: absolute;
+        transform: scaleX(1.05);
+        width: 100%;
+      }
+    }
   }
 }

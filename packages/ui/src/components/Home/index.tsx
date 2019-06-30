@@ -18,6 +18,7 @@ const Home = () => <div className='home-container'>
     {
       KEY_WORDS.map((keyword, i) => (
         <li
+          key={i}
           className='keywords'
           style={{
             'animationDelay': `${0.1 * i }s`,
