@@ -1,5 +1,7 @@
 .home-container {
-  background-image: url(../../../assets/backgrounds/bg.jpg);
+  background-image: url(../../../assets/backgrounds/bg-2.jpg);
+  background-position: 50% 90%;
+  background-repeat: no-repeat;
   background-size: cover;
   display: flex;
   flex: 1;
@@ -7,6 +9,35 @@
 
   .content {
     flex: 1;
-    overflow-y: scroll;
+    padding: 2rem;
+    overflow: hidden;
+
+    .keywords {
+      animation: fade-in .5s ease-out forwards;
+      color: white;
+      font-family: 'code_bold';
+      opacity: 0;
+      list-style-type: none;
+      transform: translateX(-20rem);
+
+      @media @desktop {
+        font-size: 5rem;
+      }
+      @media @mobile {
+        font-size: 2.5rem;
+      }
+    }
+  }
+}
+
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateX(-20rem);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateX(0);
   }
 }
