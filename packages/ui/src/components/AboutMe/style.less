@@ -18,11 +18,15 @@
     &.emphasize {
       position: relative;
 
+      @media @desktop {
+        font-size: 5rem;
+      }
+
       &:after {
         background: purple;
-        bottom: 5px;
+        bottom: 5%;
         content: '';
-        height: 10px;
+        height: 30%;
         left: 0;
         opacity: .1;
         position: absolute;
