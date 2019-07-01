@@ -3,7 +3,6 @@ html {
   
   body {
     font-family: Arial, Helvetica, sans-serif;
-    font-size: 0;
     margin: 0;
     padding: 0;
     height: 100%;
@@ -20,17 +19,36 @@ a {
   text-decoration: none;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+
+// development
+.coming-soon {
+  background: wheat url('../../assets/backgrounds/coming-soon-1.png') no-repeat center;
+  background-size: 10rem;
+  flex: 1;
+}
+
 @font-face {
   font-family: 'code_light';
-  src: url("../../assets/fonts/code_light.otf");
+  src: url('../../assets/fonts/code_light.otf');
 }
 
 @font-face {
   font-family: 'code_bold';
-  src: url("../../assets/fonts/code_bold.otf");
+  src: url('../../assets/fonts/code_bold.otf');
 }
 
-@import './flex.less';
+@desktop: ~'only screen and (min-width: 768px)';
+@mobile: ~'only screen and (max-width: 768px)';
+
+@import './animate.less';
 
 @import '../components/BannerHOC/style.less';
 @import '../components/Home/style.less';
