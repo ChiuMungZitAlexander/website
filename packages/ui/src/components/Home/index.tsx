@@ -29,6 +29,17 @@ const Home = () => <div className='home-container'>
       ))
     }
   </div>
+  <div className='copyright-info'>
+    <a
+      href='http://www.beian.miit.gov.cn/publish/query/indexFirst.action'
+      target='_blank'
+    >
+      粤ICP备18042140号
+    </a>
+    <p>Designed and developed by Alexander Zhao.</p>
+    <p>Copyright © 2018-2019 alexanderzhao.net.</p>
+    <p>All Rights Reserved.</p>
+  </div>
 </div>
 
 export default BannerHOC(Home)
