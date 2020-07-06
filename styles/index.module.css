@@ -2,8 +2,7 @@
   align-items: center;
   display: flex;
   flex-direction: column;
-  font-size: 1.5rem;
-  padding: 2rem 0;
+  padding: 2rem 1rem;
   text-align: center;
 }
 
@@ -14,6 +13,17 @@
   margin-bottom: 2rem;
   overflow: hidden;
   width: 6rem;
+}
+
+.name {
+  font-size: 1.5rem;
+  line-height: 1.5rem;
+  margin-bottom: 1rem;
+}
+
+.job {
+  font-size: 1.25rem;
+  line-height: 1.5rem;
 }
 
 .homeChinaFlag {
