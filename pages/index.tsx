@@ -1,17 +1,18 @@
 import homeStyle from '../styles/index.module.css'
 
-const Home = () => (
+const Home = (): JSX.Element => (
   <div className={homeStyle.homeContainer}>
     <div className={homeStyle.homeAvatar}>
       <img src='/avatar.jpg' />
     </div>
-    <p>
-      <b>Hey, I am Alexander Mengzhe Zhao</b>
-      <sup>
-        <img src='/china-flag.png' className={homeStyle.homeChinaFlag} height='16px' />
-      </sup>
+    <p className={homeStyle.name}>
+      <b>
+        I am Alexander
+        <br />
+        Mengzhe Zhao
+      </b>
     </p>
-    <p>Javascript Engineer and Saxophonist</p>
+    <p className={homeStyle.job}>Javascript Engineer<br />and<br />Saxophonist</p>
     <p className={homeStyle.thankWord}>
       Appreciate your visit and support,<br />
       website is upgrading
