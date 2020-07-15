@@ -1,6 +1,6 @@
 import Link from 'next/link'
 
-import homeStyle from '../styles/index.module.css'
+import homeStyle from '../styles/index.module.scss'
 
 const Home = (): JSX.Element => (
   <div className={homeStyle.homeContainer}>
