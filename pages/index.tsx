@@ -1,3 +1,5 @@
+import Link from 'next/link'
+
 import homeStyle from '../styles/index.module.css'
 
 const Home = (): JSX.Element => (
@@ -14,10 +16,17 @@ const Home = (): JSX.Element => (
     </p>
     <p className={homeStyle.job}>Javascript Engineer<br />and<br />Saxophonist</p>
     <p className={homeStyle.thankWord}>
-      Appreciate your visit and support,<br />
-      website is upgrading
+      Appreciate your visit and support
     </p>
-    <div className={homeStyle.homeLoading}><div></div><div></div></div>
+    <p>
+      <Link href='/blog'>
+        <button>BLOG</button>
+      </Link>
+      <Link href='/music'>
+        <button>MUSIC</button>
+      </Link>
+    </p>
+    <p className={homeStyle.disclaimer}>粤ICP</p>
   </div>
 )
 
