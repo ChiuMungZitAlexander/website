@@ -19,7 +19,7 @@ const Home = (): JSX.Element => (
       Appreciate your visit and support
     </p>
     <p>
-      <Link href='/blog'>
+      <Link href='/blogs'>
         <button>BLOG</button>
       </Link>
       <Link href='/music'>
