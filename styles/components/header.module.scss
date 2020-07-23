@@ -1,0 +1,15 @@
+.header {
+  display: block;
+  padding: 1rem 0;
+  width: 100%;
+
+  a,
+  .language {
+    color: black;
+    padding: 0 1.5rem;
+  }
+
+  .language {
+    float: right;
+  }
+}
