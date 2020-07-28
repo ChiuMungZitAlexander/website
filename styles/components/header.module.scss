@@ -1,15 +1,25 @@
 .header {
-  display: block;
+  align-items: center;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
   padding: 1rem 0;
   width: 100%;
 
   a,
   .language {
     color: black;
-    padding: 0 1.5rem;
+    font-size: 1rem;
+    line-height: 1.25rem;
+    padding: 0 1rem;
   }
 
   .language {
     float: right;
+    line-height: 1.5rem;
+
+    img {
+      height: 1.5rem;
+    }
   }
 }

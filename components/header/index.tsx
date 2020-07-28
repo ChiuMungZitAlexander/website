@@ -1,14 +1,20 @@
-import Link from 'next/link'
+import Link from "next/link"
 
-import headerStyle from '../../styles/components/header.module.scss'
+import headerStyle from "../../styles/components/header.module.scss"
 
 const Header = (): JSX.Element => (
   <nav className={headerStyle.header}>
-    <Link href='/blogs'>BLOGS</Link>
-    <Link href='/blogs'>MUSIC</Link>
+    <div>
+      <Link href="/blogs">
+        <a>BLOGS</a>
+      </Link>
+      <Link href="/music">
+        <a>MUSIC</a>
+      </Link>
+    </div>
 
     <span className={headerStyle.language}>
-      LAN
+      <img src="/icons/language.svg" />
     </span>
   </nav>
 )
