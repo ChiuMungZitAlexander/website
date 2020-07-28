@@ -24,7 +24,7 @@ const Home = (): JSX.Element => (
         Saxophonist
       </p>
       <p className={homeStyle.thankWord}>Appreciate your visit and support</p>
-      <p className={homeStyle.disclaimer}>粤ICP</p>
+      <p className={homeStyle.disclaimer}>粤ICP备 18042140号</p>
     </div>
   </>
 )
