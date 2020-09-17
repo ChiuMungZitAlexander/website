@@ -10,8 +10,8 @@ const Home = () => (
   <Layout>
     <div className="home-container">
       <div className="homeAvatar">
-        <img src={Avatar} className="avatar" />
-        <img src={ChinaFlag} className="flag" />
+        <img src={Avatar} className="avatar" alt="" />
+        <img src={ChinaFlag} className="flag" alt="" />
       </div>
       <p className="name">
         <b>

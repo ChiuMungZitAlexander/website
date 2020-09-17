@@ -11,6 +11,7 @@
     "start": "npm run develop",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
+    "lint": "eslint \"src/**/*.{js,jsx}\"",
     "test": "echo \"Write tests! -> https://gatsby.dev/unit-testing\" && exit 1"
   },
   "dependencies": {
@@ -26,6 +27,7 @@
     "typography-theme-fairy-gates": "^0.16.19"
   },
   "devDependencies": {
+    "eslint-config-react-app": "^5.2.1",
     "prettier": "2.1.1"
   },
   "repository": {
