@@ -1,16 +1,18 @@
 import React from 'react'
 
-import { Header } from '../components'
+import { Header } from '~components'
 
-import Avatar from '@images/avatar.jpg'
-import '@styles/index.scss'
+import Avatar from '~images/avatar.jpg'
+import ChinaFlag from '~images/china.svg'
+import '~styles/index.scss'
 
-const Home = (): JSX.Element => (
+const Home = () => (
   <>
     <Header />
     <div className="homeContainer">
       <div className="homeAvatar">
-        <img src={Avatar} />
+        <img src={Avatar} className="avatar" />
+        <img src={ChinaFlag} className="flag" />
       </div>
       <p className="name">
         <b>

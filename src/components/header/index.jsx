@@ -1,8 +1,8 @@
 import React from 'react'
 
-import '@styles/components/header/index.scss'
+import '~styles/components/header/index.scss'
 
-const Header = (): JSX.Element => (
+const Header = () => (
   <nav className="header">
     <div>
       <a>BLOGS</a>
