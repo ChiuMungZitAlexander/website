@@ -1,4 +1,5 @@
 import React from 'react'
+import { graphql } from 'gatsby'
 
 import { Layout } from '~components'
 
@@ -6,7 +7,7 @@ import Avatar from '~images/avatar.jpg'
 import ChinaFlag from '~images/china.svg'
 import '~styles/index.scss'
 
-const Home = () => (
+const Home = ({ data }) => (
   <Layout>
     <div className="home-container">
       <div className="homeAvatar">
@@ -14,23 +15,28 @@ const Home = () => (
         <img src={ChinaFlag} className="flag" alt="" />
       </div>
       <p className="name">
-        <b>
-          I am Alexander
-          <br />
-          Mengzhe Zhao
-        </b>
+        <h2>I am Alexander</h2>
+        <h2>Mengzhe Zhao</h2>
       </p>
       <p className="job">
-        Javascript Engineer
-        <br />
-        and
-        <br />
-        Saxophonist
+        <h4>Javascript Engineer</h4>
+        <h4>and</h4>
+        <h4>Saxophonist</h4>
       </p>
-      <p className="thankWord">Appreciate your visit and support</p>
-      <p className="disclaimer">粤ICP备 18042140号</p>
+      <h4 className="thankWord">Appreciate your visit and support</h4>
+      <p className="disclaimer">{data.site.siteMetadata.license}</p>
     </div>
   </Layout>
 )
 
 export default Home
+
+export const query = graphql`
+  query {
+    site {
+      siteMetadata {
+        license
+      }
+    }
+  }
+`
