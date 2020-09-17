@@ -23,13 +23,19 @@ module.exports = {
       }
     },
     {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `src`,
+        path: `${__dirname}/src/`,
+      },
+    },
+    {
       resolve: `gatsby-plugin-typography`,
       options: {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    {
-      resolve: `gatsby-plugin-sass`
-    },
+    `gatsby-plugin-sass`,
+    `gatsby-transformer-remark`,
   ],
 }

@@ -1,5 +1,11 @@
 import React from 'react'
 
-const Music = () => <div>Music</div>
+import { Layout } from '~components'
+
+const Music = () => (
+  <div>
+    <Layout>Music</Layout>
+  </div>
+)
 
 export default Music
