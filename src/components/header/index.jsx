@@ -5,28 +5,39 @@ import classNames from 'classnames'
 import './styles.scss'
 
 const Header = () => {
-  const isHighlighted = pathname => {
-    const reg = new RegExp(`${pathname}`, 'i')
-    return reg.test(window.location.pathname)
-  }
+  const isHighlighted = pathReg => pathReg.test(window.location.pathname)
 
   return (
     <nav className="header">
-      <div>
-        <Link
-          to="/blogs/"
-          className={classNames('link', {'highlighted': isHighlighted('blogs')})}
-        >
-          BLOGS
+      <div className="links-container">
+        <Link to="/" className="link">
+          <span
+            className={classNames({
+              highlighted: isHighlighted(/^\/$/i),
+            })}
+          >
+            HOME
+          </span>
         </Link>
-        <Link
-          to="/music/"
-          className={classNames('link', {'highlighted': isHighlighted('music')})}
-        >
-          MUSIC
+        <Link to="/blogs/" className="link">
+          <span
+            className={classNames({
+              highlighted: isHighlighted(/^\/blogs/i),
+            })}
+          >
+            BLOGS
+          </span>
+        </Link>
+        <Link to="/music/" className="link">
+          <span
+            className={classNames({
+              highlighted: isHighlighted(/^\/music/i),
+            })}
+          >
+            MUSIC
+          </span>
         </Link>
       </div>
-
       <div className="language">EN</div>
     </nav>
   )
