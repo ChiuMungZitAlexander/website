@@ -4,7 +4,7 @@ import { Layout, Loading } from '~components'
 import '~styles/music.scss'
 
 const Music = () => {
-  const [audioLoading, setAudioLoading] = React.useState(true)
+  const [loadingProgress, setLoadingProgress] = React.useState(0)
 
   React.useEffect(() => {
     const WaveSurfer = require('wavesurfer.js')
@@ -18,8 +18,12 @@ const Music = () => {
       waveColor: '#62b6cb',
     })
 
-    wsf.on('ready', () => {
+    /* wsf.on('ready', () => {
       setAudioLoading(false)
+    }) */
+
+    wsf.on('loading', pct => {
+      setLoadingProgress(pct)
     })
 
     wsf.load('https://wavesurfer-js.org/example/media/demo.wav')
@@ -33,7 +37,7 @@ const Music = () => {
     <Layout>
       <div className="music-container">
         <div id="waveform" />
-        <Loading loading={audioLoading} />
+        <Loading loading={loadingProgress < 100} percentage={loadingProgress} />
       </div>
     </Layout>
   )
