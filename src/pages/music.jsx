@@ -1,5 +1,4 @@
 import React from 'react'
-import WaveSurfer from 'wavesurfer.js'
 
 import { Layout, Loading } from '~components'
 import '~styles/music.scss'
@@ -8,7 +7,9 @@ const Music = () => {
   const [audioLoading, setAudioLoading] = React.useState(true)
 
   React.useEffect(() => {
-    const wavesurfer = WaveSurfer.create({
+    const WaveSurfer = require('wavesurfer.js')
+
+    const wsf = WaveSurfer.create({
       barWidth: 3,
       container: '#waveform',
       cursorWidth: 0,
@@ -17,16 +18,14 @@ const Music = () => {
       waveColor: '#62b6cb',
     })
 
-    wavesurfer.on('ready', function () {
+    wsf.on('ready', () => {
       setAudioLoading(false)
     })
 
-    wavesurfer.load(
-      'https://file-examples-com.github.io/uploads/2017/11/file_example_MP3_700KB.mp3'
-    )
+    wsf.load('https://wavesurfer-js.org/example/media/demo.wav')
 
     return () => {
-      wavesurfer.stop()
+      wsf.stop()
     }
   }, [])
 
