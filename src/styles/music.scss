@@ -1,8 +1,6 @@
 .music-container {
-  align-items: center;
-  display: flex;
+  @include flex-center;
   flex: 1;
-  justify-content: center;
   position: relative;
 
   #waveform {

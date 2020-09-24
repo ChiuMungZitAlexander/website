@@ -1,0 +1,13 @@
+$theme-light-green: #bee9e8;
+$theme-green-blue: #62b6cb;
+$theme-dark-blue: #1b4965;
+$theme-light-blue: #cae9ff;
+$theme-blue: #5fa8d3;
+$theme-dark-grey: #888888;
+$theme-light-grey: #cccccc;
+
+@mixin flex-center {
+  align-items: center;
+  display: flex;
+  justify-content: center;
+}

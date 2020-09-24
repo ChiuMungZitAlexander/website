@@ -42,7 +42,12 @@ module.exports = {
         pathToConfigModule: `src/utils/typography`,
       },
     },
-    `gatsby-plugin-sass`,
+    {
+      resolve: 'gatsby-plugin-sass',
+      options: {
+        data: `@import "./src/styles/constants.scss";`,
+      },
+    },
     `gatsby-transformer-remark`,
   ],
 }
