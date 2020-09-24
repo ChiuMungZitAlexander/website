@@ -3,8 +3,8 @@ import { graphql } from 'gatsby'
 
 import { Layout } from '~components'
 
-const Blogs = ({ data, location }) => (
-  <Layout location={location}>
+const Blogs = ({ data }) => (
+  <Layout>
     <div className="blogs-container">
       <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
       {data.allMarkdownRemark.edges.map(({ node }) => (

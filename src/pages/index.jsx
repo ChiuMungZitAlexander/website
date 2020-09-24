@@ -7,8 +7,8 @@ import Avatar from '~images/avatar.jpg'
 import ChinaFlag from '~images/china.svg'
 import '~styles/index.scss'
 
-const Home = ({ data, location }) => (
-  <Layout location={location}>
+const Home = ({ data }) => (
+  <Layout>
     <div className="home-container">
       <div className="homeAvatar">
         <img src={Avatar} className="avatar" alt="" />

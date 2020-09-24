@@ -15,18 +15,25 @@ module.exports = {
       resolve: `gatsby-plugin-alias-imports`,
       options: {
         alias: {
-          "~components": path.resolve(__dirname, 'src/components'),
-          "~images": path.resolve(__dirname, 'static/images'),
-          "~styles": path.resolve(__dirname, 'src/styles'),
+          '~components': path.resolve(__dirname, 'src/components'),
+          '~images': path.resolve(__dirname, 'static/images'),
+          '~styles': path.resolve(__dirname, 'src/styles'),
         },
-        extensions: []
-      }
+        extensions: [],
+      },
     },
     {
       resolve: `gatsby-source-filesystem`,
       options: {
         name: `src`,
         path: `${__dirname}/src/`,
+      },
+    },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `images`,
+        path: `${__dirname}/static/images`,
       },
     },
     {

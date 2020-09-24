@@ -3,9 +3,9 @@ import React from 'react'
 import { Header } from '~components'
 import './styles.scss'
 
-const Layout = ({ children, location }) => (
+const Layout = ({ children }) => (
   <div className="page-layout">
-    <Header location={location} />
+    <Header />
     <div className="page-content">{children}</div>
   </div>
 )

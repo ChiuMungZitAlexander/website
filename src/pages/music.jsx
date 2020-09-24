@@ -2,6 +2,6 @@ import React from 'react'
 
 import { Layout } from '~components'
 
-const Music = ({ location }) => <Layout location={location}>Music</Layout>
+const Music = () => <Layout>Music</Layout>
 
 export default Music
