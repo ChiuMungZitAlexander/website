@@ -4,8 +4,8 @@ import classNames from 'classnames'
 
 import './styles.scss'
 
-const Header = () => {
-  const isHighlighted = pathReg => pathReg.test(window.location.pathname)
+const Header = ({ location }) => {
+  const isHighlighted = pathReg => pathReg.test(location.pathname)
 
   return (
     <nav className="header">
