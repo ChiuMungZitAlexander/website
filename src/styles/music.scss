@@ -1,0 +1,11 @@
+.music-container {
+  align-items: center;
+  display: flex;
+  flex: 1;
+  justify-content: center;
+  position: relative;
+
+  #waveform {
+    width: 100%;
+  }
+}
