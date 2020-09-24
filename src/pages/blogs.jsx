@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'gatsby'
 import { graphql } from 'gatsby'
 
 import { Layout } from '~components'
@@ -8,12 +9,14 @@ const Blogs = ({ data }) => (
     <div className="blogs-container">
       <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
       {data.allMarkdownRemark.edges.map(({ node }) => (
-        <div key={node.id}>
-          <h3>
-            {node.frontmatter.title} <span>— {node.frontmatter.date}</span>
-          </h3>
-          <p>{node.excerpt}</p>
-        </div>
+        <Link to={`/blogs${node.fields.slug}`} key={node.id}>
+          <div>
+            <h3>
+              {node.frontmatter.title} <span>— {node.frontmatter.date}</span>
+            </h3>
+            <p>{node.excerpt}</p>
+          </div>
+        </Link>
       ))}
     </div>
   </Layout>
@@ -33,6 +36,9 @@ export const query = graphql`
             date(formatString: "DD MMMM, YYYY")
           }
           excerpt
+          fields {
+            slug
+          }
         }
       }
     }
