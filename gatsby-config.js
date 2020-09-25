@@ -16,7 +16,7 @@ module.exports = {
       options: {
         alias: {
           '~components': path.resolve(__dirname, 'src/components'),
-          '~images': path.resolve(__dirname, 'static/images'),
+          '~static': path.resolve(__dirname, 'static'),
           '~styles': path.resolve(__dirname, 'src/styles'),
         },
         extensions: [],
@@ -27,13 +27,6 @@ module.exports = {
       options: {
         name: `md`,
         path: `${__dirname}/src/pages/blogs`,
-      },
-    },
-    {
-      resolve: `gatsby-source-filesystem`,
-      options: {
-        name: `images`,
-        path: `${__dirname}/static/images`,
       },
     },
     {

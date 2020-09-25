@@ -3,8 +3,8 @@ import { graphql } from 'gatsby'
 
 import { Layout } from '~components'
 
-import Avatar from '~images/avatar.jpg'
-import ChinaFlag from '~images/china.svg'
+import Avatar from '~static/icons/avatar.jpg'
+import ChinaFlag from '~static/icons/china.svg'
 import '~styles/index.scss'
 
 const Home = ({ data }) => (

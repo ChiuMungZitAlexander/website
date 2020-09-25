@@ -3,7 +3,7 @@ import { Link } from 'gatsby'
 import { Location } from '@reach/router'
 import classNames from 'classnames'
 
-import Language from '~images/language.svg'
+import Language from '~static/icons/language.svg'
 import './styles.scss'
 
 const Header = () => (
