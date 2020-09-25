@@ -3,6 +3,8 @@ import React from 'react'
 import { Layout, Loading } from '~components'
 import '~styles/music.scss'
 
+import Sample from '~static/sample.mp3'
+
 const Music = () => {
   const [loadingProgress, setLoadingProgress] = React.useState(0)
 
@@ -26,7 +28,7 @@ const Music = () => {
       setLoadingProgress(pct)
     })
 
-    wsf.load('https://wavesurfer-js.org/example/media/demo.wav')
+    wsf.load(Sample)
 
     return () => {
       wsf.stop()
