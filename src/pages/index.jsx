@@ -1,4 +1,5 @@
 import React from 'react'
+import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 
 import { Layout } from '~components'
@@ -9,6 +10,11 @@ import '~styles/index.scss'
 
 const Home = ({ data }) => (
   <Layout>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>Alexander Zhao | Home</title>
+      <link rel="canonical" href="http://alexanderzhao.net" />
+    </Helmet>
     <div className="home-container">
       <div className="homeAvatar">
         <img src={Avatar} className="avatar" alt="" />

@@ -1,11 +1,16 @@
 import React from 'react'
-import { Link } from 'gatsby'
-import { graphql } from 'gatsby'
+import { Helmet } from 'react-helmet'
+import { Link, graphql } from 'gatsby'
 
 import { Layout } from '~components'
 
 const Blogs = ({ data }) => (
   <Layout>
+    <Helmet>
+      <meta charSet="utf-8" />
+      <title>Alexander Zhao | Blogs</title>
+      <link rel="canonical" href="http://alexanderzhao.net/blogs" />
+    </Helmet>
     <div className="blogs-container">
       <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
       {data.allMarkdownRemark.edges.map(({ node }) => (
