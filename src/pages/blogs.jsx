@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 
 import { Layout } from '~components'
+import '~styles/blogs.scss'
 
 const Blogs = ({ data }) => (
   <Layout>
@@ -15,11 +16,19 @@ const Blogs = ({ data }) => (
       <h4>{data.allMarkdownRemark.totalCount} 篇帖子</h4>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <Link to={`/blogs${node.fields.slug}`} key={node.id}>
-          <div>
-            <h3>
-              {node.frontmatter.title} <span>— {node.frontmatter.date}</span>
-            </h3>
-            <p>{node.excerpt}</p>
+          <div className="blog">
+            <p className="title">
+              <span>{node.frontmatter.title}</span>
+              <span className="type">{node.frontmatter.type}</span>
+            </p>
+            <p>
+              {node.frontmatter.tag.split(' ').map(tag => (
+                <span className="tag" key={tag}>
+                  {tag}
+                </span>
+              ))}
+            </p>
+            <p className="date">{node.frontmatter.date}</p>
           </div>
         </Link>
       ))}
@@ -39,8 +48,9 @@ export const query = graphql`
           frontmatter {
             title
             date(formatString: "DD MMMM, YYYY")
+            tag
+            type
           }
-          excerpt
           fields {
             slug
           }

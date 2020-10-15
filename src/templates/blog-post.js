@@ -15,7 +15,8 @@ const BlogPost = ({ data, location }) => {
         <link rel="canonical" href="http://alexanderzhao.net/blogs/post.frontmatter.title" />
       </Helmet>
       <div>
-        <h1>{post.frontmatter.title}</h1>
+        <h3>{post.frontmatter.title}</h3>
+        <p>{post.frontmatter.date}</p>
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
     </Layout>
@@ -30,6 +31,9 @@ export const query = graphql`
       html
       frontmatter {
         title
+        date
+        tag
+        type
       }
     }
   }
