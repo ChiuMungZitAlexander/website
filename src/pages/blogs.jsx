@@ -14,11 +14,16 @@ const Blogs = ({ data }) => (
     </Helmet>
     <div className="blogs-container">
       <h4>{data.allMarkdownRemark.totalCount} 篇帖子</h4>
-      {data.allMarkdownRemark.edges.map(({ node }) => (
-        <Link to={`/blogs${node.fields.slug}`} key={node.id}>
-          <div className="blog">
+      {data.allMarkdownRemark.edges
+        .sort(
+          (n, m) =>
+            +new Date(m.node.frontmatter.date) -
+            +new Date(n.node.frontmatter.date)
+        )
+        .map(({ node }) => (
+          <Link to={`/blogs${node.fields.slug}`} key={node.id} className="blog">
             <p className="title">
-              <span>{node.frontmatter.title}</span>
+              <span># {node.frontmatter.title}</span>
               <span className="type">{node.frontmatter.type}</span>
             </p>
             <p>
@@ -29,9 +34,8 @@ const Blogs = ({ data }) => (
               ))}
             </p>
             <p className="date">{node.frontmatter.date}</p>
-          </div>
-        </Link>
-      ))}
+          </Link>
+        ))}
     </div>
   </Layout>
 )

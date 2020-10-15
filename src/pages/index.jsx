@@ -21,9 +21,8 @@ const Home = ({ data }) => (
         <img src={ChinaFlag} className="flag" alt="" />
       </div>
       <h2 className="name">
-        <p>嗨</p>
         <p>我是</p>
-        <p>亚历山大·赵梦哲</p>
+        <p>Alexander 赵梦哲</p>
       </h2>
       <h4 className="job">
         <p>JavaScript软件工程师</p>
