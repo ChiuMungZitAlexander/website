@@ -3,7 +3,6 @@ import { Link } from 'gatsby'
 import { Location } from '@reach/router'
 import classNames from 'classnames'
 
-import Language from '~static/icons/language.svg'
 import './styles.scss'
 
 const Header = () => (
@@ -39,7 +38,7 @@ const Header = () => (
             </span>
           </Link>
         </div>
-        <img src={Language} className="language" alt="" />
+        {/* <img src={Language} className="language" alt="" /> */}
       </nav>
     )}
   </Location>
