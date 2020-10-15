@@ -16,7 +16,7 @@ const Header = () => (
                 highlighted: /^\/$/i.test(location.pathname),
               })}
             >
-              HOME
+              首页
             </span>
           </Link>
           <Link to="/blogs/" className="link">
@@ -25,7 +25,7 @@ const Header = () => (
                 highlighted: /^\/blogs/i.test(location.pathname),
               })}
             >
-              BLOGS
+              博客
             </span>
           </Link>
           <Link to="/music/" className="link">
@@ -34,7 +34,7 @@ const Header = () => (
                 highlighted: /^\/music/i.test(location.pathname),
               })}
             >
-              MUSIC
+              音乐
             </span>
           </Link>
         </div>

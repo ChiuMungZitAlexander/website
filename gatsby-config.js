@@ -8,7 +8,7 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    license: `粤ICP备 18042140号`,
+    license: `粤ICP备 18042140 号`,
   },
   plugins: [
     {

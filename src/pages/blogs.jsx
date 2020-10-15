@@ -12,7 +12,7 @@ const Blogs = ({ data }) => (
       <link rel="canonical" href="http://alexanderzhao.net/blogs" />
     </Helmet>
     <div className="blogs-container">
-      <h4>{data.allMarkdownRemark.totalCount} Posts</h4>
+      <h4>{data.allMarkdownRemark.totalCount} 篇帖子</h4>
       {data.allMarkdownRemark.edges.map(({ node }) => (
         <Link to={`/blogs${node.fields.slug}`} key={node.id}>
           <div>

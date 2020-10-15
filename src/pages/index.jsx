@@ -21,15 +21,15 @@ const Home = ({ data }) => (
         <img src={ChinaFlag} className="flag" alt="" />
       </div>
       <h2 className="name">
-        <p>I am Alexander</p>
-        <p>Mengzhe Zhao</p>
+        <p>嗨</p>
+        <p>我是</p>
+        <p>亚历山大·赵梦哲</p>
       </h2>
       <h4 className="job">
-        <p>Javascript Engineer</p>
-        <p>and</p>
-        <p>Saxophonist</p>
+        <p>JavaScript软件工程师</p>
+        <p>中音萨克斯手</p>
       </h4>
-      <h4 className="thankWord">Appreciate your visit and support</h4>
+      <h4 className="thankWord">感谢您的来访</h4>
       <p className="disclaimer">{data.site.siteMetadata.license}</p>
     </div>
   </Layout>
