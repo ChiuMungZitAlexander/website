@@ -1,0 +1,27 @@
+.blog-post {
+  .title {
+    color: black;
+    font-size: 1.5rem;
+
+    .type {
+      background-color: $theme-light-blue;
+      border-radius: 8px;
+      font-size: 0.25rem;
+      height: 1rem;
+      margin-left: 5px;
+      padding: 0.2rem 0.5rem;
+    }
+  }
+
+  .tag {
+    margin-right: 0.5rem;
+    font-size: 0.5rem;
+  }
+
+  .date {
+    color: black;
+    display: flex;
+    font-size: 1rem;
+    justify-content: space-between;
+  }
+}

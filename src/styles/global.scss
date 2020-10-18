@@ -5,6 +5,7 @@ body {
   margin: 0;
   overflow-y: auto;
   padding: 0;
+  user-select: none;
   width: 100%;
 }
 
@@ -29,4 +30,8 @@ h6 {
 a {
   background-image: none;
   text-shadow: none;
+}
+
+hr {
+  margin: 1rem 0;
 }

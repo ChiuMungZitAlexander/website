@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 
 import { Layout } from '~components'
+import '~styles/blog-post.scss'
 
 const BlogPost = ({ data, location }) => {
   const post = data.markdownRemark
@@ -12,11 +13,25 @@ const BlogPost = ({ data, location }) => {
       <Helmet>
         <meta charSet="utf-8" />
         <title>Alexander Zhao | {post.frontmatter.title}</title>
-        <link rel="canonical" href="http://alexanderzhao.net/blogs/post.frontmatter.title" />
+        <link
+          rel="canonical"
+          href={`http://alexanderzhao.net/blogs/${post.frontmatter.title}`}
+        />
       </Helmet>
-      <div>
-        <h3>{post.frontmatter.title}</h3>
-        <p>{post.frontmatter.date}</p>
+      <div className="blog-post">
+        <p className="title">
+          <span># {post.frontmatter.title}</span>
+          <span className="type">{post.frontmatter.type}</span>
+        </p>
+        <p>
+          {post.frontmatter.tag.split(' ').map(tag => (
+            <span className="tag" key={tag}>
+              {tag}
+            </span>
+          ))}
+        </p>
+        <p className="date">{post.frontmatter.date}</p>
+        <hr />
         <div dangerouslySetInnerHTML={{ __html: post.html }} />
       </div>
     </Layout>
