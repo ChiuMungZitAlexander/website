@@ -3,7 +3,7 @@ import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 
 import { Layout } from '~components'
-import '~styles/blog-post.scss'
+import './blog-post.scss'
 
 const BlogPost = ({ data, location }) => {
   const post = data.markdownRemark
@@ -32,7 +32,10 @@ const BlogPost = ({ data, location }) => {
         </p>
         <p className="date">{post.frontmatter.date}</p>
         <hr />
-        <div dangerouslySetInnerHTML={{ __html: post.html }} />
+        <div
+          dangerouslySetInnerHTML={{ __html: post.html }}
+          className="post-md"
+        />
       </div>
     </Layout>
   )
@@ -46,7 +49,7 @@ export const query = graphql`
       html
       frontmatter {
         title
-        date
+        date(formatString: "YYYY-MM-DD")
         tag
         type
       }
