@@ -1,5 +1,5 @@
 jobs:
-  lint:
+  eslint:
     executor: node/default
     steps:
       - checkout
@@ -8,10 +8,8 @@ jobs:
       - run:
         command: yarn lint
         name: Run eslint
-orbs:
-  node: circleci/node@x.y
 version: 2.1
 workflows:
   lint:
     jobs:
-      - lint
+      - eslint
