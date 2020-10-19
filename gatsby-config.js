@@ -18,6 +18,7 @@ module.exports = {
           '~components': path.resolve(__dirname, 'src/components'),
           '~static': path.resolve(__dirname, 'static'),
           '~styles': path.resolve(__dirname, 'src/styles'),
+          '~views': path.resolve(__dirname, 'src/views'),
         },
         extensions: [],
       },

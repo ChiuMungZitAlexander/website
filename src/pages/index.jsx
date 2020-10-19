@@ -12,7 +12,12 @@ const Home = ({ data }) => (
   <Layout>
     <Helmet>
       <meta charSet="utf-8" />
-      <title>Alexander Zhao | Home</title>
+      <meta name="keywords" content="alexander zhao,赵梦哲,个人网站,萨克斯" />
+      <meta
+        name="description"
+        content="Alexander Zhao,赵梦哲,个人主页,javascript技术分享,萨克斯乐谱分享"
+      />
+      <title>赵梦哲 | 首页</title>
       <link rel="canonical" href="http://alexanderzhao.net" />
     </Helmet>
     <div className="home-container">

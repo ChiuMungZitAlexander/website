@@ -13,7 +13,11 @@ const BlogPost = ({ data, location }) => {
     <Layout location={location}>
       <Helmet>
         <meta charSet="utf-8" />
-        <title>Alexander Zhao | {post.frontmatter.title}</title>
+        <meta
+          name="keywords"
+          content={post.frontmatter.tag.replaceAll(' ', ',')}
+        />
+        <title>赵梦哲 | {post.frontmatter.title}</title>
         <link
           rel="canonical"
           href={`http://alexanderzhao.net/blogs/${post.frontmatter.title}`}
@@ -38,9 +42,8 @@ const BlogPost = ({ data, location }) => {
           className="post-md"
         />
         <hr />
-        <p className="copy-right">
-          如文章标明“原创”，转载请联系笔者，否则直接按侵权起诉
-        </p>
+        <p className="copy-right">如文章标明“原创”，转载请联系笔者</p>
+        <p className="copy-right">侵权直接起诉</p>
         <div className="reward">
           <p>编程易秃，打赏植发</p>
           <img src={RewardCode} alt="reward-code" className="reward-code" />

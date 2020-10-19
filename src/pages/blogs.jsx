@@ -9,7 +9,15 @@ const Blogs = ({ data }) => (
   <Layout>
     <Helmet>
       <meta charSet="utf-8" />
-      <title>Alexander Zhao | Blogs</title>
+      <meta
+        name="keywords"
+        content="alexander zhao,赵梦哲,个人网站,javascript"
+      />
+      <meta
+        name="description"
+        content="Alexander Zhao,赵梦哲,javascript技术分享"
+      />
+      <title>赵梦哲 | 博客</title>
       <link rel="canonical" href="http://alexanderzhao.net/blogs" />
     </Helmet>
     <div className="blogs-container">
