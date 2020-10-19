@@ -1,0 +1,17 @@
+jobs:
+  lint:
+    executor: node/default
+    steps:
+      - checkout
+      - node/install-packages:
+          pkg-manager: yarn
+      - run:
+        command: yarn lint
+        name: Run eslint
+orbs:
+  node: circleci/node@x.y
+version: 2.1
+workflows:
+  lint:
+    jobs:
+      - lint
