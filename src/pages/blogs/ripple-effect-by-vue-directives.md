@@ -24,10 +24,8 @@ v-show就是一个典型的directives，本质上v-show只是改变DOM的CSS`{ d
 <br>
 
 <pre>
-const posX = e.currentTarget.offsetLeft;
-const posY = e.currentTarget.offsetTop;
-const buttonWidth = e.currentTarget.offsetWidth;
-const buttonHeight =  e.currentTarget.offsetHeight;
+const posX = e.pageX - e.currentTarget.offsetLeft
+const posY = e.pageY - e.currentTarget.offsetTop
 </pre>
 
 ##### 2.绝对定位添加ripple层
@@ -68,3 +66,9 @@ e.currentTarget.appendChild(spanEl);
 ### DEMO
 
 <a href="https://codepen.io/alexanderzhao/pen/NWrrxRy" target="_blank">codepen</a>
+
+### 思考：jQuery实现缺点
+<br>
+
+1. 需要ripple和non-ripple两种组件，代码冗余提高，且不够灵活
+2. 在生命周期中执行逻辑没有directives钩子函数清晰

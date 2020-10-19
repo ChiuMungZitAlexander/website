@@ -50,4 +50,16 @@
       padding: 1px 4px;
     }
   }
+
+  .copy-right {
+    font-size: 0.75rem;
+    text-align: center;
+  }
+
+  .reward {
+    color: $theme-dark-blue;
+    font-style: italic;
+    font-weight: bold;
+    text-align: center;
+  }
 }

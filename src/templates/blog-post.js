@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 
 import { Layout } from '~components'
+import RewardCode from '~static/icons/reward_code.jpg'
 import './blog-post.scss'
 
 const BlogPost = ({ data, location }) => {
@@ -36,6 +37,14 @@ const BlogPost = ({ data, location }) => {
           dangerouslySetInnerHTML={{ __html: post.html }}
           className="post-md"
         />
+        <hr />
+        <p className="copy-right">
+          如文章标明“原创”，转载请联系笔者，否则直接按侵权起诉
+        </p>
+        <div className="reward">
+          <p>编程易秃，打赏植发</p>
+          <img src={RewardCode} alt="reward-code" className="reward-code" />
+        </div>
       </div>
     </Layout>
   )
