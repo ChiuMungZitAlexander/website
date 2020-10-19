@@ -1,15 +1,16 @@
-jobs:
-  eslint:
-    executor: node/default
-    steps:
-      - checkout
-      - node/install-packages:
-          pkg-manager: yarn
-      - run:
-        command: yarn lint
-        name: Run eslint
-version: 2.1
+orbs: # declare what orbs we are going to use
+  node: circleci/node@4.1.0 # the node orb provides common node-related configuration
+
+version: 2.1 # using 2.1 provides access to orbs and other features
+
 workflows:
-  lint:
+  code-quality:
     jobs:
-      - eslint
+      - lint:
+          docker:
+            - image: circleci/node:12
+          steps:
+            - checkout
+            - run:
+                name: Install Dependencies
+                command: yarn install
