@@ -25,8 +25,7 @@ const BlogPost = ({ data, location }) => {
       </Helmet>
       <div className="blog-post">
         <p className="title">
-          <span># {post.frontmatter.title}</span>
-          <span className="type">{post.frontmatter.type}</span>
+          <span><span className="type">{post.frontmatter.type}</span> {post.frontmatter.title}</span>
         </p>
         <p>
           {post.frontmatter.tag.split(' ').map(tag => (

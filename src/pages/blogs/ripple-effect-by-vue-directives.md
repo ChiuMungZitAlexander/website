@@ -7,20 +7,22 @@ type: '原创'
 
 ### 实际效果
 
-![Ripple Effect](../../../static/images/ripple-effect.gif)
+![Ripple Effect](../../../static/images/ripple-effect-by-vue-directives/ripple-effect.gif)
 
-### 什么是directives？
+### 什么是 directives？
 
-<a href="https://cn.vuejs.org/v2/guide/custom-directive.html" target="_blank">vue官方文档</a>对directives定义是“自定义指令，用来对DOM元素进行底层操作”。
+<a href="https://cn.vuejs.org/v2/guide/custom-directive.html" target="_blank">vue 官方文档</a>对 directives 定义是“自定义指令，用来对 DOM 元素进行底层操作”。
 
-简单来说，因为MVVM模式是**数据驱动**的，所以不提倡直接操作DOM。但偶尔会遇到必须操作DOM，且逻辑基本一致的情况，使用directives可以抽象逻辑、提高复用。
+简单来说，因为 MVVM 模式是**数据驱动**的，所以不提倡直接操作 DOM。但偶尔会遇到必须操作 DOM，且逻辑基本一致的情况，使用 directives 可以抽象逻辑、提高复用。
 
-v-show就是一个典型的directives，本质上v-show只是改变DOM的CSS`{ display: none }`，仅此而已。
+v-show 就是一个典型的 directives，本质上 v-show 只是改变 DOM 的 CSS`{ display: none }`，仅此而已。
 
-### 如何做到ripple效果？
+### 如何做到 ripple 效果？
+
 <br>
 
 ##### 1.确定点击/触摸位置
+
 <br>
 
 <pre>
@@ -28,7 +30,8 @@ const posX = e.pageX - e.currentTarget.offsetLeft
 const posY = e.pageY - e.currentTarget.offsetTop
 </pre>
 
-##### 2.绝对定位添加ripple层
+##### 2.绝对定位添加 ripple 层
+
 <br>
 
 <pre>
@@ -37,7 +40,8 @@ spanEl.className = 'ripple';
 e.currentTarget.appendChild(spanEl);
 </pre>
 
-##### 3.CSS圆形扩散效果
+##### 3.CSS 圆形扩散效果
+
 <br>
 
 <pre>
@@ -67,8 +71,9 @@ e.currentTarget.appendChild(spanEl);
 
 <a href="https://codepen.io/alexanderzhao/pen/NWrrxRy" target="_blank">codepen</a>
 
-### 思考：jQuery实现缺点
+### 思考：不使用directives实现的缺点
+
 <br>
 
-1. 需要ripple和non-ripple两种组件，代码冗余提高，且不够灵活
-2. 在生命周期中执行逻辑没有directives钩子函数清晰
+1. 需要 ripple 和 non-ripple 两种组件，代码冗余提高，且不够灵活
+2. 在生命周期中执行逻辑没有 directives 钩子函数清晰

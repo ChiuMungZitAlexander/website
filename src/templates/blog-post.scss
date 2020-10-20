@@ -9,8 +9,8 @@
     .type {
       background-color: $theme-light-blue;
       border-radius: 8px;
-      font-size: 0.25rem;
-      height: 1rem;
+      font-size: 0.75rem;
+      line-height: 1rem;
       margin-left: 5px;
       padding: 0.2rem 0.4rem 0.1rem;
       white-space: nowrap;
@@ -54,6 +54,7 @@
 
   .copy-right {
     font-size: 0.75rem;
+    line-height: 1rem;
     text-align: center;
   }
 
@@ -61,6 +62,7 @@
     color: $theme-dark-blue;
     font-style: italic;
     font-weight: bold;
+    line-height: 3rem;
     text-align: center;
   }
 }

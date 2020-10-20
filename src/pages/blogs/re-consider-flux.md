@@ -6,3 +6,5 @@ type: '原创'
 ---
 
 Flux。
+
+![](../../../static/images/re-consider-flux/flux.png)
