@@ -1,0 +1,17 @@
+.eband {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  justify-content: center;
+  text-align: center;
+  width: 100%;
+
+  &.mobile {
+    .eband-name {
+      font-size: 4rem;
+      font-weight: bold;
+      line-height: 4rem;
+      text-align: right;
+    }
+  }
+}

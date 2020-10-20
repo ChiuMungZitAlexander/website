@@ -1,13 +1,14 @@
 import React from 'react'
 
+import './desktop.scss'
+
 const EbandDesktop = () => (
   <div className="eband desktop">
-    <div className="eband-image" />
+    <p className="eband-name color--theme-light-green">深圳 EBand</p>
     <p className="eband-name">
-      深圳 Eband，
-      <span className="pop">流行</span>
-      &nbsp;
-      <span className="jazz">爵士</span>
+      <span style={{ color: '#1b4965', fontSize: '3rem' }}>流行</span>
+      <span style={{ fontSize: '1rem' }}> 和 </span>
+      <span style={{ color: '#5fa8d3', fontSize: '3rem' }}>爵士</span>
     </p>
     <p className="eband-member-row">
       <span className="instrument">萨克斯</span>
