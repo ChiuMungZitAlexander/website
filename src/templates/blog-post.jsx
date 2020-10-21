@@ -15,7 +15,7 @@ const BlogPost = ({ data, location }) => {
         <meta charSet="utf-8" />
         <meta
           name="keywords"
-          content={post.frontmatter.tag.replaceAll(' ', ',')}
+          content={post.frontmatter.tag}
         />
         <title>赵梦哲 | {post.frontmatter.title}</title>
         <link
