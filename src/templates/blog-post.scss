@@ -1,5 +1,6 @@
 .blog-post {
-  overflow: hidden;
+  flex: 1;
+  overflow-y: auto;
 
   .title {
     color: black;
