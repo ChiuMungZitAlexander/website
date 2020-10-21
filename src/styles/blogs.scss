@@ -1,4 +1,7 @@
 .blogs-container {
+  flex: 1;
+  overflow-y: auto;
+
   .blog {
     border-radius: 5px;
     display: block;
