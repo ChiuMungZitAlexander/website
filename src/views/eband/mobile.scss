@@ -1,17 +1,65 @@
 .eband {
-  display: flex;
-  flex-direction: column;
-  height: 100%;
-  justify-content: center;
-  text-align: center;
-  width: 100%;
-
   &.mobile {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+    position: relative;
+    text-align: center;
+    width: 100%;
+
     .eband-name {
       font-size: 4rem;
       font-weight: bold;
       line-height: 4rem;
       text-align: right;
+      z-index: 1001;
     }
+
+    .button-down {
+      background: $theme-blue;
+      border-radius: 50%;
+      display: inline-block;
+      height: 50px;
+      margin: 0.5rem;
+      padding: 5px;
+      position: relative;
+      width: 50px;
+
+      &::after {
+        animation: example 1s linear infinite;
+        border-left: 2px solid #fff;
+        border-top: 2px solid #fff;
+        content: '';
+        display: block;
+        height: 25px;
+        left: 13px;
+        position: absolute;
+        top: 8px;
+        width: 25px;
+      }
+    }
+
+    .eband-img {
+      background-image: url('../../../static/images/eband1.jpg');
+      background-position: center;
+      background-size: cover;
+      flex: 1;
+    }
+  }
+}
+
+@keyframes example {
+  0% {
+    opacity: 1;
+    transform: scale(0.75) rotate(225deg);
+  }
+  50% {
+    opacity: 0.5;
+    transform: scale(1) rotate(225deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(0.75) rotate(225deg);
   }
 }

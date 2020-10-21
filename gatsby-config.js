@@ -68,7 +68,6 @@ module.exports = {
             options: {
               maxWidth: 800,
               linkImagesToOriginal: false,
-              sizeByPixelDensity: true,
               showCaptions: true,
             },
           },

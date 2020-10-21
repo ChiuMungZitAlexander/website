@@ -2,7 +2,7 @@ import React, { Suspense } from 'react'
 import { Helmet } from 'react-helmet'
 import { useMediaQuery } from 'react-responsive'
 
-import { Layout, Loading } from '~components'
+import { Header, Loading } from '~components'
 
 import '~styles/music.scss'
 
@@ -15,7 +15,7 @@ const Music = () => {
   })
 
   return (
-    <Layout>
+    <div className="music-container">
       <Helmet>
         <meta charSet="utf-8" />
         <meta
@@ -29,12 +29,11 @@ const Music = () => {
         <title>赵梦哲 | 音乐</title>
         <link rel="canonical" href="http://alexanderzhao.net/music" />
       </Helmet>
-      <div className="music-container">
-        <Suspense fallback={<Loading loading />}>
-          {isDesktopOrLaptop ? <EbandDesktop /> : <EbandMobile />}
-        </Suspense>
-      </div>
-    </Layout>
+      <Header />
+      <Suspense fallback={<Loading loading />}>
+        {isDesktopOrLaptop ? <EbandDesktop /> : <EbandMobile />}
+      </Suspense>
+    </div>
   )
 }
 

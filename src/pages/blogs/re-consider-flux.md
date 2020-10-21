@@ -5,6 +5,6 @@ tag: 'flux redux react-redux react'
 type: '原创'
 ---
 
-Flux。
+更新中。
 
 ![](../../../static/images/re-consider-flux/flux.png)
