@@ -7,7 +7,7 @@ import RewardCode from '~static/icons/reward_code.jpg'
 import './blog-post.scss'
 
 const BlogPost = ({ data, location }) => {
-  const post = data.markdownRemark
+  const post = data.markdownRemark                                                                                                                   
 
   return (
     <Layout location={location}>
@@ -28,7 +28,7 @@ const BlogPost = ({ data, location }) => {
           <span><span className="type">{post.frontmatter.type}</span> {post.frontmatter.title}</span>
         </p>
         <p>
-          {post.frontmatter.tag.split(' ').map(tag => (
+          {post.frontmatter.tag.split(',').map(tag => (
             <span className="tag" key={tag}>
               {tag}
             </span>

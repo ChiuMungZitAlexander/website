@@ -6,6 +6,8 @@ import { Layout } from '~components'
 
 import Avatar from '~static/icons/avatar.jpg'
 import ChinaFlag from '~static/icons/china.svg'
+import Github from '~static/icons/github.svg'
+import Facebook from '~static/icons/facebook.svg'
 import '~styles/index.scss'
 
 const Home = ({ data }) => (
@@ -33,7 +35,14 @@ const Home = ({ data }) => (
         <p>JavaScript软件工程师</p>
         <p>中音萨克斯手</p>
       </h4>
-      <h4 className="thankWord">感谢您的来访</h4>
+      <p>
+        <a href="https://github.com/ChiuMungZitAlexander">
+          <img className="ref-icon" src={Github} alt="github" fill="blue" />
+        </a>
+        <a href="https://facebook.com">
+          <img className="ref-icon" src={Facebook} alt="facebook" />
+        </a>
+      </p>
       <p className="disclaimer">{data.site.siteMetadata.license}</p>
     </div>
   </Layout>

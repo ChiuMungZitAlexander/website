@@ -30,7 +30,6 @@
   h2,
   h4 {
     color: $theme-dark-blue;
-    margin: 0;
     text-align: center;
   }
 
@@ -42,10 +41,10 @@
     text-align: center;
   }
 
-  .thankWord {
-    color: $theme-light-grey;
-    font-size: 1rem;
-    margin: 2rem 0;
+  .ref-icon {
+    height: 1.5rem;
+    margin: 1rem 0.25rem;
+    width: 2rem;
   }
 
   .disclaimer {

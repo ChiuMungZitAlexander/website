@@ -34,7 +34,7 @@ const Blogs = ({ data }) => (
               <span><span className="type">{node.frontmatter.type}</span> {node.frontmatter.title}</span>
             </p>
             <p>
-              {node.frontmatter.tag.split(' ').map(tag => (
+              {node.frontmatter.tag.split(',').map(tag => (
                 <span className="tag" key={tag}>
                   {tag}
                 </span>
