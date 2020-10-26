@@ -1,20 +1,22 @@
-.eband {
+.slide {
   &.mobile {
     display: flex;
     flex-direction: column;
-    height: 100%;
+    height: calc(100vh - 4.5rem);
     justify-content: center;
-    padding: 1rem;
     position: relative;
     text-align: center;
     width: 100%;
 
-    .eband-name {
+    .post-title {
       font-size: 4rem;
       font-weight: bold;
       line-height: 4rem;
-      text-align: right;
-      z-index: 1001;
+      text-align: left;
+
+      &.right {
+        text-align: right;
+      }
     }
 
     .button-down {
@@ -51,6 +53,14 @@
         font-size: 2rem;
       }
     }
+  }
+
+  .self-img {
+    background-image: url('../../../static/images/self1.jpg');
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: contain;
+    height: 100%;
   }
 
   .eband-img {

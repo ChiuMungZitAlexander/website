@@ -1,7 +1,6 @@
 .page-content {
   display: flex;
+  flex: 1;
   flex-direction: column;
-  flex-grow: 1;
-  overflow: hidden;
-  padding: 1.5rem;
+  padding: 0 1.5rem 1.5rem;
 }

@@ -43,7 +43,7 @@ const Home = ({ data }) => (
           <img className="ref-icon" src={Facebook} alt="facebook" />
         </a>
       </p>
-      <p className="disclaimer">{data.site.siteMetadata.license}</p>
+      <p className="disclaimer">Copyright © 2018-2020 {data.site.siteMetadata.license}</p>
     </div>
   </Layout>
 )

@@ -2,15 +2,13 @@ import React from 'react'
 import { Helmet } from 'react-helmet'
 // import { useMediaQuery } from 'react-responsive'
 
-import { Header } from '~components'
+import { Layout } from '~components'
 import EbandMobile from '~views/eband/mobile'
 
 import '~styles/music.scss'
 
-// const EbandDesktop = React.lazy(() => import('~views/eband/desktop'))
-
 const Music = () => (
-  <div className="music-container">
+  <Layout>
     <Helmet>
       <meta charSet="utf-8" />
       <meta
@@ -24,9 +22,10 @@ const Music = () => (
       <title>赵梦哲 | 音乐</title>
       <link rel="canonical" href="http://alexanderzhao.net/music" />
     </Helmet>
-    <Header />
-    <EbandMobile />
-  </div>
+    <div className="music-container">
+      <EbandMobile />
+    </div>
+  </Layout>
 )
 
 export default Music

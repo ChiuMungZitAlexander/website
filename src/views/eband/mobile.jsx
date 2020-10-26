@@ -4,29 +4,58 @@ import './mobile.scss'
 
 const EbandMobile = () => (
   <>
-    <div className="eband mobile">
-      <p className="eband-name">深圳</p>
-      <p className="eband-name">EBand</p>
-      <p className="eband-name" style={{ color: '#5fa8d3', fontSize: '3rem' }}>
+    <div className="slide mobile">
+      <p
+        className="post-title"
+        style={{ fontSize: '1rem', lineHeight: '1.5rem' }}
+      >
+        “曾经在父母逼迫下学习
+      </p>
+      <p className="post-title" style={{ color: '#5fa8d3' }}>
+        萨克斯，
+      </p>
+      <p
+        className="post-title"
+        style={{ fontSize: '1rem', lineHeight: '1.5rem' }}
+      >
+        但倾听并了解爵士乐之后，会不由自主地去演奏。”
+      </p>
+      <p className="post-title">
+        <span className="button-down"></span>
+      </p>
+    </div>
+    <div className="slide mobile">
+      <div className="self-img" />
+    </div>
+    <div className="slide mobile">
+      <p className="post-title right">深圳</p>
+      <p className="post-title right">EBand</p>
+      <p
+        className="post-title right"
+        style={{ color: '#5fa8d3', fontSize: '3rem' }}
+      >
         流行
       </p>
       <p
-        className="eband-name"
+        className="post-title right"
         style={{ fontSize: '1rem', lineHeight: '1rem' }}
       >
         和
       </p>
-      <p className="eband-name" style={{ color: '#5fa8d3', fontSize: '3rem' }}>
+      <p
+        className="post-title right"
+        style={{ color: '#5fa8d3', fontSize: '3rem' }}
+      >
         爵士
       </p>
-      <p className="eband-name">
-        <div class="button-down"></div>
+      <p className="post-title right">
+        <span className="button-down"></span>
       </p>
     </div>
-    <div className="eband" style={{ height: '50%' }}>
+    <div className="slide mobile">
       <div className="eband-img" />
     </div>
-    <div className="eband mobile">
+    <div className="slide mobile">
       <p className="eband-member-row instrument">萨克斯</p>
       <p className="eband-member-row">赵梦哲</p>
       <p className="eband-member-row instrument">非洲鼓</p>

@@ -1,30 +1,33 @@
-html,
-body {
+html {
   -webkit-user-drag: none;
   display: flex;
   height: 100%;
   margin: 0;
+  overflow: hidden;
   padding: 0;
   user-select: none;
   width: 100%;
+}
 
-  ::-webkit-scrollbar {
-    height: 4px;
+body {
+  overflow-y: scroll;
+
+  &::-webkit-scrollbar {
     width: 4px;
   }
 
-  ::-webkit-scrollbar-thumb {
+  &::-webkit-scrollbar-thumb {
     background-color: $theme-green-blue;
     border-radius: 2px;
   }
 }
 
+body,
 #___gatsby,
 #gatsby-focus-wrapper {
   display: flex;
   flex: 1;
   flex-direction: column;
-  overflow: hidden;
   width: 100%;
 }
 
