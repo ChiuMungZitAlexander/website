@@ -2,13 +2,12 @@
   "env": {
     "es2020": true
   },
-  "extends": [
-    "react-app"
-  ],
+  "extends": ["react-app"],
   "plugins": ["react"],
   "rules": {
     "react/react-in-jsx-scope": "off",
-    "semi": ["error", "never"]
+    "semi": ["error", "never"],
+    "quotes": ["error", "single"]
   },
   "settings": {
     "react": {

@@ -1,14 +1,8 @@
 {
-  "plugins": ["stylelint-scss"],
+  "extends": "stylelint-config-sass-guidelines",
   "rules": {
-    "block-no-empty": null,
-    "comment-empty-line-before": [
-      "always",
-      {
-        "ignore": ["stylelint-commands", "after-comment"]
-      }
-    ],
-    "max-empty-lines": 2,
-    "color-hex-case": "lower"
+    "max-nesting-depth": 2,
+    "selector-class-pattern": "^[a-zA-z-_]+$",
+    "selector-max-id": 2
   }
 }
