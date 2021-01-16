@@ -8,5 +8,5 @@ jobs:
     steps:
       - checkout
       - node/install-packages:
-          pkg-manager: yarn
-      - run: yarn lint
+          pkg-manager: npm
+      - run: npm run lint
