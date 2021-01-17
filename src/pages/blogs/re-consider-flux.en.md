@@ -19,4 +19,4 @@ React 面试题，必问 redux；问 redux，必问 flux。
 
 更新中...
 
-![](../../../static/images/re-consider-flux/flux.png)
+![](../../assets/images/re-consider-flux/flux.png)
