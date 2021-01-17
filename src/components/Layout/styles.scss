@@ -1,0 +1,42 @@
+.layout {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+
+  nav {
+    align-items: center;
+    display: flex;
+    flex-direction: row;
+    height: 3rem;
+    justify-content: space-between;
+    padding: 1rem 1.5rem;
+    z-index: 1001;
+
+    .links-container {
+      flex: 1;
+    }
+
+    .link {
+      background-image: none;
+      color: $theme-dark-blue;
+      font-size: 1rem;
+      font-weight: bold;
+      margin-right: 1rem;
+      text-decoration: none;
+    }
+
+    .active {
+      color: $theme-blue;
+    }
+
+    .icon-container {
+      flex: 1;
+    }
+  }
+
+  main {
+    background-color: #f0f;
+    flex: 1;
+    padding: 0 1.5rem 1rem;
+  }
+}
