@@ -2,7 +2,7 @@ const path = require('path')
 
 module.exports = {
   siteMetadata: {
-    license: '粤ICP备 18042140 号',
+    license: '粤ICP备18042140号',
   },
   plugins: [
     'gatsby-plugin-sharp',
