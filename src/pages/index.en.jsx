@@ -2,7 +2,7 @@ import * as React from 'react'
 import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 
-import Layout from '@components/Layout'
+import Layout from '@layouts'
 
 import Avatar from '@assets/images/avatar.jpg'
 import ChinaFlag from '@assets/icons/china.svg'
@@ -22,7 +22,7 @@ const Index = ({ data }) => (
           content="Alexander Zhao,赵梦哲,个人主页,javascript技术分享,萨克斯乐谱分享"
         />
         <title>Alexander Zhao | Home</title>
-        <link rel="canonical" href="https://alexanderzhao.net" />
+        <link rel="canonical" href="https://alexanderzhao.net/en/" />
       </Helmet>
       <div className="homeAvatar">
         <img src={Avatar} className="avatar" alt="" />

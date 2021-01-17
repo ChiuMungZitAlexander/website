@@ -7,8 +7,9 @@ module.exports = {
   plugins: [
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
-    'gatsby-plugin-mdx',
     'gatsby-transformer-sharp',
+    'gatsby-transformer-remark',
+    'gatsby-remark-images',
     {
       resolve: 'gatsby-plugin-sass',
       options: {
@@ -28,6 +29,23 @@ module.exports = {
       options: {
         langKeyDefault: 'zh',
         useLangKeyLayout: false,
+        markdownRemark: {
+          postPage: 'src/templates/blog-post.jsx',
+          query: `
+            {
+              allMarkdownRemark {
+                edges {
+                  node {
+                    fields {
+                      slug,
+                      langKey
+                    }
+                  }
+                }
+              }
+            }
+          `,
+        },
       },
     },
     {
@@ -40,16 +58,8 @@ module.exports = {
     {
       resolve: 'gatsby-source-filesystem',
       options: {
-        name: 'images',
-        path: './src/assets/images/',
-      },
-      __key: 'images',
-    },
-    {
-      resolve: 'gatsby-source-filesystem',
-      options: {
         name: 'pages',
-        path: './src/pages/',
+        path: `${__dirname}/src/pages/`,
       },
       __key: 'pages',
     },
@@ -58,7 +68,7 @@ module.exports = {
       options: {
         alias: {
           '@assets': path.resolve(__dirname, 'src/assets'),
-          '@components': path.resolve(__dirname, 'src/components'),
+          '@layouts': path.resolve(__dirname, 'src/layouts'),
           '@styles': path.resolve(__dirname, 'src/styles'),
           '@utils': path.resolve(__dirname, 'src/utils'),
           '@views': path.resolve(__dirname, 'src/views'),
