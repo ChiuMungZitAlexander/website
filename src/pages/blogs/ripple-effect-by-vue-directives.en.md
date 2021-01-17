@@ -7,7 +7,7 @@ type: '原创'
 
 ### 实际效果
 
-![Ripple Effect](../../../static/images/ripple-effect-by-vue-directives/ripple-effect.gif)
+![Ripple Effect](../../assets/images/ripple-effect-by-vue-directives/ripple-effect.gif)
 
 ### 什么是 directives？
 

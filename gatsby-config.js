@@ -8,8 +8,21 @@ module.exports = {
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
     'gatsby-transformer-sharp',
-    'gatsby-transformer-remark',
-    'gatsby-remark-images',
+    {
+      resolve: 'gatsby-transformer-remark',
+      options: {
+        plugins: [
+          {
+            resolve: 'gatsby-remark-images',
+            options: {
+              maxWidth: 800,
+              linkImagesToOriginal: false,
+              showCaptions: true,
+            },
+          },
+        ],
+      },
+    },
     {
       resolve: 'gatsby-plugin-sass',
       options: {
