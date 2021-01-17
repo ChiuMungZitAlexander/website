@@ -1,0 +1,60 @@
+.home {
+  @include flex-hav-center;
+  flex-direction: column;
+  flex-grow: 1;
+
+  .homeAvatar {
+    border-radius: 50%;
+    box-shadow: 2px 2px 10px $theme-dark-grey;
+    height: 6rem;
+    margin-bottom: 2rem;
+    position: relative;
+    width: 6rem;
+
+    .avatar {
+      border-radius: 50%;
+      width: 100%;
+    }
+
+    .flag {
+      border-radius: 50%;
+      box-shadow: 2px 2px 10px $theme-dark-grey;
+      height: 1.25rem;
+      position: absolute;
+      right: 0;
+      top: 0;
+      width: 1.25rem;
+    }
+  }
+
+  h2,
+  h4 {
+    color: $theme-dark-blue;
+    text-align: center;
+  }
+
+  .name {
+    margin-bottom: 1rem;
+  }
+
+  .job {
+    text-align: center;
+  }
+
+  .ref-icon {
+    height: 1.5rem;
+    margin: 1rem 0.25rem;
+    width: 2rem;
+  }
+
+  .disclaimer {
+    bottom: 0.5rem;
+    color: $theme-light-grey;
+    font-size: 0.5rem;
+    position: absolute;
+
+    a {
+      text-decoration: none;
+    }
+  }
+}

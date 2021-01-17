@@ -4,13 +4,15 @@ import { Location } from '@reach/router'
 import classNames from 'classnames'
 import PropTypes from 'prop-types'
 
+import Global from '@assets/icons/global.svg'
+
 import { pathToArray } from '@utils/url'
 
 import './styles.scss'
 
 const Nav = ({ pathname }) => {
   const lang = pathToArray(pathname)[0]
-  const nextLang = lang === 'zh' ? 'zh' : 'en'
+  const nextLang = lang === 'zh' ? 'en' : 'zh'
 
   return (
     <nav>
@@ -43,7 +45,11 @@ const Nav = ({ pathname }) => {
           </span>
         </Link>
       </div>
-      <div className="icon-container"></div>
+      <div className="lang-container">
+        <Link to={pathname.replace(lang, nextLang)}>
+          <img className="ref-icon" src={Global} alt="lang" />
+        </Link>
+      </div>
     </nav>
   )
 }
