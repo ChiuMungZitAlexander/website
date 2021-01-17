@@ -50,6 +50,16 @@
   main {
     display: flex;
     flex: 1;
+    overflow-y: scroll;
     padding: 0 1.5rem 1rem;
+
+    &::-webkit-scrollbar {
+      width: 4px;
+    }
+
+    &::-webkit-scrollbar-thumb {
+      background-color: $theme-green-blue;
+      border-radius: 2px;
+    }
   }
 }
