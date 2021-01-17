@@ -17,7 +17,7 @@ const Nav = ({ pathname }) => {
   return (
     <nav>
       <div className="links-container">
-        <Link to={`/${nextLang}/`} className="link">
+        <Link to={`/${lang}/`} className="link">
           <span
             className={classNames({
               active: /^\/(zh|en)(\/)?$/i.test(pathname),
@@ -26,7 +26,7 @@ const Nav = ({ pathname }) => {
             {lang === 'zh' ? '首页' : 'HOME'}
           </span>
         </Link>
-        <Link to={`/${nextLang}/blogs/`} className="link">
+        <Link to={`/${lang}/blogs/`} className="link">
           <span
             className={classNames({
               active: /blogs/i.test(pathname),
@@ -35,7 +35,7 @@ const Nav = ({ pathname }) => {
             {lang === 'zh' ? '博客' : 'BLOGS'}
           </span>
         </Link>
-        <Link to={`/${nextLang}/music/`} className="link">
+        <Link to={`/${lang}/music/`} className="link">
           <span
             className={classNames({
               active: /music/i.test(pathname),

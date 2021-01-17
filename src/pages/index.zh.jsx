@@ -13,17 +13,17 @@ import '@styles/home.scss'
 
 const Index = ({ data }) => (
   <Layout>
-    <Helmet>
-      <meta charSet="utf-8" />
-      <meta name="keywords" content="alexander zhao,赵梦哲,个人网站,萨克斯" />
-      <meta
-        name="description"
-        content="Alexander Zhao,赵梦哲,个人主页,javascript技术分享,萨克斯乐谱分享"
-      />
-      <title>赵梦哲 | 主页</title>
-      <link rel="canonical" href="https://alexanderzhao.net" />
-    </Helmet>
     <div className="home">
+      <Helmet>
+        <meta charSet="utf-8" />
+        <meta name="keywords" content="alexander zhao,赵梦哲,个人网站,萨克斯" />
+        <meta
+          name="description"
+          content="Alexander Zhao,赵梦哲,个人主页,javascript技术分享,萨克斯乐谱分享"
+        />
+        <title>赵梦哲 | 主页</title>
+        <link rel="canonical" href="https://alexanderzhao.net" />
+      </Helmet>
       <div className="homeAvatar">
         <img src={Avatar} className="avatar" alt="" />
         <img src={ChinaFlag} className="flag" alt="" />
