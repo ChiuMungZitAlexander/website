@@ -18,7 +18,8 @@ module.exports = {
     {
       resolve: 'gatsby-plugin-manifest',
       options: {
-        start_url: '/zh',
+        start_url: '/',
+        lang: 'zh',
         icon: 'src/assets/images/favicon.png',
       },
     },
@@ -59,6 +60,7 @@ module.exports = {
           '@assets': path.resolve(__dirname, 'src/assets'),
           '@components': path.resolve(__dirname, 'src/components'),
           '@styles': path.resolve(__dirname, 'src/styles'),
+          '@utils': path.resolve(__dirname, 'src/utils'),
           '@views': path.resolve(__dirname, 'src/views'),
         },
         extensions: [],
