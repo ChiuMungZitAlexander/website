@@ -14,6 +14,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
             id
             fields {
               slug
+              langKey
             }
           }
         }
@@ -34,6 +35,7 @@ exports.createPages = async ({ graphql, actions, reporter }) => {
         // Data passed to context is available
         // in page queries as GraphQL variables.
         slug: node.fields.slug,
+        langKey: node.fields.langKey,
       },
     })
   })

@@ -1,11 +1,16 @@
 .blogs {
   flex: 1;
 
+  .count {
+    margin-bottom: 1rem;
+  }
+
   .blog {
     border-radius: 5px;
     display: block;
     padding: 1rem 0.5rem;
     position: relative;
+    text-decoration: none;
     transition: background-color 0.4s ease-in-out;
 
     &:hover {

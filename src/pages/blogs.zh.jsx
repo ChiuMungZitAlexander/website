@@ -22,7 +22,7 @@ const Blogs = ({ data }) => (
         <title>赵梦哲 | 博客</title>
         <link rel="canonical" href="http://alexanderzhao.net/zh/blogs/" />
       </Helmet>
-      <h4>{data.allMarkdownRemark.totalCount / 2} 篇帖子</h4>
+      <h4 className="count">{data.allMarkdownRemark.totalCount / 2} 篇帖子</h4>
       {data.allMarkdownRemark.edges
         .filter(({ node }) => node.fields.langKey === 'zh')
         .sort(

@@ -43,7 +43,7 @@ e.currentTarget.appendChild(spanEl);
 
 <br />
 
-<pre>{`
+<pre>
 .ripple {
   background: rgba(255, 255, 255, 0.4);
   border-radius: 50%;
@@ -64,7 +64,7 @@ e.currentTarget.appendChild(spanEl);
     opacity: 0;
   }
 }
-`}</pre>
+</pre>
 
 ### DEMO
 
