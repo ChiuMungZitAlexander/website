@@ -10,3 +10,4 @@ jobs:
       - node/install-packages:
           pkg-manager: npm
       - run: npm run lint
+      - run: npm run lint:styles

@@ -11,7 +11,8 @@
     "develop": "gatsby develop",
     "start": "gatsby develop",
     "build": "gatsby build",
-    "lint": "eslint --ext .jsx,.js && npx stylelint **/*.scss",
+    "lint": "eslint --ext .jsx,.js src",
+    "lint:styles": "npx stylelint **/*.scss",
     "serve": "gatsby serve",
     "clean": "gatsby clean"
   },
