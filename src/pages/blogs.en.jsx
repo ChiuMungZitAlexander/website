@@ -20,7 +20,7 @@ const Blogs = ({ data }) => (
           content="Alexander Zhao,赵梦哲,javascript技术分享"
         />
         <title>Alexander Zhao | Blogs</title>
-        <link rel="canonical" href="http://alexanderzhao.net/en/blogs/" />
+        <link rel="canonical" href="https://alexanderzhao.net/en/blogs/" />
       </Helmet>
       <h4 className="count">{data.allMarkdownRemark.totalCount / 2} Posts</h4>
       {data.allMarkdownRemark.edges
@@ -33,10 +33,8 @@ const Blogs = ({ data }) => (
         .map(({ node }) => (
           <Link to={`${node.fields.slug}`} key={node.id} className="blog">
             <p className="title">
-              <span>
-                <span className="type">{node.frontmatter.type}</span>{' '}
-                {node.frontmatter.title}
-              </span>
+              <span className="type">{node.frontmatter.type}</span>{' '}
+              <span>{node.frontmatter.title}</span>
             </p>
             <p>
               {node.frontmatter.tag.split(',').map(tag => (

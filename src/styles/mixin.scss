@@ -6,6 +6,8 @@ $theme-blue: #5fa8d3;
 $theme-dark-grey: #888;
 $theme-light-grey: #ccc;
 
+$device-width: 992px;
+
 @mixin flex-hav-center {
   align-items: center;
   display: flex;
