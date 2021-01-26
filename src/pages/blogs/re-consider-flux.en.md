@@ -1,5 +1,5 @@
 ---
-title: '重新审视flux架构'
+title: 'Reconsider Flux Architecture'
 date: '2020-05-15'
 tag: 'flux,redux,react-redux,react'
 type: '原创'
