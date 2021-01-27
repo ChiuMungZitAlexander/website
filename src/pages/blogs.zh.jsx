@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import { Link, graphql } from 'gatsby'
 
 import Layout from '@layouts'
+import BlogHeader from '@components/BlogHeader'
 
 import '@styles/blogs.scss'
 
@@ -32,18 +33,7 @@ const Blogs = ({ data }) => (
         )
         .map(({ node }) => (
           <Link to={`${node.fields.slug}`} key={node.id} className="blog">
-            <p className="title">{node.frontmatter.title}</p>
-            <p>
-              {node.frontmatter.tag.split(',').map(tag => (
-                <span className="tag" key={tag}>
-                  {tag}
-                </span>
-              ))}
-            </p>
-            <p className="date">
-              <span className="type">{node.frontmatter.type}</span>
-              <span>{node.frontmatter.date}</span>
-            </p>
+            <BlogHeader {...node.frontmatter} />
           </Link>
         ))}
     </div>

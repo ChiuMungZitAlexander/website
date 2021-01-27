@@ -17,29 +17,4 @@
       background-color: #eee;
     }
   }
-
-  .title {
-    color: #000;
-    display: inline;
-    font-size: 1.5rem;
-    line-height: 2rem;
-  }
-
-  .tag {
-    color: $theme-dark-grey;
-    font-size: 0.5rem;
-    margin-right: 0.5rem;
-  }
-
-  .date {
-    color: #000;
-    font-size: 1rem;
-
-    .type {
-      background-color: $theme-light-blue;
-      border-radius: 8px;
-      margin-right: 8px;
-      padding: 0 4px;
-    }
-  }
 }

@@ -3,6 +3,7 @@ import { Helmet } from 'react-helmet'
 import { graphql } from 'gatsby'
 
 import Layout from '@layouts'
+import BlogHeader from '@components/BlogHeader'
 
 import RewardCode from '@assets/images/reward_code.jpg'
 
@@ -24,18 +25,7 @@ const BlogPost = ({ data }) => {
             href={`http://alexanderzhao.net/blogs/${frontmatter.title}`}
           />
         </Helmet>
-        <p className="title">
-          <span className="type">{frontmatter.type}</span>
-          <span>{frontmatter.title}</span>
-        </p>
-        <p>
-          {frontmatter.tag.split(',').map(tag => (
-            <span className="tag" key={tag}>
-              {tag}
-            </span>
-          ))}
-        </p>
-        <p className="date">{frontmatter.date}</p>
+        <BlogHeader {...frontmatter} />
         <hr />
         <div
           className="blog-post-content"

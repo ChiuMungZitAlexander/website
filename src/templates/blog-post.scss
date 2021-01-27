@@ -1,42 +1,17 @@
 .blog-post {
   flex: 1;
 
-  .title {
-    color: #000;
-    font-size: 1.5rem;
-    line-height: 1.75rem;
-
-    .type {
-      background-color: $theme-light-blue;
-      border-radius: 8px;
-      font-size: 0.75rem;
-      line-height: 1rem;
-      margin-left: 5px;
-      margin-right: 5px;
-      padding: 0.1rem 0.4rem;
-      white-space: nowrap;
-    }
-  }
-
-  .tag {
-    font-size: 0.5rem;
-    margin-right: 0.5rem;
-  }
-
-  .date {
-    color: #000;
-    display: flex;
-    font-size: 1rem;
-    justify-content: space-between;
-  }
-
-  .post-md {
+  .blog-post-content {
     p {
       margin: 1rem 0;
     }
 
+    img {
+      width: 100%;
+    }
+
     pre {
-      background-color: #dedede;
+      background-color: #eee;
       border-radius: 4px;
       color: #c7254e;
       font-family: monospace, monospace;
@@ -45,11 +20,15 @@
     }
 
     code {
-      background-color: #dedede;
+      background-color: #eee;
       border-radius: 4px;
       color: #c7254e;
       font-family: monospace, monospace;
       padding: 1px 4px;
+    }
+
+    ol {
+      padding-left: 1rem;
     }
   }
 
