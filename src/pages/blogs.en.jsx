@@ -32,10 +32,7 @@ const Blogs = ({ data }) => (
         )
         .map(({ node }) => (
           <Link to={`${node.fields.slug}`} key={node.id} className="blog">
-            <p className="title">
-              <span className="type">{node.frontmatter.type}</span>{' '}
-              <span>{node.frontmatter.title}</span>
-            </p>
+            <p className="title">{node.frontmatter.title}</p>
             <p>
               {node.frontmatter.tag.split(',').map(tag => (
                 <span className="tag" key={tag}>
@@ -43,7 +40,10 @@ const Blogs = ({ data }) => (
                 </span>
               ))}
             </p>
-            <p className="date">{node.frontmatter.date}</p>
+            <p className="date">
+              <span className="type">{node.frontmatter.type}</span>
+              <span>{node.frontmatter.date}</span>
+            </p>
           </Link>
         ))}
     </div>

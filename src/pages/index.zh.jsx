@@ -37,10 +37,14 @@ const Index = ({ data }) => (
         <p>中音萨克斯手</p>
       </h4>
       <p>
-        <a href="https://github.com/ChiuMungZitAlexander">
+        <a
+          href="https://github.com/ChiuMungZitAlexander"
+          rel="noreferrer"
+          target="_blank"
+        >
           <img className="ref-icon" src={Github} alt="github" />
         </a>
-        <a href="https://facebook.com">
+        <a href="https://facebook.com" rel="noreferrer" target="_blank">
           <img className="ref-icon" src={Facebook} alt="facebook" />
         </a>
       </p>

@@ -2,7 +2,7 @@
   flex: 1;
 
   .count {
-    margin-bottom: 1rem;
+    margin-bottom: 0;
   }
 
   .blog {
@@ -22,32 +22,24 @@
     color: #000;
     display: inline;
     font-size: 1.5rem;
-    line-height: 1.75rem;
-
-    .type {
-      background-color: $theme-light-blue;
-      border-radius: 8px;
-      font-size: 1rem;
-      margin-left: 5px;
-      padding: 3px 4px 2px;
-      vertical-align: middle;
-      white-space: nowrap;
-
-      @media (max-width: $device-width) {
-        vertical-align: bottom;
-      }
-    }
+    line-height: 2rem;
   }
 
   .tag {
+    color: $theme-dark-grey;
     font-size: 0.5rem;
     margin-right: 0.5rem;
   }
 
   .date {
     color: #000;
-    display: flex;
     font-size: 1rem;
-    justify-content: space-between;
+
+    .type {
+      background-color: $theme-light-blue;
+      border-radius: 8px;
+      margin-right: 8px;
+      padding: 0 4px;
+    }
   }
 }
