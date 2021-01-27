@@ -8,6 +8,7 @@
 
   .tag-icon {
     height: 0.75rem;
+    margin-right: 4px;
   }
 
   .tag {
@@ -21,11 +22,10 @@
     font-size: 1rem;
 
     .type {
-      background-color: $theme-light-blue;
-      border-radius: 8px;
+      color: $theme-blue;
       font-size: 0.8rem;
+      font-weight: bold;
       margin-right: 8px;
-      padding: 4px 4px 0;
     }
   }
 }

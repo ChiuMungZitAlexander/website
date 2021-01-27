@@ -1,17 +1,17 @@
 ---
-title: '运用directives在vue组件中添加ripple动画效果'
+title: 'Implement ripple effect by directives on Vue components'
 date: '2020-08-09'
 tag: 'vue,directives,css,animation'
-type: '原创'
+type: 'Original'
 ---
 
-### 实际效果
+### Final Effect
 
 ![Ripple Effect](../../assets/images/ripple-effect-by-vue-directives/ripple-effect.gif)
 
-### 什么是 directives？
+### What is directives？
 
-<a href="https://cn.vuejs.org/v2/guide/custom-directive.html" target="_blank">vue 官方文档</a>对 directives 定义是“自定义指令，用来对 DOM 元素进行底层操作”。
+<a href="https://cn.vuejs.org/v2/guide/custom-directive.html" target="_blank">Vue docs</a>对 directives 定义是“自定义指令，用来对 DOM 元素进行底层操作”。
 
 简单来说，因为 MVVM 模式是**数据驱动**的，所以不提倡直接操作 DOM。但偶尔会遇到必须操作 DOM，且逻辑基本一致的情况，使用 directives 可以抽象逻辑、提高复用。
 
