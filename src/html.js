@@ -14,7 +14,9 @@ export default function HTML(props) {
         <link
           rel="stylesheet"
           href="https://unpkg.com/swiper/swiper-bundle.min.css"
+          type="text/css"
         />
+        <link href="https://fonts.font.im/css?family=Khula" rel="stylesheet" />
         <script src="https://unpkg.com/swiper/swiper-bundle.min.js" />
         {props.headComponents}
       </head>
