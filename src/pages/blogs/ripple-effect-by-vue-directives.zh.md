@@ -23,15 +23,12 @@ v-show 就是一个典型的 directives，本质上 v-show 只是改变 DOM 的 
 
 ##### 1.确定点击/触摸位置
 
-<br />
 <pre>
 const posX = e.pageX - e.currentTarget.offsetLeft
 const posY = e.pageY - e.currentTarget.offsetTop
 </pre>
 
 ##### 2.绝对定位添加 ripple 层
-
-<br />
 
 <pre>
 let spanEl = document.createElement('span');
@@ -40,8 +37,6 @@ e.currentTarget.appendChild(spanEl);
 </pre>
 
 ##### 3.CSS 圆形扩散效果
-
-<br />
 
 <pre>
 .ripple {
