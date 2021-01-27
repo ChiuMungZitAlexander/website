@@ -13,6 +13,13 @@ module.exports = {
       options: {
         plugins: [
           {
+            resolve: 'gatsby-remark-copy-linked-files',
+            options: {
+              destinationDir: './src/assets/images',
+              ignoreFileExtensions: ['png', 'jpg', 'jpeg', 'bmp', 'tiff'],
+            },
+          },
+          {
             resolve: 'gatsby-remark-images',
             options: {
               maxWidth: 800,
@@ -75,6 +82,14 @@ module.exports = {
         path: `${__dirname}/src/pages/`,
       },
       __key: 'pages',
+    },
+    {
+      resolve: 'gatsby-source-filesystem',
+      options: {
+        name: 'pages',
+        path: `${__dirname}/src/assets/images`,
+      },
+      __key: 'images',
     },
     {
       resolve: 'gatsby-plugin-alias-imports',
