@@ -9,26 +9,26 @@ type: 'Original'
 
 ![Ripple Effect](../../assets/images/ripple-effect-by-vue-directives/ripple-effect.gif)
 
-### What is directives？
+### What is directives?
 
-<a href="https://cn.vuejs.org/v2/guide/custom-directive.html" target="_blank">Vue docs</a>对 directives 定义是“自定义指令，用来对 DOM 元素进行底层操作”。
+<a href="https://cn.vuejs.org/v2/guide/custom-directive.html" target="_blank">Vue docs</a>defines directives as "some low-level DOM access on plain elements".
 
-简单来说，因为 MVVM 模式是**数据驱动**的，所以不提倡直接操作 DOM。但偶尔会遇到必须操作 DOM，且逻辑基本一致的情况，使用 directives 可以抽象逻辑、提高复用。
+In short, due to the **data-driven** of MVVM, it is not recommended to manipulate DOM. However, occasionally, it cannot be avoided to manipulate DOM with the same logic in different conditions. Now, using directives will abstract the logic and improve the reusability.
 
-v-show 就是一个典型的 directives，本质上 v-show 只是改变 DOM 的 CSS`{ display: none }`，仅此而已。
+v-show is one of the typical directives. Essentially, v-show just alters the CSS`{ display: none }` of DOM, nothing more.
 
-### 如何做到 ripple 效果？
+### How to implement ripple effect?
 
 <br />
 
-##### 1.确定点击/触摸位置
+#### 1. Locate the click/touch
 
 <pre>
 const posX = e.pageX - e.currentTarget.offsetLeft
 const posY = e.pageY - e.currentTarget.offsetTop
 </pre>
 
-##### 2.绝对定位添加 ripple 层
+#### 2. Create the ripple layer by absolute position
 
 <pre>
 let spanEl = document.createElement('span');
@@ -36,7 +36,7 @@ spanEl.className = 'ripple';
 e.currentTarget.appendChild(spanEl);
 </pre>
 
-##### 3.CSS 圆形扩散效果
+#### 3. Create diffusion effect by CSS
 
 <pre>
 .ripple {
@@ -65,9 +65,9 @@ e.currentTarget.appendChild(spanEl);
 
 <a href="https://codepen.io/alexanderzhao/pen/NWrrxRy" target="_blank">codepen</a>
 
-### 思考：不使用 directives 实现的缺点
+### Thinking: Cons of not using directives
 
 <br />
 
-1. 需要 ripple 和 non-ripple 两种组件，代码冗余提高，且不够灵活
-2. 在生命周期中执行逻辑没有 directives 钩子函数清晰
+1. Two kinds of components - ripple and non-ripple components, will be needed, which increases the redundancy and is not agile enough.
+2. The logic execution in the life cycle is not as clear as using directives hooks.

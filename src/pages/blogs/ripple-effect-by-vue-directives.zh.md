@@ -13,22 +13,22 @@ type: '原创'
 
 <a href="https://cn.vuejs.org/v2/guide/custom-directive.html" target="_blank">vue 官方文档</a>对 directives 定义是“自定义指令，用来对 DOM 元素进行底层操作”。
 
-简单来说，因为 MVVM 模式是**数据驱动**的，所以不提倡直接操作 DOM。但偶尔会遇到必须操作 DOM，且逻辑基本一致的情况，使用 directives 可以抽象逻辑、提高复用。
+简单来说，因为 MVVM 模式是**数据驱动**的，所以不提倡直接操作 DOM。但偶尔会遇到多个场景必须操作 DOM，且逻辑基本一致的情况，此时使用 directives 可以抽象逻辑、提高复用。
 
-v-show 就是一个典型的 directives，本质上 v-show 只是改变 DOM 的 CSS`{ display: none }`，仅此而已。
+v-show 就是一个典型的 directives。本质上 v-show 只是改变 DOM 的 CSS`{ display: none }`，仅此而已。
 
 ### 如何做到 ripple 效果？
 
 <br />
 
-##### 1.确定点击/触摸位置
+#### 1. 确定点击/触摸位置
 
 <pre>
 const posX = e.pageX - e.currentTarget.offsetLeft
 const posY = e.pageY - e.currentTarget.offsetTop
 </pre>
 
-##### 2.绝对定位添加 ripple 层
+#### 2. 绝对定位添加 ripple 层
 
 <pre>
 let spanEl = document.createElement('span');
@@ -36,7 +36,7 @@ spanEl.className = 'ripple';
 e.currentTarget.appendChild(spanEl);
 </pre>
 
-##### 3.CSS 圆形扩散效果
+#### 3. 添加CSS 圆形扩散效果
 
 <pre>
 .ripple {
