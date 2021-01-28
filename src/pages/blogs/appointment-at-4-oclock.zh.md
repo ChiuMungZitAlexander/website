@@ -1,5 +1,5 @@
 ---
-title: '再见，曼巴；再见，青春'
+title: '凌晨4点的约定-致敬曼巴精神'
 date: '2021-01-27'
 tag: 'kobe,bryant,24,8,lakers'
 type: '原创'
@@ -16,7 +16,7 @@ type: '原创'
 如果是听到某个明星死了，我会毫无犹豫地继续睡觉。但是听到科比的瞬间，心里多多少少还是咯噔了一下子。
 
 半信半疑地打开了新闻，头条消息便是“科比的直升机坠毁，包括科比和其二女儿GiGi在内全部机上人员丧生。”
-![](../../assets/images/goodbye-mamba-goodbye-youth/kobe-death-news.jpg)
+![](../../assets/images/appointment-at-4-oclock/kobe-death-news.jpg)
 
 脑子里全是科比1V5拉杆上篮、打板绝杀热火、罚球线飞扣大本、变向加360度妙传图里亚夫、晃过皮蓬助攻奥尼尔等等等等这些画面。然而马上便陷入了一片空白。
 
