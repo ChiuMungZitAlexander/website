@@ -11,13 +11,13 @@ export default function HTML(props) {
           name="viewport"
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
-        <link
+        {/* <link
           rel="stylesheet"
           href="https://unpkg.com/swiper/swiper-bundle.min.css"
           type="text/css"
-        />
+        /> */}
         <link href="https://fonts.font.im/css?family=Khula" rel="stylesheet" />
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js" />
+        {/* <script src="https://unpkg.com/swiper/swiper-bundle.min.js" /> */}
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
