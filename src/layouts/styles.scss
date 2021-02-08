@@ -3,6 +3,14 @@
   flex-direction: column;
   height: 100%;
 
+  &.en {
+    font-family: 'Khula';
+  }
+
+  &.zh {
+    font-family: Microsoft YaHei;
+  }
+
   nav {
     align-items: center;
     display: flex;

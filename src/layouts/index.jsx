@@ -10,8 +10,7 @@ import { pathToArray } from '@utils/url'
 
 import './styles.scss'
 
-const Nav = ({ pathname }) => {
-  const lang = pathToArray(pathname)[0]
+const Nav = ({ pathname, lang }) => {
   const nextLang = lang === 'zh' ? 'en' : 'zh'
 
   return (
@@ -54,14 +53,23 @@ const Nav = ({ pathname }) => {
   )
 }
 
+Nav.propTypes = {
+  pathname: PropTypes.string.isRequired,
+  lang: PropTypes.oneOf(['en', 'zh']),
+}
+
 const Layout = ({ children }) => (
   <Location>
-    {({ location }) => (
-      <div className="layout">
-        <Nav pathname={location.pathname} />
-        <main>{children}</main>
-      </div>
-    )}
+    {({ location }) => {
+      const lang = pathToArray(location.pathname)[0]
+
+      return (
+        <div className={`layout ${lang}`}>
+          <Nav pathname={location.pathname} lang={lang} />
+          <main>{children}</main>
+        </div>
+      )
+    }}
   </Location>
 )
 
