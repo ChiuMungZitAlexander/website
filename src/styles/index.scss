@@ -1,7 +1,12 @@
+@font-face {
+  font-family: 'Khula';
+  src: url('../assets/fonts/Khula-Regular.ttf');
+}
+
 html,
 body {
   display: flex;
-  font-family: 'Khula', sans-serif, Microsoft YaHei;
+  font-family: 'Khula', Microsoft YaHei;
   height: 100%;
   margin: 0;
   overflow: hidden;
