@@ -94,6 +94,3 @@ type: '原创'
 
 (科比九代，2016年于香港浸会大学篮球馆)
 ![](../../assets/images/goodbye-kobe/self.jpg)
-
-
-
