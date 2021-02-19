@@ -1,15 +1,8 @@
 .layout {
   display: flex;
   flex-direction: column;
+  font-family: 'Khula', 'Microsoft Yahei', '微软雅黑', 'SimHei';
   height: 100%;
-
-  &.en {
-    font-family: 'Khula';
-  }
-
-  &.zh {
-    font-family: Microsoft YaHei;
-  }
 
   nav {
     align-items: center;
