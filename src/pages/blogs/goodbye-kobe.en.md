@@ -13,7 +13,7 @@ On this day last year, all basked in the happiness of Chinese new year. However,
 
 "Impossible! Keep away from junk news!" I lost my patience and drove her away.
 
-She went to prepare the breakfast after my scold. 
+She went to prepare the breakfast after my scold.
 
 When opened the news app in doubt, breaking one - "Kobe Bryant, daughter among 9 killed in California helicopter crash." made me shocked.
 ![](../../assets/images/goodbye-kobe/kobe-death-news.jpg)
@@ -82,16 +82,15 @@ I just wonder who or what we're saying goodbye to.
 
 Absolutely it is Kobe, but it seems not only to be Kobe.
 
-The early Kobe fans are going to work, to marry and to bear the children. 
-第一批铁杆科密，已经步入工作、步入婚姻、步入带娃的年纪。篮球早已干瘪，球衣也早已放在箱子的最底下。偶尔路过球场，会不禁羡慕起那些只能穿着最普通的鞋子，没有任何护具，有些还披着校服的学生们。
+The early Kobe fans are going to work, to marry and to bear the children. The basketball is flat and the jersey is folded. Sometimes when passing by the basketball court, I will envy the students in uniform and cheap sneakers, without any gears .
 
-哦，终于明白过来。
+Well, finally I got the answer.
 
-我们道别的，还有曾经的自己，曾经无拘无束、闲适散漫的自己。
+We're saying goodbye to ourselves as well, who used to be irresponsible and undisciplined.
 
-然而我们拥抱的，是科比留下的精神财富，曼巴精神。
+However, we embraced the spiritual wealth Kobe left - the mamba mentality.
 
-再见，科比。
+Goodbye, Kobe.
 
-(科比九代，2016年于香港浸会大学篮球馆)
+(Kobe 9 High，Gym of HKBU, 2016)
 ![](../../assets/images/goodbye-kobe/self.jpg)
