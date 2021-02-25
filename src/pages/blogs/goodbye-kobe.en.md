@@ -92,5 +92,5 @@ However, we embraced the spiritual wealth Kobe left - the mamba mentality.
 
 Goodbye, Kobe.
 
-(Kobe 9 High，Gym of HKBU, 2016)
+(Kobe 9 High, Gym of HKBU, 2016)
 ![](../../assets/images/goodbye-kobe/self.jpg)
