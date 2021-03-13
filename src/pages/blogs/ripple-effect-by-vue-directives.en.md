@@ -49,11 +49,11 @@ e.currentTarget.appendChild(spanEl);
   width: 0;
 }
 
-.rippleEffect {
-  animation: rippleDrop .6s linear;
+.ripple-effect {
+  animation: ripple-drop .6s linear;
 }
 
-@keyframes rippleDrop {
+@keyframes ripple-drop {
   100% {
     transform: scale(2);
     opacity: 0;
