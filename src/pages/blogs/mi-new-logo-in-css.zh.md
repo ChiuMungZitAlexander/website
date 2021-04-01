@@ -1,7 +1,7 @@
 ---
 title: '用CSS画一个小米的新logo'
 date: '2021-03-31'
-tag: 'css'
+tag: 'css,canvas,houdini'
 type: '原创'
 ---
 
@@ -13,7 +13,8 @@ type: '原创'
 雷布斯总能在宣传上给我们整点新花样。
 ![](../../assets/images/mi-new-logo-in-css/e3530eca-90d4-4476-ad43-e896617a54ea.jpeg)
 
-网上更是炸翻了天，说一行代码，就值200万？
+网上更是炸翻了天，说一行代码，就值200万？  
+
 ![](../../assets/images/mi-new-logo-in-css/c8e7cfb9-dd80-473c-bf5b-3565bbf8cc58.gif)
 
 要不是说雷布斯是个懂营销的程序员呢，普普通通换个logo，小米立马上热搜。一想到小米汽车也要上线了，不得不服雷布斯这波还是有点东西的。
