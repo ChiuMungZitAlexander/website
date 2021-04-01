@@ -139,12 +139,12 @@ MDN关于`border-raiuds`有这么一小行字 **followed optionally by "/" and o
 
 ![](../../assets/images/mi-new-logo-in-css/eb7e897b-5c8f-49bd-976f-396a90561c91.png)
 
-红十字会来了。我们最后给父元素一个`border-radius`并上色看看，再微调一下伪元素的位置。哦，别忘了给了小米的配色。
+红十字会来了。我们最后给父元素一个`border-radius`并上色看看，再微调一下伪元素的位置。哦，别忘了小米的配色。
 
 <pre>
 .super-ellipse {
   background-color: #ff6700;
-  border-radius: 20%:
+  border-radius: 20%;
   height: 220px;
   position: relative;
   width: 220px;
@@ -178,14 +178,78 @@ MDN关于`border-raiuds`有这么一小行字 **followed optionally by "/" and o
 ![](../../assets/images/mi-new-logo-in-css/7b749888-d291-41d6-915b-706b79337349.png)
 
 除了没有MI的字外，很相近了。
+<a href="https://codepen.io/alexanderzhao/pen/jOyyNKR" target="_blank">Demo</a>
 
 ### 真的一致了吗？
 
-我相信有些产品秉着“必须与设计稿重合”的原则来量上面的成品图，我不得不承认刚刚做出来的效果很相近，但是没到完全一致的程度。
+我相信有些产品秉着“必须与设计稿重合”的原则来衡量上面的成品图，我不得不承认刚刚做出来的效果很相近，但是没到完全一致的程度。
 
-原因在于，椭圆函数曲线与非二次幂的Lame曲线在图像上根本不可能重合，因此无论你怎么调整`border-radius`都不可能实现非二次幂的Lame曲线。
+原因在于，椭圆函数曲线与非二次幂的Lamé曲线在图像上根本不可能重合，因此无论你怎么调整`border-radius`都不可能实现非二次幂的Lamé曲线。
 
 ![](../../assets/images/mi-new-logo-in-css/fb8aa2e8-7d91-4fbb-bfca-245acc61f568.png)
 ![](../../assets/images/mi-new-logo-in-css/c81d1d73-2ab8-41ee-bc31-856fe7286fcc.png)
 
 那么有没有方法能通过画一条函数曲线，来实现矩形的边角呢？
+
+直觉告诉我应该用Canvas。可以利用微积分的思想，将所有图像上的点绘制出来并连接。
+
+第一版本我尝试了完全使用直线依次连接所有的点，发现虽然绘制出来了，但是无法填充，且锯齿明显。
+
+<pre>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+const width = 240;
+const height = 240;
+const calcY = x => ((width / 2)**3 - x**3)**(1 / 3)
+
+ctx.setTransform(1, 0, 0, 1, width / 2 + 8, height / 2 + 8);
+ctx.strokeStyle = '#ff6700';
+ctx.moveTo(-width / 2, 0);
+
+for (let i = -width / 2; i <= width / 2; i++) {
+  const j = calcY(Math.abs(i));
+  ctx.lineTo(i, j);
+  ctx.stroke();
+}
+
+
+for (let i = width / 2; i >= -width / 2; i--) {
+  const j = -calcY(Math.abs(i));
+  ctx.lineTo(i, j);
+  ctx.stroke();
+}
+</pre>
+
+![](../../assets/images/mi-new-logo-in-css/d708c337-941e-4410-a355-f270478c8439.png)
+
+行，不就是丝滑么，惊得我吃了两块某芙巧克力，用贝塞尔曲线试试。果不其然，大功告成。
+
+<pre>
+const canvas = document.getElementById('canvas');
+const ctx = canvas.getContext('2d');
+
+const width = 240;
+const height = 240;
+const calcY = x => ((width / 2)**3 - x**3)**(1 / 3)
+
+ctx.setTransform(1, 0, 0, 1, width / 2 + 8, height / 2 + 8);
+ctx.beginPath()
+ctx.moveTo(width / 2 + 8, 0);
+
+for (let i = -width / 2; i <= width / 2; i++) {
+  const j = calcY(Math.abs(i));
+  ctx.bezierCurveTo(i, j, i, j, i, j);
+}
+
+for (let i = width / 2; i >= -width / 2; i--) {
+  const j = -calcY(Math.abs(i));
+  ctx.bezierCurveTo(i, j, i, j, i, j);
+}
+
+ctx.closePath();
+ctx.fillStyle = '#ff6700';
+ctx.fill();
+</pre>
+
+![](../../assets/images/mi-new-logo-in-css/1fa391a9-9abe-44be-94d2-05c44303fe73.png)
