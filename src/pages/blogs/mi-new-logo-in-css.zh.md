@@ -1,7 +1,7 @@
 ---
 title: '用CSS画一个小米的新logo'
 date: '2021-03-31'
-tag: 'css,canvas,houdini'
+tag: 'css,canvas,css-houdini'
 type: '原创'
 ---
 
@@ -192,7 +192,7 @@ MDN关于`border-raiuds`有这么一小行字 **followed optionally by "/" and o
 
 那么有没有方法能通过画一条函数曲线，来实现矩形的边角呢？
 
-直觉告诉我应该用Canvas。可以利用微积分的思想，将所有图像上的点绘制出来并连接。
+直觉告诉我应该用`canvas`。可以利用微积分的思想，将所有图像上的点绘制出来并连接。
 
 第一版本我尝试了完全使用直线依次连接所有的点，发现虽然绘制出来了，但是无法填充，且锯齿明显。
 
@@ -254,3 +254,28 @@ ctx.fill();
 </pre>
 
 ![](../../assets/images/mi-new-logo-in-css/1fa391a9-9abe-44be-94d2-05c44303fe73.png)
+
+### 进阶思考
+
+这时候突然闯进一只杠精嚷道：`canvas`者不为CSS也。  
+
+行，你神头鬼脸。
+
+![](../../assets/images/mi-new-logo-in-css/7b3841e6-aedb-43e6-80f7-15c4fd2cbcfd.jpg)
+
+`canvas`是HTML元素，的确。那到底有没有一种CSS方法能够让我们去像`canvas`这样自定义地绘制路径呢？
+
+经过一系列研(tou)究(kui)，还别说，在2016年前后诞生的CSS Houdini真可以实现这个需求。
+
+CSS Houdini你可以大致理解为，CSS开放API给开发人员，开发人员通过API自行扩展CSS。这个名字在很多领域都能看得到，基本都和一些视觉效果相关。实际上都是为了纪念Harry Houdini，被称为史上最伟大的魔术师。
+
+![](../../assets/images/mi-new-logo-in-css/c116c2b9-4408-4133-a13b-c574b599a58e.jpg)
+
+CSS Houdini主要提供了6组API，其中Paint API可以满足需求。我们可以使用Paint API自定义`background`的属性值，进而通过遮罩的方式来实现超椭圆的效果。步骤如下：
+
+1. 声明一个`paint.js`开发绘制方法
+
+2. 通过Houdini注册`paint.js`中的方法
+
+3. 为某个元素的`background-image`添加包含`paint.js`提供方法的属性值并用运用遮罩实现超椭圆
+

@@ -6,6 +6,10 @@
     max-width: 768px;
     text-align: center;
 
+    @media screen and (max-width: $device-width) {
+      text-align: left;
+    }
+
     p {
       margin: 1rem 0;
     }
