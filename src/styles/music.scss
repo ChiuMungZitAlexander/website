@@ -11,11 +11,12 @@
     width: 100%;
 
     @media screen and (max-width: $device-width) {
-      max-height: 212px;
+      max-height: 248px;
     }
 
     img {
       height: 100%;
+      width: 100%;
     }
   }
 
