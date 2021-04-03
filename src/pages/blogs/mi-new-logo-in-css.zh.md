@@ -267,15 +267,137 @@ ctx.fill();
 
 经过一系列研(tou)究(kui)，还别说，在2016年前后诞生的CSS Houdini真可以实现这个需求。
 
-CSS Houdini你可以大致理解为，CSS开放API给开发人员，开发人员通过API自行扩展CSS。这个名字在很多领域都能看得到，基本都和一些视觉效果相关。实际上都是为了纪念Harry Houdini，被称为史上最伟大的魔术师。
+CSS Houdini你可以大致理解为，CSS开放API给开发人员，开发人员通过API自行扩展CSS。这个名字在很多领域都能看得到，基本都和一些视觉效果相关。实际上都是为了纪念Harry Houdini，史上最伟大的魔术师。
 
 ![](../../assets/images/mi-new-logo-in-css/c116c2b9-4408-4133-a13b-c574b599a58e.jpg)
 
-CSS Houdini主要提供了6组API，其中Paint API可以满足需求。我们可以使用Paint API自定义`background`的属性值，进而通过遮罩的方式来实现超椭圆的效果。步骤如下：
+CSS Houdini主要提供了6组API，其中Paint API可以满足需求。我们可以使用Paint API自定义`background`的属性值，进而实现超椭圆的效果。步骤如下：
 
 1. 声明一个`paint.js`开发绘制方法
 
-2. 通过Houdini注册`paint.js`中的方法
+`registerPaint`是内置方法，第一个参数表示需要注册的Houdini的名称，这里我们就叫`suerEllipse`。第二参数需要传入一个类，且包含`paint`方法。其内容和`canvas`的实现基本一致。
 
-3. 为某个元素的`background-image`添加包含`paint.js`提供方法的属性值并用运用遮罩实现超椭圆
+<pre>
+registerPaint(
+  "superEllipse",
+  class {
+    paint(ctx) {
+      const width = 256;
+      const height = 256;
+      const calcY = (x) => ((width / 2) ** 3 - x ** 3) ** (1 / 3);
 
+      ctx.setTransform(1, 0, 0, 1, width / 2, height / 2);
+      ctx.beginPath();
+
+      for (let i = -width / 2; i <= width / 2; i++) {
+        const j = calcY(Math.abs(i));
+        ctx.bezierCurveTo(i, j, i, j, i, j);
+      }
+
+      for (let i = width / 2; i >= -width / 2; i--) {
+        const j = -calcY(Math.abs(i));
+        ctx.bezierCurveTo(i, j, i, j, i, j);
+      }
+
+      ctx.closePath();
+      ctx.fillStyle = "#ff6700";
+      ctx.fill();
+    }
+  }
+);
+</pre>
+
+2. 通过`paintWorklet`注册`paint.js`中的方法。
+
+<pre>
+&lt;script&gt;
+  CSS.paintWorklet.addModule("paint.js");
+&lt;/script&gt;
+</pre>
+
+3. 为某个元素的`background-image`添加包含`paint.js`提供方法的属性值实现超椭圆。
+
+<pre>
+&lt;style&gt;
+  @supports (background-image: paint(id)) {
+    #box {
+      background-image: paint(superEllipse);
+      height: 256px;
+      width: 256px;
+    }
+  }
+&lt;/style&gt;
+</pre>
+
+成功了。你再杠一个我看看。
+
+![](../../assets/images/mi-new-logo-in-css/b7b15d8a-3b97-4c2b-9a88-839d1c970b49.png)
+
+### 通配改造
+
+杠精捂着被打肿的脸又说：你这定了宽高，我DOM一旦不是256px你这就废了。
+
+![](../../assets/images/mi-new-logo-in-css/12cb471e-38f0-4563-8ee1-9abf78e279f2.png)
+
+行，我这次非要把你整瓷实了。
+
+![](../../assets/images/mi-new-logo-in-css/4ca4e752-a6f2-400d-be1d-024d4ef13620.jpg)
+
+`registerPaint`接入的class中的`paint`函数除了`ctx`之外，还有另外三个参数，形如`paint(ctx, geom, props, args)`。
+
+- `ctx`可以认为是`canvas`的绘制上下文。
+
+- 第二个参数是包含被绘制DOM宽高的对象。
+
+- 第三个参数是DOM可用的自定义属性的数组。
+
+- 第四个参数是在css中调用`paint`时的参数数组。（尝试之后发现Chrome 89不支持额外参数）
+
+很明显，第二参数可以获得当前DOM的宽高，就是它了。立马来改造一下。
+
+<pre>
+registerPaint(
+  "superEllipse",
+  class {
+    // custom properties
+    static get inputProperties() {
+      // n - the exponent of Lame curve
+      return ["--n"];
+    }
+
+    paint(ctx, geom, props) {
+      const { height, width } = geom;
+      const exp = props.get("--n")?.[0] || 3;
+
+      const calcY = (x) => ((width / 2) ** exp - x ** exp) ** (1 / exp);
+
+      ctx.setTransform(1, 0, 0, 1, width / 2, height / 2);
+      ctx.beginPath();
+
+      for (let i = -width / 2; i <= width / 2; i++) {
+        const j = calcY(Math.abs(i));
+        ctx.bezierCurveTo(i, j, i, j, i, j);
+      }
+
+      for (let i = width / 2; i >= -width / 2; i--) {
+        const j = -calcY(Math.abs(i));
+        ctx.bezierCurveTo(i, j, i, j, i, j);
+      }
+
+      ctx.closePath();
+      ctx.fillStyle = "#ff6700";
+      ctx.fill();
+    }
+  }
+);
+</pre>
+
+目前Houdini的支持程度相对较低，手机浏览器可能无法预览效果。
+
+![](../../assets/images/mi-new-logo-in-css/8a59f62a-a492-45b9-94b6-8f136b5ce491.gif)
+
+<a href="https://chiumungzitalexander.github.io/superellipse-css-houdini/" target="_blank">Demo</a>
+
+最后的最后，我们画一个小米的新logo。
+
+![](../../assets/images/mi-new-logo-in-css/6bc2a77f-7b64-4c23-87ef-bf1e3014a4a3.png)
