@@ -3,6 +3,7 @@
   flex-direction: column;
   margin: 0 auto;
   max-width: 768px;
+  padding-bottom: 1rem;
   width: 100%;
 
   .swiper-container {
@@ -15,6 +16,28 @@
 
     img {
       height: 100%;
+    }
+  }
+
+  .info-container {
+    font-size: 0.75rem;
+    margin: 1rem 0;
+    padding: 0 1.5rem;
+
+    .musician {
+      color: $theme-blue;
+      font-size: 1.5rem;
+    }
+
+    .nationality {
+      color: $theme-dark-grey;
+      font-size: 1rem;
+      margin-left: 0.5rem;
+    }
+
+    .instrument {
+      color: $theme-dark-grey;
+      font-size: 1rem;
     }
   }
 }
