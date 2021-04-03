@@ -400,4 +400,6 @@ registerPaint(
 
 最后的最后，我们画一个小米的新logo。
 
+**雷布斯赏我辆小米汽车不为过吧？**
+
 ![](../../assets/images/mi-new-logo-in-css/6bc2a77f-7b64-4c23-87ef-bf1e3014a4a3.png)
