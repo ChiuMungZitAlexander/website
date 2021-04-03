@@ -1,11 +1,7 @@
-@font-face {
-  font-family: 'Khula';
-  src: url('../assets/fonts/Khula-Regular.ttf');
-}
-
 html,
 body {
   display: flex;
+  font-family: Arial, Helvetica, sans-serif;
   height: 100%;
   margin: 0;
   overflow: hidden;
