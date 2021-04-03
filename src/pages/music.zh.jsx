@@ -10,7 +10,7 @@ import Selfie_4 from '@assets/images/selfie_4.jpg'
 
 import '@styles/music.scss'
 
-const Index = () => {
+const Music = () => {
   React.useEffect(() => {
     if (window.Swiper) {
       new window.Swiper('.swiper-container', {
@@ -124,4 +124,4 @@ const Index = () => {
   )
 }
 
-export default Index
+export default Music
