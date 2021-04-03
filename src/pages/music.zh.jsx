@@ -119,7 +119,7 @@ const Music = () => {
             <span className="instrument">键盘</span>
           </p>
         </div>
-        <div>
+        <div className="video">
           <video controls>
             <source
               src="https://sls-cloudfunction-ap-guangzhou-code-1256253626.cos.ap-guangzhou.myqcloud.com/conan.mp4"
