@@ -1,0 +1,20 @@
+.music {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  max-width: 768px;
+  width: 100%;
+
+  .swiper-container {
+    max-height: 432px;
+    width: 100%;
+
+    @media screen and (max-width: $device-width) {
+      max-height: 260px;
+    }
+
+    img {
+      height: 100%;
+    }
+  }
+}

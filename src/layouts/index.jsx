@@ -34,7 +34,7 @@ const Nav = ({ pathname, lang }) => {
             {lang === 'zh' ? '博客' : 'BLOGS'}
           </span>
         </Link>
-        {/* <Link to={`/${lang}/music/`} className="link">
+        <Link to={`/${lang}/music/`} className="link">
           <span
             className={classNames({
               active: /music/i.test(pathname),
@@ -42,7 +42,7 @@ const Nav = ({ pathname, lang }) => {
           >
             {lang === 'zh' ? '音乐' : 'MUSIC'}
           </span>
-        </Link> */}
+        </Link>
       </div>
       <div className="lang-container">
         <Link to={pathname.replace(lang, nextLang)}>

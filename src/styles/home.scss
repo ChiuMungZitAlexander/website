@@ -3,6 +3,7 @@
 
   flex-direction: column;
   flex-grow: 1;
+  padding: 0 1.5rem 1rem;
 
   .homeAvatar {
     border-radius: 50%;
@@ -51,7 +52,7 @@
   }
 
   .disclaimer {
-    bottom: 0.5rem;
+    bottom: 1rem;
     color: $theme-light-grey;
     font-size: 0.5rem;
     position: absolute;
