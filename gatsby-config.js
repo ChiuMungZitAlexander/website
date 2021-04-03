@@ -4,6 +4,9 @@ module.exports = {
   siteMetadata: {
     license: '粤ICP备18042140号',
   },
+  flags: {
+    DEV_SSR: false,
+  },
   plugins: [
     'gatsby-plugin-sharp',
     'gatsby-plugin-react-helmet',
