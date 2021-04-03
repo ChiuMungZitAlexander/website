@@ -12,12 +12,12 @@ export default function HTML(props) {
           content="width=device-width, initial-scale=1, shrink-to-fit=no"
         />
         <meta name="baidu-site-verification" content="code-jhx2PuFokJ" />
-        {/* <link
+        <link
           rel="stylesheet"
           href="https://unpkg.com/swiper/swiper-bundle.min.css"
           type="text/css"
-        /> */}
-        {/* <script src="https://unpkg.com/swiper/swiper-bundle.min.js" /> */}
+        />
+        <script src="https://unpkg.com/swiper/swiper-bundle.min.js" />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
