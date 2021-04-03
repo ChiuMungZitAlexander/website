@@ -14,6 +14,10 @@ const Music = () => {
   React.useEffect(() => {
     if (window.Swiper) {
       new window.Swiper('.swiper-container', {
+        navigation: {
+          nextEl: '.swiper-button-next',
+          prevEl: '.swiper-button-prev',
+        },
         pagination: {
           el: '.swiper-pagination',
         },
@@ -57,6 +61,8 @@ const Music = () => {
               <img alt="selfie_4" src={Selfie_4} />
             </div>
           </div>
+          <div class="swiper-button-next" />
+          <div class="swiper-button-prev" />
           <div class="swiper-pagination" />
         </div>
         <div className="info-container">
