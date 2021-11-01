@@ -13,7 +13,7 @@ import '@styles/music.scss'
 const Music = () => {
   React.useEffect(() => {
     if (window.Swiper) {
-      new window.Swiper('.swiper-container', {
+      new window.Swiper('.swiper', {
         navigation: {
           nextEl: '.swiper-button-next',
           prevEl: '.swiper-button-prev',
@@ -46,7 +46,7 @@ const Music = () => {
           <title>赵梦哲 | 音乐</title>
           <link rel="canonical" href="https://alexanderzhao.net/zh/music" />
         </Helmet>
-        <div className="swiper-container">
+        <div className="swiper">
           <div className="swiper-wrapper">
             <div className="swiper-slide">
               <img alt="selfie_1" src={Selfie_1} />

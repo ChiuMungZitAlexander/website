@@ -14,10 +14,10 @@ export default function HTML(props) {
         <meta name="baidu-site-verification" content="code-jhx2PuFokJ" />
         <link
           rel="stylesheet"
-          href="https://unpkg.com/swiper/swiper-bundle.min.css"
+          href="https://unpkg.com/swiper@7/swiper-bundle.min.css"
           type="text/css"
         />
-        <script src="https://unpkg.com/swiper/swiper-bundle.min.js" />
+        <script src="https://unpkg.com/swiper@7/swiper-bundle.min.js" />
         {props.headComponents}
       </head>
       <body {...props.bodyAttributes}>
