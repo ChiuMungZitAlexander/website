@@ -1,6 +1,6 @@
 import * as React from 'react';
 import { Helmet } from 'react-helmet';
-import { Navigation } from 'swiper';
+import { Navigation, Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import styled from 'styled-components';
 
@@ -15,6 +15,7 @@ import Selfie_4 from 'src/assets/images/selfies/selfie_4.jpg';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
+import "swiper/css/pagination";
 
 declare global {
   interface Window {
@@ -100,7 +101,17 @@ const Music = (): JSX.Element => (
     </Helmet>
     <Container>
       <StyledSwiper>
-        <Swiper modules={[Navigation]} navigation loop className="mySwiper">
+        <Swiper
+          modules={[Pagination, Navigation, Autoplay]}
+          pagination
+          navigation
+          autoplay={{
+            delay: 2500,
+            disableOnInteraction: false,
+          }}
+          loop
+          className="mySwiper"
+        >
           <SwiperSlide>
             <img alt="selfie_1" src={Selfie_1} />
           </SwiperSlide>
@@ -161,6 +172,7 @@ const Music = (): JSX.Element => (
       <Video>
         <video
           controls
+          playsInline
           poster="https://sls-cloudfunction-ap-guangzhou-code-1256253626.cos.ap-guangzhou.myqcloud.com/conan_poster.jpg"
         >
           <source
