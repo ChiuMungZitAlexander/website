@@ -89,7 +89,6 @@ const Reward = styled.p`
   font-weight: 700;
   line-height: 3rem;
   text-align: center;
-  user-select: all;
 `;
 
 const BlogTemplate = ({
@@ -125,14 +124,15 @@ const BlogTemplate = ({
       <CopyRight>如文章标明“原创”，转载请联系笔者</CopyRight>
       <CopyRight>侵权直接起诉</CopyRight>
       <Reward>编程易秃，打赏植发</Reward>
-      <a
-        href={QRImage}
-        target="_blank"
+      <img
+        alt=""
+        src={QRImage}
         style={{
-          backgroundImage: `url(${QRImage})`,
           display: 'block',
           height: '182px',
           margin: '0 auto',
+          pointerEvents: 'auto',
+          userSelect: 'all',
           width: '182px',
         }}
       />
