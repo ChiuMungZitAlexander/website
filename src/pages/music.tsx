@@ -1,4 +1,3 @@
-import * as React from 'react';
 import { Helmet } from 'react-helmet';
 import { Navigation, Pagination, Autoplay } from 'swiper';
 import { Swiper, SwiperSlide } from 'swiper/react';
@@ -15,7 +14,7 @@ import Selfie_4 from 'src/assets/images/selfies/selfie_4.jpg';
 
 import 'swiper/css';
 import 'swiper/css/navigation';
-import "swiper/css/pagination";
+import 'swiper/css/pagination';
 
 declare global {
   interface Window {
