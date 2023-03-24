@@ -10,7 +10,13 @@ const IndexPage: React.FC<PageProps> = () => {
         className="absolute inset-x-0 top-0 h-[80vh] bg-gray-300 -z-[1]"
         controls={false}
         loop
-      />
+        muted
+      >
+        <source
+          src="/home.mp4"
+          type="video/mp4"
+        />
+      </video>
       <Header />
     </div>
   )
