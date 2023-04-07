@@ -380,9 +380,13 @@ type File = Node & {
   readonly changeTime: Scalars['Date'];
   /** Returns the first child node of type ImageSharp or null if there are no children of given type on this node */
   readonly childImageSharp: Maybe<ImageSharp>;
+  /** Returns the first child node of type Locale or null if there are no children of given type on this node */
+  readonly childLocale: Maybe<Locale>;
   readonly children: ReadonlyArray<Node>;
   /** Returns all children nodes filtered by type ImageSharp */
   readonly childrenImageSharp: Maybe<ReadonlyArray<Maybe<ImageSharp>>>;
+  /** Returns all children nodes filtered by type Locale */
+  readonly childrenLocale: Maybe<ReadonlyArray<Maybe<Locale>>>;
   readonly ctime: Scalars['Date'];
   readonly ctimeMs: Scalars['Float'];
   readonly dev: Scalars['Int'];
@@ -526,8 +530,10 @@ type FileFieldSelector = {
   readonly blocks: InputMaybe<FieldSelectorEnum>;
   readonly changeTime: InputMaybe<FieldSelectorEnum>;
   readonly childImageSharp: InputMaybe<ImageSharpFieldSelector>;
+  readonly childLocale: InputMaybe<LocaleFieldSelector>;
   readonly children: InputMaybe<NodeFieldSelector>;
   readonly childrenImageSharp: InputMaybe<ImageSharpFieldSelector>;
+  readonly childrenLocale: InputMaybe<LocaleFieldSelector>;
   readonly ctime: InputMaybe<FieldSelectorEnum>;
   readonly ctimeMs: InputMaybe<FieldSelectorEnum>;
   readonly dev: InputMaybe<FieldSelectorEnum>;
@@ -569,8 +575,10 @@ type FileFilterInput = {
   readonly blocks: InputMaybe<IntQueryOperatorInput>;
   readonly changeTime: InputMaybe<DateQueryOperatorInput>;
   readonly childImageSharp: InputMaybe<ImageSharpFilterInput>;
+  readonly childLocale: InputMaybe<LocaleFilterInput>;
   readonly children: InputMaybe<NodeFilterListInput>;
   readonly childrenImageSharp: InputMaybe<ImageSharpFilterListInput>;
+  readonly childrenLocale: InputMaybe<LocaleFilterListInput>;
   readonly ctime: InputMaybe<DateQueryOperatorInput>;
   readonly ctimeMs: InputMaybe<FloatQueryOperatorInput>;
   readonly dev: InputMaybe<IntQueryOperatorInput>;
@@ -653,8 +661,10 @@ type FileSortInput = {
   readonly blocks: InputMaybe<SortOrderEnum>;
   readonly changeTime: InputMaybe<SortOrderEnum>;
   readonly childImageSharp: InputMaybe<ImageSharpSortInput>;
+  readonly childLocale: InputMaybe<LocaleSortInput>;
   readonly children: InputMaybe<NodeSortInput>;
   readonly childrenImageSharp: InputMaybe<ImageSharpSortInput>;
+  readonly childrenLocale: InputMaybe<LocaleSortInput>;
   readonly ctime: InputMaybe<SortOrderEnum>;
   readonly ctimeMs: InputMaybe<SortOrderEnum>;
   readonly dev: InputMaybe<SortOrderEnum>;
@@ -1235,6 +1245,140 @@ type JSONQueryOperatorInput = {
   readonly regex: InputMaybe<Scalars['JSON']>;
 };
 
+type Locale = Node & {
+  readonly children: ReadonlyArray<Node>;
+  readonly data: Maybe<Scalars['String']>;
+  readonly fileAbsolutePath: Maybe<Scalars['String']>;
+  readonly id: Scalars['ID'];
+  readonly internal: Internal;
+  readonly language: Maybe<Scalars['String']>;
+  readonly ns: Maybe<Scalars['String']>;
+  readonly parent: Maybe<Node>;
+};
+
+type LocaleConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<LocaleEdge>;
+  readonly group: ReadonlyArray<LocaleGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<Locale>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type LocaleConnection_distinctArgs = {
+  field: LocaleFieldSelector;
+};
+
+
+type LocaleConnection_groupArgs = {
+  field: LocaleFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type LocaleConnection_maxArgs = {
+  field: LocaleFieldSelector;
+};
+
+
+type LocaleConnection_minArgs = {
+  field: LocaleFieldSelector;
+};
+
+
+type LocaleConnection_sumArgs = {
+  field: LocaleFieldSelector;
+};
+
+type LocaleEdge = {
+  readonly next: Maybe<Locale>;
+  readonly node: Locale;
+  readonly previous: Maybe<Locale>;
+};
+
+type LocaleFieldSelector = {
+  readonly children: InputMaybe<NodeFieldSelector>;
+  readonly data: InputMaybe<FieldSelectorEnum>;
+  readonly fileAbsolutePath: InputMaybe<FieldSelectorEnum>;
+  readonly id: InputMaybe<FieldSelectorEnum>;
+  readonly internal: InputMaybe<InternalFieldSelector>;
+  readonly language: InputMaybe<FieldSelectorEnum>;
+  readonly ns: InputMaybe<FieldSelectorEnum>;
+  readonly parent: InputMaybe<NodeFieldSelector>;
+};
+
+type LocaleFilterInput = {
+  readonly children: InputMaybe<NodeFilterListInput>;
+  readonly data: InputMaybe<StringQueryOperatorInput>;
+  readonly fileAbsolutePath: InputMaybe<StringQueryOperatorInput>;
+  readonly id: InputMaybe<StringQueryOperatorInput>;
+  readonly internal: InputMaybe<InternalFilterInput>;
+  readonly language: InputMaybe<StringQueryOperatorInput>;
+  readonly ns: InputMaybe<StringQueryOperatorInput>;
+  readonly parent: InputMaybe<NodeFilterInput>;
+};
+
+type LocaleFilterListInput = {
+  readonly elemMatch: InputMaybe<LocaleFilterInput>;
+};
+
+type LocaleGroupConnection = {
+  readonly distinct: ReadonlyArray<Scalars['String']>;
+  readonly edges: ReadonlyArray<LocaleEdge>;
+  readonly field: Scalars['String'];
+  readonly fieldValue: Maybe<Scalars['String']>;
+  readonly group: ReadonlyArray<LocaleGroupConnection>;
+  readonly max: Maybe<Scalars['Float']>;
+  readonly min: Maybe<Scalars['Float']>;
+  readonly nodes: ReadonlyArray<Locale>;
+  readonly pageInfo: PageInfo;
+  readonly sum: Maybe<Scalars['Float']>;
+  readonly totalCount: Scalars['Int'];
+};
+
+
+type LocaleGroupConnection_distinctArgs = {
+  field: LocaleFieldSelector;
+};
+
+
+type LocaleGroupConnection_groupArgs = {
+  field: LocaleFieldSelector;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+};
+
+
+type LocaleGroupConnection_maxArgs = {
+  field: LocaleFieldSelector;
+};
+
+
+type LocaleGroupConnection_minArgs = {
+  field: LocaleFieldSelector;
+};
+
+
+type LocaleGroupConnection_sumArgs = {
+  field: LocaleFieldSelector;
+};
+
+type LocaleSortInput = {
+  readonly children: InputMaybe<NodeSortInput>;
+  readonly data: InputMaybe<SortOrderEnum>;
+  readonly fileAbsolutePath: InputMaybe<SortOrderEnum>;
+  readonly id: InputMaybe<SortOrderEnum>;
+  readonly internal: InputMaybe<InternalSortInput>;
+  readonly language: InputMaybe<SortOrderEnum>;
+  readonly ns: InputMaybe<SortOrderEnum>;
+  readonly parent: InputMaybe<NodeSortInput>;
+};
+
 type Mdx = Node & {
   readonly children: ReadonlyArray<Node>;
   readonly excerpt: Maybe<Scalars['String']>;
@@ -1439,6 +1583,7 @@ type Query = {
   readonly allDirectory: DirectoryConnection;
   readonly allFile: FileConnection;
   readonly allImageSharp: ImageSharpConnection;
+  readonly allLocale: LocaleConnection;
   readonly allMdx: MdxConnection;
   readonly allSite: SiteConnection;
   readonly allSiteBuildMetadata: SiteBuildMetadataConnection;
@@ -1448,6 +1593,7 @@ type Query = {
   readonly directory: Maybe<Directory>;
   readonly file: Maybe<File>;
   readonly imageSharp: Maybe<ImageSharp>;
+  readonly locale: Maybe<Locale>;
   readonly mdx: Maybe<Mdx>;
   readonly site: Maybe<Site>;
   readonly siteBuildMetadata: Maybe<SiteBuildMetadata>;
@@ -1478,6 +1624,14 @@ type Query_allImageSharpArgs = {
   limit: InputMaybe<Scalars['Int']>;
   skip: InputMaybe<Scalars['Int']>;
   sort: InputMaybe<ReadonlyArray<InputMaybe<ImageSharpSortInput>>>;
+};
+
+
+type Query_allLocaleArgs = {
+  filter: InputMaybe<LocaleFilterInput>;
+  limit: InputMaybe<Scalars['Int']>;
+  skip: InputMaybe<Scalars['Int']>;
+  sort: InputMaybe<ReadonlyArray<InputMaybe<LocaleSortInput>>>;
 };
 
 
@@ -1581,8 +1735,10 @@ type Query_fileArgs = {
   blocks: InputMaybe<IntQueryOperatorInput>;
   changeTime: InputMaybe<DateQueryOperatorInput>;
   childImageSharp: InputMaybe<ImageSharpFilterInput>;
+  childLocale: InputMaybe<LocaleFilterInput>;
   children: InputMaybe<NodeFilterListInput>;
   childrenImageSharp: InputMaybe<ImageSharpFilterListInput>;
+  childrenLocale: InputMaybe<LocaleFilterListInput>;
   ctime: InputMaybe<DateQueryOperatorInput>;
   ctimeMs: InputMaybe<FloatQueryOperatorInput>;
   dev: InputMaybe<IntQueryOperatorInput>;
@@ -1622,6 +1778,18 @@ type Query_imageSharpArgs = {
   original: InputMaybe<ImageSharpOriginalFilterInput>;
   parent: InputMaybe<NodeFilterInput>;
   resize: InputMaybe<ImageSharpResizeFilterInput>;
+};
+
+
+type Query_localeArgs = {
+  children: InputMaybe<NodeFilterListInput>;
+  data: InputMaybe<StringQueryOperatorInput>;
+  fileAbsolutePath: InputMaybe<StringQueryOperatorInput>;
+  id: InputMaybe<StringQueryOperatorInput>;
+  internal: InputMaybe<InternalFilterInput>;
+  language: InputMaybe<StringQueryOperatorInput>;
+  ns: InputMaybe<StringQueryOperatorInput>;
+  parent: InputMaybe<NodeFilterInput>;
 };
 
 

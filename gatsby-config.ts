@@ -51,6 +51,35 @@ const config: GatsbyConfig = {
       },
       __key: 'pages',
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        path: `${__dirname}/locales`,
+        name: `locale`,
+      },
+    },
+    {
+      resolve: `gatsby-plugin-react-i18next`,
+      options: {
+        localeJsonSourceName: `locale`, // name given to `gatsby-source-filesystem` plugin.
+        languages: [`en`, `zh`],
+        defaultLanguage: `en`,
+        siteUrl: `https://alexanderchiu.me`,
+        // if you are using trailingSlash gatsby config include it here, as well (the default is 'always')
+        trailingSlash: 'always',
+        // you can pass any i18next options
+        i18nextOptions: {
+          defaultNS: 'common',
+          lowerCaseLng: true,
+          saveMissing: false,
+          interpolation: {
+            escapeValue: false, // not needed for react as it escapes by default
+          },
+          keySeparator: false,
+          nsSeparator: false,
+        },
+      },
+    },
   ],
 }
 
