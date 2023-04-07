@@ -23,12 +23,15 @@
     "gatsby-plugin-manifest": "^5.8.0",
     "gatsby-plugin-mdx": "^5.8.0",
     "gatsby-plugin-postcss": "^6.8.0",
+    "gatsby-plugin-react-i18next": "^3.0.1",
     "gatsby-plugin-react-svg": "^3.3.0",
     "gatsby-plugin-sharp": "^5.8.1",
     "gatsby-source-filesystem": "^5.8.0",
     "gatsby-transformer-sharp": "^5.8.0",
+    "i18next": "^22.4.14",
     "react": "^18.2.0",
-    "react-dom": "^18.2.0"
+    "react-dom": "^18.2.0",
+    "react-i18next": "^12.2.0"
   },
   "devDependencies": {
     "@morphis-labs/prettier-config": "^0.0.2",
