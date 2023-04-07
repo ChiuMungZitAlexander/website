@@ -1,3 +1,4 @@
+import { Link } from 'gatsby'
 import { useTranslation, useI18next } from 'gatsby-plugin-react-i18next'
 
 import Logo_EN from '../assets/images/logo_en.svg'
@@ -15,10 +16,10 @@ export const Header = () => {
 
   return (
     <div className="flex items-center px-8 py-4 text-white">
-      <div className="flex grow justify-center gap-4">
-        <nav>{t('about')}</nav>
-        <nav>{t('music')}</nav>
-        <nav>{t('coding')}</nav>
+      <div className="flex grow justify-center gap-4 font-medium capitalize">
+        <Link to="/">{t('about')}</Link>
+        <Link to="/">{t('music')}</Link>
+        <Link to="/">{t('coding')}</Link>
       </div>
       {language === 'en' ? <Logo_EN width="12rem" /> : <Logo_ZH width="12rem" />}
       <div className="flex grow justify-center items-center gap-4 ">
@@ -67,9 +68,10 @@ export const Header = () => {
             width="1.5rem"
           />
         </a>
+        <div className="self-stretch border-l border-l-white" />
         <div
           onClick={() => changeLanguage(language === 'en' ? 'zh' : 'en')}
-          className="h-6 w-6 ml-4 cursor-pointer"
+          className="h-6 w-6 cursor-pointer"
         >
           <Lang
             height="100%"
