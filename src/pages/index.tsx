@@ -3,7 +3,7 @@ import { useTranslation } from 'gatsby-plugin-react-i18next'
 
 import { Header } from '../components/header'
 
-import HomeVideo from '../assets/home.mp4'
+import HomeVideo from '../assets/home_1.webm'
 import ChevronDown from '../assets/icons/chevron_down.svg'
 
 import type { HeadFC, PageProps } from 'gatsby'
