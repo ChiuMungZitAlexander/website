@@ -17,9 +17,24 @@ export const Header = () => {
   return (
     <div className="flex items-center px-8 py-4 text-white">
       <div className="flex grow justify-center gap-4 font-medium capitalize">
-        <Link to="/">{t('about')}</Link>
-        <Link to="/">{t('music')}</Link>
-        <Link to="/">{t('coding')}</Link>
+        <Link
+          className="w-16 text-center"
+          to="/"
+        >
+          {t('about')}
+        </Link>
+        <Link
+          className="w-16 text-center"
+          to="/"
+        >
+          {t('music')}
+        </Link>
+        <Link
+          className="w-16 text-center"
+          to="/coding"
+        >
+          {t('coding')}
+        </Link>
       </div>
       {language === 'en' ? <Logo_EN width="12rem" /> : <Logo_ZH width="12rem" />}
       <div className="flex grow justify-center items-center gap-4 ">
