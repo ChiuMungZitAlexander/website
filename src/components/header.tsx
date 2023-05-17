@@ -1,14 +1,14 @@
 import { Link } from 'gatsby'
 import { useTranslation, useI18next } from 'gatsby-plugin-react-i18next'
 
-import Logo_EN from '../assets/images/logo_en.svg'
-import Logo_ZH from '../assets/images/logo_zh.svg'
-import G from '../assets/icons/github.svg'
-import F from '../assets/icons/facebook.svg'
-import T from '../assets/icons/twitter.svg'
-import L from '../assets/icons/linkedin.svg'
-import Z from '../assets/icons/zhihu.svg'
-import Lang from '../assets/icons/language.svg'
+import Logo_EN from '@/assets/images/logo_en.svg'
+import Logo_ZH from '@/assets/images/logo_zh.svg'
+import G from '@/assets/icons/github.svg'
+import F from '@/assets/icons/facebook.svg'
+import T from '@/assets/icons/twitter.svg'
+import L from '@/assets/icons/linkedin.svg'
+import Z from '@/assets/icons/zhihu.svg'
+import Lang from '@/assets/icons/language.svg'
 
 export const Header = () => {
   const { t } = useTranslation()

@@ -1,10 +1,10 @@
 import { graphql } from 'gatsby'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 
-import { Header } from '../components/header'
+import { Header } from '@/components/header'
 
-import HomeVideo from '../assets/home_1.webm'
-import ChevronDown from '../assets/icons/chevron_down.svg'
+import HomeVideo from '@/assets/home_1.webm'
+import ChevronDown from '@/assets/icons/chevron_down.svg'
 
 import type { HeadFC, PageProps } from 'gatsby'
 
@@ -31,7 +31,7 @@ const IndexPage: React.FC<PageProps> = () => {
       <div className="h-[20vh] flex flex-col justify-end items-center">
         <div className="flex flex-col items-center animate-bounce">
           <p className="-mb-2 font-black text-lg">LOADING</p>
-          <ChevronDown className="w-8 h-8 " />
+          <ChevronDown className="w-8 h-8" />
         </div>
       </div>
     </div>
