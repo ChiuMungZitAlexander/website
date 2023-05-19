@@ -20,6 +20,7 @@
     "@headlessui/react": "^1.7.14",
     "@mdx-js/react": "^2.3.0",
     "beautiful-react-hooks": "^4.3.0",
+    "classix": "^2.1.32",
     "gatsby": "^5.9.0",
     "gatsby-plugin-image": "^3.9.0",
     "gatsby-plugin-manifest": "^5.9.0",
