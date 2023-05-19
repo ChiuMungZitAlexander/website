@@ -1,5 +1,6 @@
 import { Link } from 'gatsby'
 import { useTranslation, useI18next } from 'gatsby-plugin-react-i18next'
+import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
 
 import Logo_EN from '@/assets/images/logo_en.svg'
 import Logo_ZH from '@/assets/images/logo_zh.svg'
@@ -9,10 +10,26 @@ import T from '@/assets/icons/twitter.svg'
 import L from '@/assets/icons/linkedin.svg'
 import Z from '@/assets/icons/zhihu.svg'
 import Lang from '@/assets/icons/language.svg'
+import Bars from '@/assets/icons/bars.svg'
 
 export const Header = () => {
   const { t } = useTranslation()
   const { language, changeLanguage } = useI18next()
+  const isMobile = useMediaQuery('(max-width: 48rem)')
+
+  if (isMobile) {
+    return (
+      <>
+        <div className="flex items-center justify-between px-4 py text-white">
+          <div>{language === 'en' ? <Logo_EN width="12rem" /> : <Logo_ZH width="12rem" />}</div>
+          <Bars
+            height="1.5rem"
+            width="1.5rem"
+          />
+        </div>
+      </>
+    )
+  }
 
   return (
     <div className="flex items-center px-8 py-4 text-white">
