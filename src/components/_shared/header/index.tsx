@@ -37,6 +37,7 @@ export const Header = () => {
             >
               <img
                 alt="logo"
+                className="w-24 object-contain"
                 src={Logo}
               />
               <XMark
@@ -126,6 +127,7 @@ export const Header = () => {
         <div className="h-[5.375rem] flex items-center justify-between px-4 py text-white">
           <img
             alt="logo"
+            className="w-24 object-contain invert"
             src={Logo}
           />
           <div onClick={() => setOpen(true)}>
@@ -163,6 +165,7 @@ export const Header = () => {
       </div>
       <img
         alt="logo"
+        className="h-16 object-contain invert"
         src={Logo}
       />
       <div className="flex grow justify-center items-center gap-4 ">
