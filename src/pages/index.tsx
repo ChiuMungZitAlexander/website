@@ -1,5 +1,6 @@
 import { graphql } from 'gatsby'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
+import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
 
 import { Header } from '@/components/_shared/header'
 
@@ -11,6 +12,7 @@ import type { HeadFC, PageProps } from 'gatsby'
 
 const IndexPage: React.FC<PageProps> = () => {
   const { t } = useTranslation()
+  const isMobile = useMediaQuery('(max-width: 48rem)')
 
   return (
     <div className="flex flex-col">
@@ -18,27 +20,24 @@ const IndexPage: React.FC<PageProps> = () => {
         <Header />
         <video
           autoPlay
-          className="absolute inset-x-0 top-0 w-full h-full bg-gray-300 -z-[1] object-cover hidden md:block"
-          controls={false}
+          className="absolute inset-x-0 top-0 w-full h-full bg-gray-300 -z-[1] object-cover"
           loop
           muted
+          onContextMenu={() => false}
+          playsInline
+          preload="auto"
         >
-          <source
-            src={HomeVideo}
-            type="video/mp4"
-          />
-        </video>
-        <video
-          autoPlay
-          className="absolute inset-x-0 top-0 w-full h-full bg-gray-300 -z-[1] object-cover md:hidden"
-          controls={false}
-          loop
-          muted
-        >
-          <source
-            src={HomeVideoMobile}
-            type="video/mp4"
-          />
+          {isMobile ? (
+            <source
+              src={HomeVideoMobile}
+              type="video/mp4"
+            />
+          ) : (
+            <source
+              src={HomeVideo}
+              type="video/mp4"
+            />
+          )}
         </video>
       </div>
       <div className="h-[20vh] flex flex-col justify-end items-center">

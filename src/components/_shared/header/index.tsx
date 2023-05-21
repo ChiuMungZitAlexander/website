@@ -142,7 +142,7 @@ export const Header = () => {
   }
 
   return (
-    <div className="h-[5.375rem] flex items-center px-8 py-4 text-white">
+    <div className="h-[5.375rem] max-w-[1920px] flex items-center px-8 py-4 mx-auto text-white">
       <div className="flex grow justify-center gap-4 font-medium capitalize">
         <Link
           className="w-16 text-center"
