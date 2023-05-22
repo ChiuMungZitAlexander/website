@@ -1,6 +1,8 @@
+import { useEffect } from 'react'
 import { graphql } from 'gatsby'
 import { useTranslation } from 'gatsby-plugin-react-i18next'
 import useMediaQuery from 'beautiful-react-hooks/useMediaQuery'
+import cx from 'classix'
 
 import { Header } from '@/components/_shared/header'
 
@@ -15,6 +17,15 @@ const IndexPage: React.FC<PageProps> = () => {
   const { t } = useTranslation()
   const isMobile = useMediaQuery('(max-width: 48rem)')
 
+  useEffect(() => {
+    const video = document.getElementById('video') as HTMLVideoElement
+    if (!video) {
+      return
+    }
+
+    video?.play()
+  }, [])
+
   return (
     <div className="flex flex-col">
       <div className="relative w-full h-[80vh]">
@@ -22,6 +33,7 @@ const IndexPage: React.FC<PageProps> = () => {
         <video
           autoPlay
           className="absolute inset-x-0 top-0 w-full h-full bg-gray-300 -z-[1] object-cover"
+          id="video"
           loop
           muted
           onContextMenu={() => false}
@@ -48,11 +60,15 @@ const IndexPage: React.FC<PageProps> = () => {
         </div>
       </div>
       <div className="h-[100vh] flex flex-col justify-center items-center">
-        <div className='grow flex flex-col justify-center items-center font-bold text-slate-500'>
-          <img alt='avatar' className='h-32 w-32 rounded-full' src={Avatar} />
-          <p className='text-[4rem]'>I'm Alexander Zhao</p>
-          <p className='text-[2rem]'>Web3 Developer (Typescript/Rust)</p>
-          <p className='text-[2rem]'>Alto Saxophonist</p>
+        <div className="grow flex flex-col justify-center items-center px-2 font-bold text-center text-slate-500">
+          <img
+            alt="avatar"
+            className="h-32 w-32 mb-4 rounded-full"
+            src={Avatar}
+          />
+          <p className={cx(isMobile ? 'text-[3rem] leading-[3rem]' : 'text-[4rem] leading-[4rem]', 'mb-4')}>{t('intro_1')}</p>
+          <p className={cx(isMobile ? 'text-[1.5rem] leading-[2rem]' : 'text-[2rem] leading-[2.5rem]')}>{t('intro_2')}</p>
+          <p className={cx(isMobile ? 'text-[1.5rem] leading-[2rem]' : 'text-[2rem] leading-[2.5rem]')}>{t('intro_3')}</p>
         </div>
         <p className="mb-8 text-sm text-gray-300">
           Copyright © 2018-2023&nbsp;
