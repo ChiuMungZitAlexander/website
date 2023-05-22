@@ -27,7 +27,7 @@ const IndexPage: React.FC<PageProps> = () => {
   }, [])
 
   return (
-    <div className="flex flex-col">
+    <div className="w-full flex flex-col">
       <div className="relative w-full h-[80vh]">
         <Header />
         <video
