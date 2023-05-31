@@ -31,7 +31,6 @@ const IndexPage: React.FC<PageProps> = () => {
       <div className="relative w-full h-[80vh]">
         <Header />
         <video
-          autoPlay
           className="absolute inset-x-0 top-0 w-full h-full bg-gray-300 -z-[1] object-cover"
           id="video"
           loop
@@ -70,16 +69,7 @@ const IndexPage: React.FC<PageProps> = () => {
           <p className={cx(isMobile ? 'text-[1.5rem] leading-[2rem]' : 'text-[2rem] leading-[2.5rem]')}>{t('intro_2')}</p>
           <p className={cx(isMobile ? 'text-[1.5rem] leading-[2rem]' : 'text-[2rem] leading-[2.5rem]')}>{t('intro_3')}</p>
         </div>
-        <p className="mb-8 text-sm text-gray-300">
-          Copyright © 2018-2023&nbsp;
-          <a
-            href="https://beian.miit.gov.cn/"
-            rel="noreferrer"
-            target="_blank"
-          >
-            粤ICP备18042140号
-          </a>
-        </p>
+        <p className="mb-8 text-sm text-gray-300">Copyright © 2018-2023&nbsp;</p>
       </div>
     </div>
   )

@@ -12,7 +12,9 @@ type MdxNode = {
       tag: string
       title: string
       type: string
-      featuredImage: string
+      thumbnail: {
+        publicURL: string
+      }
     }
   }
 }
@@ -21,10 +23,22 @@ const CodingPage: React.FC<PageProps<{ allMdx: { edges: MdxNode[] } }>> = ({ dat
   return (
     <div className="h-full flex flex-col bg-slate-500">
       <Header />
-      <div className="w-full max-w-[720px] flex flex-col mx-auto">
+      <div className="w-full max-w-[720px] flex flex-col gap-8 mx-auto p-4">
         {data?.allMdx?.edges?.map(_item => (
-          <div key={_item.node.id}>
-            <h1>{_item.node.frontmatter.title}</h1>
+          <div
+            className="flex bg-blue-300 text-white rounded-lg overflow-hidden"
+            key={_item.node.id}
+          >
+            <img
+              alt=""
+              className="h-full min-h-[4rem] w-16 object-cover"
+              src={_item.node.frontmatter.thumbnail.publicURL}
+            />
+            <div className="grow px-2">
+              <h3 className="text-lg">{_item.node.frontmatter.title}</h3>
+              <h5 className="text-xs text-gray-200">{_item.node.frontmatter.tag}</h5>
+              <h5 className="text-right text-xs text-gray-200">{_item.node.frontmatter.date}</h5>
+            </div>
           </div>
         ))}
       </div>
@@ -56,6 +70,9 @@ export const query = graphql`
             tag
             title
             type
+            thumbnail {
+              publicURL
+            }
           }
         }
       }
