@@ -1,6 +1,5 @@
 import * as React from 'react'
-import { graphql, HeadFC, PageProps } from 'gatsby'
-import { GatsbyImage, getImage } from 'gatsby-plugin-image'
+import { graphql, HeadFC, PageProps, Link } from 'gatsby'
 
 import { Header } from '@/components/_shared/header'
 
@@ -9,6 +8,7 @@ type MdxNode = {
     id: string
     frontmatter: {
       date: string
+      name: string
       tag: string
       title: string
       type: string
@@ -25,8 +25,9 @@ const CodingPage: React.FC<PageProps<{ allMdx: { edges: MdxNode[] } }>> = ({ dat
       <Header />
       <div className="w-full max-w-[720px] flex flex-col gap-8 mx-auto p-4">
         {data?.allMdx?.edges?.map(_item => (
-          <div
+          <Link
             className="flex bg-blue-300 text-white rounded-lg overflow-hidden"
+            to={`/coding/${_item.node.frontmatter.name}`}
             key={_item.node.id}
           >
             <img
@@ -39,7 +40,7 @@ const CodingPage: React.FC<PageProps<{ allMdx: { edges: MdxNode[] } }>> = ({ dat
               <h5 className="text-xs text-gray-200">{_item.node.frontmatter.tag}</h5>
               <h5 className="text-right text-xs text-gray-200">{_item.node.frontmatter.date}</h5>
             </div>
-          </div>
+          </Link>
         ))}
       </div>
     </div>
@@ -66,6 +67,7 @@ export const query = graphql`
         node {
           id
           frontmatter {
+            name
             date
             tag
             title

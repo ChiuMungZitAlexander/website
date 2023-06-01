@@ -38,18 +38,12 @@ const IndexPage: React.FC<PageProps> = () => {
           onContextMenu={() => false}
           playsInline
           preload="auto"
+          x5-video-player-type="h5"
         >
-          {isMobile ? (
-            <source
-              src={HomeVideoMobile}
-              type="video/mp4"
-            />
-          ) : (
-            <source
-              src={HomeVideo}
-              type="video/mp4"
-            />
-          )}
+          <source
+            src={isMobile ? HomeVideoMobile : HomeVideo}
+            type="video/mp4"
+          />
         </video>
       </div>
       <div className="h-[20vh] flex flex-col justify-end items-center">

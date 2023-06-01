@@ -1483,6 +1483,7 @@ type MdxFilterListInput = {
 
 type MdxFrontmatter = {
   readonly date: Maybe<Scalars['Date']>;
+  readonly name: Maybe<Scalars['Date']>;
   readonly tag: Maybe<Scalars['String']>;
   readonly thumbnail: Maybe<File>;
   readonly title: Maybe<Scalars['String']>;
@@ -1497,8 +1498,17 @@ type MdxFrontmatter_dateArgs = {
   locale: InputMaybe<Scalars['String']>;
 };
 
+
+type MdxFrontmatter_nameArgs = {
+  difference: InputMaybe<Scalars['String']>;
+  formatString: InputMaybe<Scalars['String']>;
+  fromNow: InputMaybe<Scalars['Boolean']>;
+  locale: InputMaybe<Scalars['String']>;
+};
+
 type MdxFrontmatterFieldSelector = {
   readonly date: InputMaybe<FieldSelectorEnum>;
+  readonly name: InputMaybe<FieldSelectorEnum>;
   readonly tag: InputMaybe<FieldSelectorEnum>;
   readonly thumbnail: InputMaybe<FileFieldSelector>;
   readonly title: InputMaybe<FieldSelectorEnum>;
@@ -1507,6 +1517,7 @@ type MdxFrontmatterFieldSelector = {
 
 type MdxFrontmatterFilterInput = {
   readonly date: InputMaybe<DateQueryOperatorInput>;
+  readonly name: InputMaybe<DateQueryOperatorInput>;
   readonly tag: InputMaybe<StringQueryOperatorInput>;
   readonly thumbnail: InputMaybe<FileFilterInput>;
   readonly title: InputMaybe<StringQueryOperatorInput>;
@@ -1515,6 +1526,7 @@ type MdxFrontmatterFilterInput = {
 
 type MdxFrontmatterSortInput = {
   readonly date: InputMaybe<SortOrderEnum>;
+  readonly name: InputMaybe<SortOrderEnum>;
   readonly tag: InputMaybe<SortOrderEnum>;
   readonly thumbnail: InputMaybe<FileSortInput>;
   readonly title: InputMaybe<SortOrderEnum>;
