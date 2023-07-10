@@ -1,10 +1,29 @@
-import * as React from "react";
-import { Link, HeadFC, PageProps } from "gatsby";
+import { createStyles, Center, Button, Title, rem } from "@mantine/core";
 
-const NotFoundPage: React.FC<PageProps> = () => {
-  return <main>404</main>;
+const useStyles = createStyles(() => ({
+  container: {
+    flexDirection: "column",
+    fontWeight: "bolder",
+    height: "100vh",
+  },
+}));
+
+const Page404 = () => {
+  const { classes } = useStyles();
+
+  return (
+    <Center className={classes.container}>
+      <Title order={1}>An error as occured.</Title>
+      <Title order={1} mb={rem(24)}>
+        <span>(╯°□°）╯︵ ┻━┻</span>
+      </Title>
+      <a href="/">
+        <Button variant="gradient" gradient={{ from: "indigo", to: "cyan" }}>
+          Go back
+        </Button>
+      </a>
+    </Center>
+  );
 };
 
-export default NotFoundPage;
-
-export const Head: HeadFC = () => <title>Not found</title>;
+export default Page404;
