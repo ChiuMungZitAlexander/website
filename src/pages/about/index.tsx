@@ -27,8 +27,17 @@ const useStyles = createStyles((theme) => ({
     height: "100%",
     inset: 0,
     objectFit: "cover",
+    objectPosition: "50% 50%",
     position: "absolute",
     width: "100%",
+
+    [theme.fn.largerThan("lg")]: {
+      objectPosition: "50% 30%",
+    },
+
+    [theme.fn.largerThan("xl")]: {
+      objectPosition: "55% 20%",
+    },
   },
 
   tip: {
@@ -121,7 +130,7 @@ const About = () => {
       <Text align="center" c={theme.colors.gray[5]} fz="xs">
         © 2018-2023 Alexander Zhao. All rights reserved.
       </Text>
-      {import.meta.env.VITE_SHOW_RECORD && (
+      {import.meta.env.VITE_SHOW_SITE_REGISTRATION && (
         <a href="https://beian.miit.gov.cn/shouye.html" target="_blank">
           <Text align="center" c={theme.colors.gray[5]} fz="xs" mb={rem(8)}>
             粤ICP备18042140号-1
