@@ -15,6 +15,7 @@ const resources = {
       intro_1: "I'm Alexander ZHÀO",
       intro_2: "Web3 developer (Typescript/Rust)",
       intro_3: "Alto saxophinst",
+      coming_soon: "coming soon",
     },
   },
   zh: {
@@ -26,6 +27,7 @@ const resources = {
       intro_1: "我是 Alexander ZHÀO",
       intro_2: "Web3开发者 (Typescript/Rust)",
       intro_3: "中音萨克斯手",
+      coming_soon: "即将上线",
     },
   },
 };
