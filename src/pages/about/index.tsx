@@ -130,7 +130,7 @@ const About = () => {
       <Text align="center" c={theme.colors.gray[5]} fz="xs">
         © 2018-2023 Alexander Zhao. All rights reserved.
       </Text>
-      {import.meta.env.VITE_SHOW_SITE_REGISTRATION && (
+      {import.meta.env.VITE_SHOW_SITE_REGISTRATION === "true" && (
         <a href="https://beian.miit.gov.cn/shouye.html" target="_blank">
           <Text align="center" c={theme.colors.gray[5]} fz="xs" mb={rem(8)}>
             粤ICP备18042140号-1
