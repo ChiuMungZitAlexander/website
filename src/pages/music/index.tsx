@@ -1,4 +1,5 @@
 import { useState } from "react";
+import { useTranslation } from "react-i18next";
 import {
   Container,
   ScrollArea,
@@ -26,6 +27,7 @@ const ALBUMS = [
     thumb: "/albums/album_0/thumb.jpg",
     list: [
       {
+        index: 0,
         title: "Zik Joeng Zeoi Liu",
         src: "/albums/album_0/zik_yoeng_zeoi_liu.mp3",
       },
@@ -80,12 +82,15 @@ const useStyles = createStyles((theme) => ({
 const Music = () => {
   const { theme, classes, cx } = useStyles();
   const { colorScheme } = useMantineColorScheme();
+  const { t } = useTranslation();
 
   const [playList] = useState<PlayList>(ALBUMS[0]);
 
   return (
     <Container maw={rem(1080)} pb={rem(128)} pt={rem(96)}>
-      <Title>Music</Title>
+      <Title order={3} transform="capitalize">
+        {t("music")}
+      </Title>
       <ScrollArea>
         <Flex gap={rem(8)} pt={rem(32)} wrap="wrap">
           {ALBUMS.map((_album) => (

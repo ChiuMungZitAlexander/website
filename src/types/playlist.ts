@@ -1,4 +1,5 @@
 export type PlayItem = {
+  index: number;
   title: string;
   src: string;
 };
