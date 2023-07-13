@@ -14,6 +14,7 @@ import {
   createStyles,
   rem,
 } from "@mantine/core";
+import { useMediaQuery } from "@mantine/hooks";
 import {
   IconPlayerPlay,
   IconPlayerPause,
@@ -21,8 +22,10 @@ import {
   IconPlayerSkipBack,
   IconDisc,
 } from "@tabler/icons-react";
-import WaveSurfer, { type WaveSurferOptions } from "wavesurfer.js";
+import WaveSurfer from "wavesurfer.js";
+import Marquee from "react-fast-marquee";
 
+import type { WaveSurferOptions } from "wavesurfer.js";
 import type { PlayList } from "../../types/playlist";
 
 const useStyles = createStyles((theme) => ({
@@ -33,11 +36,13 @@ const useStyles = createStyles((theme) => ({
 
   thumb: {
     marginRight: rem(8),
+    position: "relative",
   },
 
   panel: {
     display: "flex",
     flexDirection: "column",
+    overflow: "hidden",
     width: "100%",
   },
 
@@ -51,6 +56,13 @@ const useStyles = createStyles((theme) => ({
     display: "flex",
     flexGrow: 1,
     justifyContent: "space-between",
+  },
+
+  playIconContainer: {
+    left: "50%",
+    position: "absolute",
+    top: "50%",
+    transform: "translate(-50%,-50%)",
   },
 
   icon: {
@@ -75,6 +87,7 @@ const useStyles = createStyles((theme) => ({
   titleContainer: {
     flexGrow: 1,
     overflow: "hidden",
+    paddingRight: rem(8),
   },
 
   title: {
@@ -86,9 +99,23 @@ const useStyles = createStyles((theme) => ({
     borderRadius: "4px",
     color: theme.colors.gray[0],
     fontSize: "8px",
+    left: "4px",
     paddingLeft: "2px",
     paddingRight: "2px",
     position: "absolute",
+    top: "calc(60% - 12px)",
+    zIndex: 9999,
+  },
+
+  duration: {
+    backgroundColor: theme.colors.dark[9],
+    borderRadius: "4px",
+    color: theme.colors.gray[0],
+    fontSize: "8px",
+    paddingLeft: "2px",
+    paddingRight: "2px",
+    position: "absolute",
+    right: "4px",
     top: "calc(60% - 12px)",
     zIndex: 9999,
   },
@@ -133,6 +160,7 @@ const WaveSurferPlayer = ({
   waveSurferOptions,
 }: WaveSurferPlayerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+  const isMobile = useMediaQuery("(max-width: 48em)");
   const { classes, theme } = useStyles();
 
   const [currentSong, setCurrentSong] = useState(playlist.list[0]);
@@ -148,13 +176,14 @@ const WaveSurferPlayer = ({
         url: currentSong.src,
         waveColor: drawGradient(),
         ...waveSurferOptions,
-      } as Omit<WaveSurferOptions, "container">),
+      }) as Omit<WaveSurferOptions, "container">,
     [waveSurferOptions, currentSong.src]
   );
   const wavesurfer = useWavesurfer(containerRef, wsOptions);
 
   const [isPlaying, setIsPlaying] = useState(false);
   const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
 
   // On play button click
   const onPlayClick = useCallback(() => {
@@ -170,6 +199,7 @@ const WaveSurferPlayer = ({
     setIsPlaying(false);
 
     const subscriptions = [
+      wavesurfer.on("decode", (duration) => setDuration(duration)),
       wavesurfer.on("play", () => setIsPlaying(true)),
       wavesurfer.on("pause", () => setIsPlaying(false)),
       wavesurfer.on("timeupdate", (currentTime) => setCurrentTime(currentTime)),
@@ -180,9 +210,14 @@ const WaveSurferPlayer = ({
     };
   }, [wavesurfer]);
 
+  useEffect(() => {
+    console.log(333, document.getElementById("marquee-container"));
+    console.log(344, document.getElementById("song-title"));
+  }, []);
+
   return (
     <div className={classes.container}>
-      <div className={classes.thumb}>
+      <div className={classes.thumb} onClick={() => onPlayClick()}>
         <Image
           alt=""
           radius="lg"
@@ -192,35 +227,60 @@ const WaveSurferPlayer = ({
           width={96}
           withPlaceholder
         />
+        <div className={classes.playIconContainer}>
+          <ActionIcon className={classes.icon} size="3xl" variant="transparent">
+            {isPlaying ? (
+              <IconPlayerPause size="3rem" />
+            ) : (
+              <IconPlayerPlay size="3rem" />
+            )}
+          </ActionIcon>
+        </div>
       </div>
       <div className={classes.panel}>
         <div className={classes.wavesurfer} ref={containerRef}>
-          <span className={classes.time}>0:00</span>
+          <span className={classes.time}>{formatTime(currentTime)}</span>
+          <span className={classes.duration}>{formatTime(duration)}</span>
         </div>
         <div className={classes.control}>
-          <div className={classes.titleContainer}>
-            <Text
-              c={theme.colors.gray[5]}
-              className={classes.title}
-              fw={700}
-              fz={rem(24)}
-              truncate
-            >
-              {currentSong.title}
-            </Text>
+          <div className={classes.titleContainer} id="marquee-container">
+            {isMobile ? (
+              <Marquee speed={20}>
+                <Text
+                  c={theme.colors.gray[5]}
+                  className={classes.title}
+                  fw={700}
+                  fz={rem(24)}
+                  truncate
+                >
+                  {currentSong.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                </Text>
+              </Marquee>
+            ) : (
+              <Text
+                c={theme.colors.gray[5]}
+                className={classes.title}
+                fw={700}
+                fz={rem(24)}
+                truncate
+              >
+                {currentSong.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+              </Text>
+            )}
           </div>
           <Group style={{ flexShrink: 0 }}>
-            <ActionIcon className={classes.icon} variant="transparent">
+            <ActionIcon
+              className={classes.icon}
+              disabled={currentSong.index <= 1}
+              variant="transparent"
+            >
               <IconPlayerSkipBack />
             </ActionIcon>
             <ActionIcon
               className={classes.icon}
-              onClick={() => onPlayClick()}
+              disabled={currentSong.index >= playlist.list.length - 1}
               variant="transparent"
             >
-              {isPlaying ? <IconPlayerPause /> : <IconPlayerPlay />}
-            </ActionIcon>
-            <ActionIcon className={classes.icon} variant="transparent">
               <IconPlayerSkipForward />
             </ActionIcon>
           </Group>
@@ -285,4 +345,11 @@ const drawProgressGradient = () => {
   progressGradient.addColorStop(1, "#F6B094"); // Bottom color
 
   return progressGradient;
+};
+
+const formatTime = (seconds: number) => {
+  const minutes = Math.floor(seconds / 60);
+  const secondsRemainder = Math.round(seconds) % 60;
+  const paddedSeconds = `0${secondsRemainder}`.slice(-2);
+  return `${minutes}:${paddedSeconds}`;
 };
