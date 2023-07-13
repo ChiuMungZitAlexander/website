@@ -229,8 +229,8 @@ const Root = () => {
   }, [navigate]);
 
   return (
-    <ScrollArea h="100%" scrollbarSize={10} scrollHideDelay={500}>
-      <Container fluid p={0} pos="relative">
+    <>
+      <Container fluid h="100%" p={0} pos="relative">
         <header className={classes.header}>
           <Flex
             align="center"
@@ -270,7 +270,7 @@ const Root = () => {
             />
           </Flex>
         </header>
-        <main>
+        <main style={{ height: "100%" }}>
           <Outlet />
         </main>
       </Container>
@@ -306,7 +306,7 @@ const Root = () => {
           {renderSocialGroup({ className: classes.socialInModal })}
         </Flex>
       </Modal>
-    </ScrollArea>
+    </>
   );
 };
 
