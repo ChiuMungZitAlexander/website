@@ -210,10 +210,17 @@ const WaveSurferPlayer = ({
     };
   }, [wavesurfer]);
 
-  useEffect(() => {
-    console.log(333, document.getElementById("marquee-container"));
-    console.log(344, document.getElementById("song-title"));
-  }, []);
+  const onNextSong = () => {
+    if (currentSong.index <= 1) return;
+
+    setCurrentSong(playlist.list[currentSong.index + 1]);
+  };
+
+  const onPrevSong = () => {
+    if (currentSong.index >= playlist.list.length - 1) return;
+
+    setCurrentSong(playlist.list[currentSong.index - 1]);
+  };
 
   return (
     <div className={classes.container}>
@@ -272,6 +279,7 @@ const WaveSurferPlayer = ({
             <ActionIcon
               className={classes.icon}
               disabled={currentSong.index <= 1}
+              onClick={() => onPrevSong()}
               variant="transparent"
             >
               <IconPlayerSkipBack />
@@ -279,6 +287,7 @@ const WaveSurferPlayer = ({
             <ActionIcon
               className={classes.icon}
               disabled={currentSong.index >= playlist.list.length - 1}
+              onClick={() => onNextSong()}
               variant="transparent"
             >
               <IconPlayerSkipForward />

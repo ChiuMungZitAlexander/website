@@ -8,7 +8,6 @@ import {
   Image,
   Modal,
   Divider,
-  ScrollArea,
   Center,
   rem,
   useMantineColorScheme,
