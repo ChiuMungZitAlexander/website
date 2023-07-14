@@ -8,6 +8,7 @@ import {
   Center,
   Text,
   Avatar,
+  Anchor,
   rem,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
@@ -71,7 +72,7 @@ const About = () => {
   }, [isMobile]);
 
   return (
-    <Container fluid p={0}>
+    <Container fluid p={0} pb="sm">
       <Container fluid h="80vh" p={0} pos="relative">
         <video
           autoPlay
@@ -131,11 +132,11 @@ const About = () => {
         © 2018-2023 Alexander Zhao. All rights reserved.
       </Text>
       {import.meta.env.VITE_SHOW_SITE_REGISTRATION === "true" && (
-        <a href="https://beian.miit.gov.cn/shouye.html" target="_blank">
-          <Text align="center" c={theme.colors.gray[5]} fz="xs" mb={rem(8)}>
+        <Anchor href="https://beian.miit.gov.cn/shouye.html" target="_blank">
+          <Text align="center" c={theme.colors.gray[5]} fz="xs">
             粤ICP备18042140号-1
           </Text>
-        </a>
+        </Anchor>
       )}
     </Container>
   );

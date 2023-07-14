@@ -5,18 +5,21 @@ import {
   ColorSchemeProvider,
   ColorScheme,
 } from "@mantine/core";
-import { useLocalStorage } from "@mantine/hooks";
+import { useLocalStorage, useHotkeys } from "@mantine/hooks";
 
-const Root = lazy(() => import("./pages/root.tsx"));
-const About = lazy(() => import("./pages/about/index.tsx"));
-const Blogs = lazy(() => import("./pages/blogs/index.tsx"));
-const Music = lazy(() => import("./pages/music/index.tsx"));
-const Page404 = lazy(() => import("./pages/404.tsx"));
-import Loading from "./components/loading/index.tsx";
+import Loading from "./components/loading";
 
 import "./i18n.ts";
 
 import "./global.css";
+
+const Root = lazy(() => import("./pages/root.tsx"));
+const About = lazy(() => import("./pages/about"));
+const Blogs = lazy(() => import("./pages/blogs"));
+const Music = lazy(() => import("./pages/music"));
+const Page404 = lazy(() => import("./pages/404"));
+
+const Blog20200809 = lazy(() => import("./pages/blogs/20200809"));
 
 const router = createBrowserRouter([
   {
@@ -42,12 +45,14 @@ const router = createBrowserRouter([
             <Blogs />
           </Suspense>
         ),
-        children: [
-          {
-            path: ":blogId",
-            element: <h1>blog Id</h1>,
-          },
-        ],
+      },
+      {
+        path: "blogs/20200809",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Blog20200809 />
+          </Suspense>
+        ),
       },
       {
         path: "music",
@@ -75,6 +80,8 @@ const App = () => {
     defaultValue: "light",
     getInitialValueInEffect: true,
   });
+
+  useHotkeys([["mod+J", () => toggleColorScheme()]]);
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
