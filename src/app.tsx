@@ -1,5 +1,6 @@
-import { lazy, Suspense } from "react";
+import { lazy, Suspense, useEffect } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
+import { useTranslation } from "react-i18next";
 import {
   MantineProvider,
   ColorSchemeProvider,
@@ -75,6 +76,7 @@ const router = createBrowserRouter([
 ]);
 
 const App = () => {
+  const { i18n } = useTranslation();
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: "mantine-color-scheme",
     defaultValue: "light",
@@ -82,6 +84,23 @@ const App = () => {
   });
 
   useHotkeys([["mod+J", () => toggleColorScheme()]]);
+
+  useEffect(() => {
+    switch (i18n.language) {
+      case "en": {
+        document.documentElement.lang = "en";
+        break;
+      }
+      case "zh": {
+        document.documentElement.lang = "zh-Hans";
+        break;
+      }
+      default: {
+        document.documentElement.lang = "en";
+        break;
+      }
+    }
+  }, [i18n.language]);
 
   const toggleColorScheme = (value?: ColorScheme) =>
     setColorScheme(value || (colorScheme === "dark" ? "light" : "dark"));
