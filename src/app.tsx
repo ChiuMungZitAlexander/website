@@ -22,6 +22,7 @@ const Page404 = lazy(() => import("./pages/404"));
 
 const Blog20200809 = lazy(() => import("./pages/blogs/20200809"));
 const Blog20210127 = lazy(() => import("./pages/blogs/20210127"));
+const Blog20210331 = lazy(() => import("./pages/blogs/20210331"));
 
 const router = createBrowserRouter([
   {
@@ -61,6 +62,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <Blog20210127 />
+          </Suspense>
+        ),
+      },
+      {
+        path: "blogs/20210331",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Blog20210331 />
           </Suspense>
         ),
       },
