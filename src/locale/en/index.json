@@ -1,0 +1,33 @@
+{
+  "translation": {
+    "about": "about",
+    "blogs": "blogs",
+    "music": "music",
+    "more": "more",
+    "intro_1": "I'm Alexander ZHÀO",
+    "intro_2": "Web3 developer (Typescript/Rust)",
+    "intro_3": "Alto saxophinst",
+    "coming_soon": "coming soon",
+    "min_read_one": "minute read",
+    "min_read_other": "minutes read",
+    "pay_wechat": "Wechat pay",
+    "eth": "ETH",
+    "tech": "tech",
+    "journal": "journal",
+    "buy_me_coffee": "Buy me a coffee ☕️",
+
+    "20200809.title": "Implement ripple effect by directives on Vue components",
+    "20200809.sec1.title": "Final Effect",
+    "20200809.sec2.title": "What is directives?",
+    "20200809.sec2.p1": "<a href=\"https://vuejs.org/guide/reusability/custom-directives.html\" target=\"_blank\" rel=\"nofollow\">Vue docs</a> defines directives as \"some low-level DOM access on plain elements\".",
+    "20200809.sec2.p2": "In short, due to the data-driven of MVVM, it is not recommended to manipulate DOM. However, occasionally, it cannot be avoided to manipulate DOM with the same logic in different conditions. Now, using directives will abstract the logic and improve the reusability.",
+    "20200809.sec3.title": "How to implement ripple effect?",
+    "20200809.sec3.subtitle1": "1. Locate the click/touch",
+    "20200809.sec3.subtitle2": "2. Create the ripple layer by absolute position",
+    "20200809.sec3.subtitle3": "3. Create diffusion effect by CSS",
+    "20200809.sec4.title": "Demo",
+    "20200809.sec5.title": "Thinking: Cons of not using directives",
+    "20200809.sec5.p1": "Two kinds of components - ripple and non-ripple components, will be needed, which increases the redundancy and is not agile enough.",
+    "20200809.sec5.p2": "The logic execution in the life cycle is not as clear as using directives hooks."
+  }
+}

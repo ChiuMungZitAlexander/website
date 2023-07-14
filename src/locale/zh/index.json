@@ -1,0 +1,32 @@
+{
+  "translation": {
+    "about": "关于",
+    "blogs": "博客",
+    "music": "音乐",
+    "more": "更多",
+    "intro_1": "我是 Alexander ZHÀO",
+    "intro_2": "Web3开发者 (Typescript/Rust)",
+    "intro_3": "中音萨克斯手",
+    "coming_soon": "即将上线",
+    "min_read": "分钟阅读",
+    "pay_wechat": "微信打赏",
+    "eth": "以太坊地址",
+    "tech": "技术",
+    "journal": "随笔",
+    "buy_me_coffee": "帮我买杯咖啡吧 ☕️",
+
+    "20200809.title": "运用directives在vue组件中添加ripple动画效果",
+    "20200809.sec1.title": "实际效果",
+    "20200809.sec2.title": "什么是 directives？",
+    "20200809.sec2.p1": "<a href=\"https://vuejs.org/guide/reusability/custom-directives.html\" target=\"_blank\" rel=\"nofollow\">Vue 官方文档</a> 对 directives 定义是“自定义指令，用来对 DOM 元素进行底层操作”",
+    "20200809.sec2.p2": "简单来说，因为 MVVM 模式是数据驱动的，所以不提倡直接操作 DOM。但偶尔会遇到多个场景必须操作 DOM，且逻辑基本一致的情况，此时使用 directives 可以抽象逻辑、提高复用。",
+    "20200809.sec3.title": "如何实现 ripple 效果？",
+    "20200809.sec3.subtitle1": "1. 确定点击/触摸位置",
+    "20200809.sec3.subtitle2": "2. 绝对定位添加 ripple 层",
+    "20200809.sec3.subtitle3": "3. 添加CSS 圆形扩散效果",
+    "20200809.sec4.title": "Demo",
+    "20200809.sec5.title": "思考：不使用 directives 实现的缺点",
+    "20200809.sec5.p1": "需要 ripple 和 non-ripple 两种组件，代码冗余提高，且不够灵活。",
+    "20200809.sec5.p2": "在生命周期中执行逻辑没有 directives 钩子函数清晰。"
+  }
+}
