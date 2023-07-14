@@ -26,7 +26,7 @@ const Template = ({ children }: TemplateProps) => {
             {t("pay_wechat")}
           </Text>
         </Flex>
-        <Flex align="center" direction="column" maw={rem(108)}>
+        <Flex align="center" direction="column" maw={rem(108)} pb="sm">
           <Image
             alt="pay_eth"
             mah={rem(108)}

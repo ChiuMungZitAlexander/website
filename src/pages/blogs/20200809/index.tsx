@@ -56,7 +56,7 @@ const Blog20200809 = () => {
           </Badge>
         </Group>
         <Title order={3}>{t("20200809.sec1.title")}</Title>
-        <Image maw={360} src="/blogs/20200809/ripple-effect.gif" />
+        <Image maw={360} mx="auto" src="/blogs/20200809/ripple-effect.gif" />
         <Title order={3}>{t("20200809.sec2.title")}</Title>
         <Text dangerouslySetInnerHTML={{ __html: t("20200809.sec2.p1") }} />
         <Text>{t("20200809.sec2.p2")}</Text>

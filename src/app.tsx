@@ -21,6 +21,7 @@ const Music = lazy(() => import("./pages/music"));
 const Page404 = lazy(() => import("./pages/404"));
 
 const Blog20200809 = lazy(() => import("./pages/blogs/20200809"));
+const Blog20210127 = lazy(() => import("./pages/blogs/20210127"));
 
 const router = createBrowserRouter([
   {
@@ -52,6 +53,14 @@ const router = createBrowserRouter([
         element: (
           <Suspense fallback={<Loading />}>
             <Blog20200809 />
+          </Suspense>
+        ),
+      },
+      {
+        path: "blogs/20210127",
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Blog20210127 />
           </Suspense>
         ),
       },
