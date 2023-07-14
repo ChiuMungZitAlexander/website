@@ -7,7 +7,9 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "lint": "eslint src --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
-    "preview": "vite preview"
+    "preview": "vite preview",
+    "cloud:clear": "cloudbase hosting delete -r gz -e site-8grn0ily1a82a28c",
+    "cloud:deploy": "cloudbase hosting deploy ./dist -r gz -e site-8grn0ily1a82a28c"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
@@ -35,6 +37,6 @@
     "eslint-plugin-react-refresh": "^0.4.3",
     "prettier": "3.0.0",
     "typescript": "^5.1.6",
-    "vite": "^4.4.3"
+    "vite": "^4.4.4"
   }
 }
