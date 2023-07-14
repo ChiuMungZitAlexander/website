@@ -1,3 +1,4 @@
+import { lazy, Suspense } from "react";
 import { createBrowserRouter, RouterProvider } from "react-router-dom";
 import {
   MantineProvider,
@@ -6,11 +7,12 @@ import {
 } from "@mantine/core";
 import { useLocalStorage } from "@mantine/hooks";
 
-import Root from "./pages/root.tsx";
-import About from "./pages/about/index.tsx";
-import Blogs from "./pages/blogs/index.tsx";
-import Music from "./pages/music/index.tsx";
-import Page404 from "./pages/404.tsx";
+const Root = lazy(() => import("./pages/root.tsx"));
+const About = lazy(() => import("./pages/about/index.tsx"));
+const Blogs = lazy(() => import("./pages/blogs/index.tsx"));
+const Music = lazy(() => import("./pages/music/index.tsx"));
+const Page404 = lazy(() => import("./pages/404.tsx"));
+import Loading from "./components/loading/index.tsx";
 
 import "./i18n.ts";
 
@@ -19,15 +21,27 @@ import "./global.css";
 const router = createBrowserRouter([
   {
     path: "/",
-    element: <Root />,
+    element: (
+      <Suspense fallback={<Loading />}>
+        <Root />
+      </Suspense>
+    ),
     children: [
       {
         path: "about",
-        element: <About />,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <About />
+          </Suspense>
+        ),
       },
       {
         path: "blogs",
-        element: <Blogs />,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Blogs />
+          </Suspense>
+        ),
         children: [
           {
             path: ":blogId",
@@ -37,13 +51,21 @@ const router = createBrowserRouter([
       },
       {
         path: "music",
-        element: <Music />,
+        element: (
+          <Suspense fallback={<Loading />}>
+            <Music />
+          </Suspense>
+        ),
       },
     ],
   },
   {
     path: "*",
-    element: <Page404 />,
+    element: (
+      <Suspense fallback={<Loading />}>
+        <Page404 />
+      </Suspense>
+    ),
   },
 ]);
 
