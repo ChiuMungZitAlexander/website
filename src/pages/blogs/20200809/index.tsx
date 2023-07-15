@@ -1,15 +1,7 @@
 import { useTranslation } from "react-i18next";
-import {
-  Stack,
-  Title,
-  Group,
-  Badge,
-  Text,
-  Image,
-  Code,
-  List,
-} from "@mantine/core";
+import { Stack, Title, Group, Text, Image, Code, List } from "@mantine/core";
 
+import Badge from "../../../components/badge";
 import Template from "../template";
 
 const CODE_BLOCK_1 = `const posX = e.pageX - e.currentTarget.offsetLeft
@@ -45,15 +37,11 @@ const Blog20200809 = () => {
 
   return (
     <Template>
-      <Stack>
+      <Stack style={{ overflow: "hidden" }}>
         <Title order={1}>{t("20200809.title")}</Title>
         <Group mb="xs" noWrap>
-          <Badge color="indigo" variant="light">
-            {t("tech")}
-          </Badge>
-          <Badge color="gray" variant="light">
-            2 {t("min_read", { count: 2 })}
-          </Badge>
+          <Badge type="tech">{t("tech")}</Badge>
+          <Badge type="min_read">2 {t("min_read", { count: 2 })}</Badge>
         </Group>
         <Title order={3}>{t("20200809.sec1.title")}</Title>
         <Image maw={360} mx="auto" src="/blogs/20200809/ripple-effect.gif" />
@@ -88,8 +76,8 @@ const Blog20200809 = () => {
         </a>
         <Title order={3}>{t("20200809.sec5.title")}</Title>
         <List type="ordered">
-          <List.Item>{t("20200809.sec5.p1")}</List.Item>
-          <List.Item>{t("20200809.sec5.p2")}</List.Item>
+          <List.Item w="calc(100% - 20px)">{t("20200809.sec5.p1")}</List.Item>
+          <List.Item w="calc(100% - 20px)">{t("20200809.sec5.p2")}</List.Item>
         </List>
       </Stack>
     </Template>

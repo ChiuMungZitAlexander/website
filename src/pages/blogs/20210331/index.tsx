@@ -3,7 +3,6 @@ import {
   Stack,
   Title,
   Group,
-  Badge,
   Text,
   Image,
   Code,
@@ -11,6 +10,7 @@ import {
   List,
 } from "@mantine/core";
 
+import Badge from "../../../components/badge";
 import Template from "../template";
 
 const CODE_BLOCK_1 = `.super-ellipse {
@@ -166,19 +166,15 @@ const Blog20210331 = () => {
 
   return (
     <Template>
-      <Stack>
+      <Stack style={{ overflow: "hidden" }}>
         <Title order={1}>{t("20210331.title")}</Title>
         <Group mb="xs" noWrap>
-          <Badge color="indigo" variant="light">
-            {t("tech")}
-          </Badge>
-          <Badge color="gray" variant="light">
-            12 {t("min_read", { count: 12 })}
-          </Badge>
+          <Badge type="tech">{t("tech")}</Badge>
+          <Badge type="min_read">12 {t("min_read", { count: 12 })}</Badge>
         </Group>
         <Title order={3}>{t("20210331.sec1.title")}</Title>
         <Text>{t("20210331.sec1.p1")}</Text>
-        <Image maw={360} mx="auto" src="/blogs/20210331/00.png" />
+        <Image maw={120} mx="auto" src="/blogs/20210331/00.png" />
         <Text>{t("20210331.sec1.p2")}</Text>
         <Image maw={360} mx="auto" src="/blogs/20210331/0.jpeg" />
         <Text>{t("20210331.sec1.p3")}</Text>
@@ -305,23 +301,23 @@ const Blog20210331 = () => {
         )}
         <List type="ordered">
           {i18n.language === "en" ? (
-            <List.Item> </List.Item>
+            <List.Item w="calc(100% - 20px)"> </List.Item>
           ) : (
-            <List.Item>
+            <List.Item w="calc(100% - 20px)">
               声明一个<Code>paint.js</Code>开发绘制方法
             </List.Item>
           )}
           {i18n.language === "en" ? (
-            <List.Item> </List.Item>
+            <List.Item w="calc(100% - 20px)"> </List.Item>
           ) : (
-            <List.Item>
+            <List.Item w="calc(100% - 20px)">
               通过Houdini注册<Code>paint.js</Code>中的方法
             </List.Item>
           )}
           {i18n.language === "en" ? (
-            <List.Item> </List.Item>
+            <List.Item w="calc(100% - 20px)"> </List.Item>
           ) : (
-            <List.Item>
+            <List.Item w="calc(100% - 20px)">
               为某个元素的<Code>background-image</Code>添加包含
               <Code>paint.js</Code>提供方法的属性值并用运用遮罩实现超椭圆
             </List.Item>

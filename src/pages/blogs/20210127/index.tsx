@@ -1,6 +1,7 @@
 import { useTranslation } from "react-i18next";
-import { Stack, Title, Group, Badge, Text, Image } from "@mantine/core";
+import { Stack, Title, Group, Text, Image } from "@mantine/core";
 
+import Badge from "../../../components/badge";
 import Template from "../template";
 
 const Blog20210127 = () => {
@@ -8,15 +9,11 @@ const Blog20210127 = () => {
 
   return (
     <Template>
-      <Stack>
+      <Stack style={{ overflow: "hidden" }}>
         <Title order={1}>{t("20210127.title")}</Title>
         <Group mb="xs" noWrap>
-          <Badge color="indigo" variant="light">
-            {t("journal")}
-          </Badge>
-          <Badge color="gray" variant="light">
-            15 {t("min_read", { count: 15 })}
-          </Badge>
+          <Badge type="journal">{t("journal")}</Badge>
+          <Badge type="min_read">15 {t("min_read", { count: 15 })}</Badge>
         </Group>
         <Title order={3}>{t("20210127.sec1.title")}</Title>
         <Text>{t("20210127.sec1.p1")}</Text>

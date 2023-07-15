@@ -9,7 +9,11 @@ const Template = ({ children }: TemplateProps) => {
   const { t } = useTranslation();
 
   return (
-    <Container h="100%" maw={rem(768)} pt={rem(96)}>
+    <Container
+      h="100%"
+      maw={rem(768)}
+      pt={rem(96)}
+    >
       {children}
       <Title mb="md" mt={rem(64)} order={4} ta="center">
         {t("buy_me_coffee")}
