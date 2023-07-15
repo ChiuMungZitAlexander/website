@@ -161,6 +161,85 @@ ctx.closePath();
 ctx.fillStyle = '#ff6700';
 ctx.fill();`;
 
+const CODE_BLOCK_7 = `registerPaint(
+  "superEllipse",
+  class {
+    paint(ctx) {
+      const width = 256;
+      const height = 256;
+      const calcY = (x) => ((width / 2) ** 3 - x ** 3) ** (1 / 3);
+
+      ctx.setTransform(1, 0, 0, 1, width / 2, height / 2);
+      ctx.beginPath();
+
+      for (let i = -width / 2; i <= width / 2; i++) {
+        const j = calcY(Math.abs(i));
+        ctx.bezierCurveTo(i, j, i, j, i, j);
+      }
+
+      for (let i = width / 2; i >= -width / 2; i--) {
+        const j = -calcY(Math.abs(i));
+        ctx.bezierCurveTo(i, j, i, j, i, j);
+      }
+
+      ctx.closePath();
+      ctx.fillStyle = "#ff6700";
+      ctx.fill();
+    }
+  }
+);
+`;
+
+const CODE_BLOCK_8 = `<script>
+  CSS.paintWorklet.addModule("paint.js");
+</script>
+`;
+
+const CODE_BLOCK_9 = `<style>
+@supports (background-image: paint(id)) {
+  #box {
+    background-image: paint(superEllipse);
+    height: 256px;
+    width: 256px;
+  }
+}
+</style>`;
+
+const CODE_BLOCK_10 = `registerPaint(
+  "superEllipse",
+  class {
+    // custom properties
+    static get inputProperties() {
+      // n - the exponent of Lame curve
+      return ["--n"];
+    }
+
+    paint(ctx, geom, props) {
+      const { height, width } = geom;
+      const exp = props.get("--n")?.[0] || 3;
+
+      const calcY = (x) => ((width / 2) ** exp - x ** exp) ** (1 / exp);
+
+      ctx.setTransform(1, 0, 0, 1, width / 2, height / 2);
+      ctx.beginPath();
+
+      for (let i = -width / 2; i <= width / 2; i++) {
+        const j = calcY(Math.abs(i));
+        ctx.bezierCurveTo(i, j, i, j, i, j);
+      }
+
+      for (let i = width / 2; i >= -width / 2; i--) {
+        const j = -calcY(Math.abs(i));
+        ctx.bezierCurveTo(i, j, i, j, i, j);
+      }
+
+      ctx.closePath();
+      ctx.fillStyle = "#ff6700";
+      ctx.fill();
+    }
+  }
+);`;
+
 const Blog20210331 = () => {
   const { t, i18n } = useTranslation();
 
@@ -308,12 +387,29 @@ const Blog20210331 = () => {
             </List.Item>
           )}
           {i18n.language === "en" ? (
+            <Text></Text>
+          ) : (
+            <Text>
+              <Code>registerPaint</Code>
+              是内置方法，第一个参数表示需要注册的Houdini的名称，这里我们就叫
+              <Code>suerEllipse</Code>。第二参数需要传入一个类，且包含
+              <Code>paint</Code>方法。其内容和<Code>canvas</Code>
+              的实现基本一致。
+            </Text>
+          )}
+          <Code block my="md">
+            {CODE_BLOCK_7}
+          </Code>
+          {i18n.language === "en" ? (
             <List.Item w="calc(100% - 20px)"> </List.Item>
           ) : (
             <List.Item w="calc(100% - 20px)">
-              通过Houdini注册<Code>paint.js</Code>中的方法
+              通过<Code>paintWorklet</Code>注册<Code>paint.js</Code>中的方法
             </List.Item>
           )}
+          <Code block my="md">
+            {CODE_BLOCK_8}
+          </Code>
           {i18n.language === "en" ? (
             <List.Item w="calc(100% - 20px)"> </List.Item>
           ) : (
@@ -322,7 +418,58 @@ const Blog20210331 = () => {
               <Code>paint.js</Code>提供方法的属性值并用运用遮罩实现超椭圆
             </List.Item>
           )}
+          <Code block my="md">
+            {CODE_BLOCK_9}
+          </Code>
         </List>
+        <Text>{t("20210331.sec5.p10")}</Text>
+        <Image maw={360} mx="auto" src="/blogs/20210331/18.png" />
+        <Title order={3}>{t("20210331.sec6.title")}</Title>
+        <Text>{t("20210331.sec6.p1")}</Text>
+        <Image maw={360} mx="auto" src="/blogs/20210331/19.png" />
+        <Text>{t("20210331.sec6.p2")}</Text>
+        <Image maw={360} mx="auto" src="/blogs/20210331/20.jpeg" />
+        {i18n.language === "en" ? (
+          <Text></Text>
+        ) : (
+          <Text>
+            <Code>registerPaint</Code>接入的class中的<Code>paint</Code>函数除了
+            <Code>ctx</Code>之外，还有另外三个参数，形如
+            <Code>paint(ctx, geom, props, args)</Code>。
+          </Text>
+        )}
+        <List>
+          {i18n.language === "en" ? (
+            <List.Item w="calc(100% - 20px)"> </List.Item>
+          ) : (
+            <List.Item w="calc(100% - 20px)">
+              <Code>ctx</Code>可以认为是<Code>canvas</Code>的绘制上下文。
+            </List.Item>
+          )}
+          <List.Item w="calc(100% - 20px)">{t("20210331.sec6.p5")}</List.Item>
+          <List.Item w="calc(100% - 20px)">{t("20210331.sec6.p6")}</List.Item>
+          {i18n.language === "en" ? (
+            <List.Item w="calc(100% - 20px)"> </List.Item>
+          ) : (
+            <List.Item w="calc(100% - 20px)">
+              第四个参数是在css中调用<Code>paint</Code>时的参数数组。（Chrome
+              89+)
+            </List.Item>
+          )}
+        </List>
+        <Text>{t("20210331.sec6.p8")}</Text>
+        <Code block>{CODE_BLOCK_10}</Code>
+        <Text>{t("20210331.sec6.p9")}</Text>
+        <Anchor
+          href="https://chiumungzitalexander.github.io/superellipse-css-houdini/"
+          target="_blank"
+        >
+          Demo
+        </Anchor>
+        <Image maw={360} mx="auto" src="/blogs/20210331/21.gif" />
+        <Text>{t("20210331.sec6.p10")}</Text>
+        <Text>{t("20210331.sec6.p11")}</Text>
+        <Image maw={360} mx="auto" src="/blogs/20210331/22.png" />
       </Stack>
     </Template>
   );

@@ -1,5 +1,14 @@
 import { useTranslation } from "react-i18next";
-import { Stack, Title, Group, Text, Image, Code, List } from "@mantine/core";
+import {
+  Stack,
+  Title,
+  Group,
+  Text,
+  Image,
+  Code,
+  List,
+  Anchor,
+} from "@mantine/core";
 
 import Badge from "../../../components/badge";
 import Template from "../template";
@@ -68,12 +77,12 @@ const Blog20200809 = () => {
         <Code block>{CODE_BLOCK_2}</Code>
         <Title order={4}>{t("20200809.sec3.subtitle3")}</Title>
         <Code block>{CODE_BLOCK_3}</Code>
-        <a
+        <Anchor
           href="https://codepen.io/alexandermzchiu/pen/NWrrxRy"
           target="_blank"
         >
-          <Title order={3}>{t("20200809.sec4.title")}</Title>
-        </a>
+          Demo
+        </Anchor>
         <Title order={3}>{t("20200809.sec5.title")}</Title>
         <List type="ordered">
           <List.Item w="calc(100% - 20px)">{t("20200809.sec5.p1")}</List.Item>

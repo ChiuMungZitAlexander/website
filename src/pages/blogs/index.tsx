@@ -79,7 +79,7 @@ const Blogs = () => {
       </Title>
       <Grid mt={rem(32)} pb="sm">
         {blogs.map((_blog) => (
-          <Grid.Col key={_blog.id} lg={3} md={4} sm={6}>
+          <Grid.Col key={_blog.id} lg={4} sm={6}>
             <Link to={`./${_blog.id}`}>
               <Card padding="md" radius="md" shadow="sm" withBorder>
                 <Card.Section>
