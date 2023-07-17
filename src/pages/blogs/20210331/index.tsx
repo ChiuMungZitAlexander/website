@@ -278,7 +278,10 @@ const Blog20210331 = () => {
         <Text>{t("20210331.sec3.p2")}</Text>
         <Image maw={360} mx="auto" src="/blogs/20210331/7.png" />
         {i18n.language === "en" ? (
-          <Text></Text>
+          <Text>
+            How to use <Code>border-radius</Code> to have a ellipsed corner
+            which has different axis length? Let's go back to docs.
+          </Text>
         ) : (
           <Text>
             那么用<Code>border-radius</Code>
@@ -286,7 +289,15 @@ const Blog20210331 = () => {
           </Text>
         )}
         {i18n.language === "en" ? (
-          <Text></Text>
+          <Text>
+            There is a line of small text on MDN docs referred to{" "}
+            <Code>border-raiuds</Code>{" "}
+            <b>
+              followed optionally by "/" and one, two, three, or four or values.
+              This is used to set an additional radius, so you can have
+              elliptical corners.
+            </b>
+          </Text>
         ) : (
           <Text>
             MDN关于<Code>border-raiuds</Code>有这么一小行字{" "}
@@ -309,7 +320,19 @@ const Blog20210331 = () => {
         <Text>{t("20210331.sec3.p8")}</Text>
         <Code block>{CODE_BLOCK_3}</Code>
         <Image maw={360} mx="auto" src="/blogs/20210331/11.png" />
-        <Text>{t("20210331.sec3.p9")}</Text>
+        {i18n.language === "en" ? (
+          <Text>
+            Here comes the Red Cross, which is actually very similiar. At last,
+            we set <Code>border-radius</Code> and color of parent node, and tune
+            the position of pseudo elements. Oh, don't forget the Mi's color.
+          </Text>
+        ) : (
+          <Text>
+            虽然像红十字会的标志，但其实很接近了。我们最后给父元素一个
+            <Code>border-radius</Code>
+            并上色看看，再微调一下伪元素的位置。哦，别忘了小米的配色。
+          </Text>
+        )}
         <Code block>{CODE_BLOCK_4}</Code>
         <Image maw={360} mx="auto" src="/blogs/20210331/12.png" />
         <Text>{t("20210331.sec3.p10")}</Text>
@@ -322,10 +345,15 @@ const Blog20210331 = () => {
         <Title order={3}>{t("20210331.sec4.title")}</Title>
         <Text>{t("20210331.sec4.p1")}</Text>
         {i18n.language === "en" ? (
-          <Text></Text>
+          <Text>
+            The reason is there is no overlapping between elliptic curve and
+            non-quadratic Lamé curve in Cartesian coordinate system. Therefore,
+            no matter how you adjust <Code>border-radius</Code> you cannot have
+            a non-quadratic Lamé curve.
+          </Text>
         ) : (
           <Text>
-            原因在于，椭圆函数曲线与非二次幂的Lamé曲线在图像上根本不可能重合，因此无论你怎么调整
+            原因在于，椭圆曲线与非二次幂的Lamé曲线在图像上根本不可能重合，因此无论你怎么调整
             <Code>border-radius</Code>都不可能实现非二次幂的Lamé曲线。
           </Text>
         )}
@@ -333,7 +361,10 @@ const Blog20210331 = () => {
         <Image maw={360} mx="auto" src="/blogs/20210331/13.png" />
         <Text>{t("20210331.sec4.p3")}</Text>
         {i18n.language === "en" ? (
-          <Text></Text>
+          <Text>
+            My intuition was telling me using <Code>canvas</Code> . Consider the
+            idea of calculus, to link all the possible points.
+          </Text>
         ) : (
           <Text>
             直觉告诉我应该用<Code>canvas</Code>
@@ -348,7 +379,9 @@ const Blog20210331 = () => {
         <Image maw={360} mx="auto" src="/blogs/20210331/15.png" />
         <Title order={3}>{t("20210331.sec5.title")}</Title>
         {i18n.language === "en" ? (
-          <Text></Text>
+          <Text>
+            Suddenly a troll shouts: <Code>canvas</Code> is not CSS.
+          </Text>
         ) : (
           <Text>
             这时候突然闯进一只杠精嚷道：<Code>canvas</Code>
@@ -358,19 +391,27 @@ const Blog20210331 = () => {
         <Text>{t("20210331.sec5.p2")}</Text>
         <Image maw={360} mx="auto" src="/blogs/20210331/16.jpeg" />
         {i18n.language === "en" ? (
-          <Text></Text>
-        ) : (
           <Text>
             <Code>canvas</Code>
             是HTML元素，的确。那到底有没有一种CSS方法能够让我们去像
             <Code>canvas</Code>这样自定义地绘制路径呢？
+          </Text>
+        ) : (
+          <Text>
+            <Code>canvas</Code> is indeed HTML element. So is there any method
+            to define drawing path in CSS like in <Code>canvas</Code>?
           </Text>
         )}
         <Text>{t("20210331.sec5.p4")}</Text>
         <Text>{t("20210331.sec5.p5")}</Text>
         <Image maw={360} mx="auto" src="/blogs/20210331/17.jpeg" />
         {i18n.language === "en" ? (
-          <Text></Text>
+          <Text>
+            CSS Houdini provides 6 sets of APIs, of which the Paint API could
+            work. We can use Paint API to define properties of{" "}
+            <Code>background</Code>, then to have ellipse effect by sheltering.
+            Steps are as below:
+          </Text>
         ) : (
           <Text>
             CSS Houdini主要提供了6组API，其中Paint
@@ -380,14 +421,22 @@ const Blog20210331 = () => {
         )}
         <List type="ordered">
           {i18n.language === "en" ? (
-            <List.Item w="calc(100% - 20px)"> </List.Item>
+            <List.Item w="calc(100% - 20px)">
+              Define <Code>paint.js</Code>
+            </List.Item>
           ) : (
             <List.Item w="calc(100% - 20px)">
               声明一个<Code>paint.js</Code>开发绘制方法
             </List.Item>
           )}
           {i18n.language === "en" ? (
-            <Text></Text>
+            <Text>
+              <Code>registerPaint</Code> is inherited method. The first argument
+              is the Houdini name to be registered. Here we call it{" "}
+              <Code>suerEllipse</Code>. The second argument is a class, which
+              contains <Code>paint</Code> method. The logic of the method is
+              basically the same as how to do with <Code>canvas</Code>.
+            </Text>
           ) : (
             <Text>
               <Code>registerPaint</Code>
@@ -401,7 +450,10 @@ const Blog20210331 = () => {
             {CODE_BLOCK_7}
           </Code>
           {i18n.language === "en" ? (
-            <List.Item w="calc(100% - 20px)"> </List.Item>
+            <List.Item w="calc(100% - 20px)">
+              Register methods in <Code>paint.js</Code> by{" "}
+              <Code>paintWorklet</Code>
+            </List.Item>
           ) : (
             <List.Item w="calc(100% - 20px)">
               通过<Code>paintWorklet</Code>注册<Code>paint.js</Code>中的方法
@@ -411,7 +463,10 @@ const Blog20210331 = () => {
             {CODE_BLOCK_8}
           </Code>
           {i18n.language === "en" ? (
-            <List.Item w="calc(100% - 20px)"> </List.Item>
+            <List.Item w="calc(100% - 20px)">
+              Add <Code>paint.js</Code> to the <Code>background-image</Code>{" "}
+              properties of target DOM and fulfill superellipse by sheltering
+            </List.Item>
           ) : (
             <List.Item w="calc(100% - 20px)">
               为某个元素的<Code>background-image</Code>添加包含
@@ -430,7 +485,12 @@ const Blog20210331 = () => {
         <Text>{t("20210331.sec6.p2")}</Text>
         <Image maw={360} mx="auto" src="/blogs/20210331/20.jpeg" />
         {i18n.language === "en" ? (
-          <Text></Text>
+          <Text>
+            The <Code>paint</Code> of class inside <Code>registerPaint</Code>{" "}
+            have other three parameters like{" "}
+            <Code>paint(ctx, geom, props, args)</Code>, besides
+            <Code>ctx</Code> .
+          </Text>
         ) : (
           <Text>
             <Code>registerPaint</Code>接入的class中的<Code>paint</Code>函数除了
@@ -440,19 +500,24 @@ const Blog20210331 = () => {
         )}
         <List>
           {i18n.language === "en" ? (
-            <List.Item w="calc(100% - 20px)"> </List.Item>
+            <List.Item w="calc(100% - 20px)">
+              <Code>ctx</Code> is the context of <Code>canvas</Code> drawing
+            </List.Item>
           ) : (
             <List.Item w="calc(100% - 20px)">
-              <Code>ctx</Code>可以认为是<Code>canvas</Code>的绘制上下文。
+              <Code>ctx</Code>可以认为是<Code>canvas</Code>的绘制上下文
             </List.Item>
           )}
           <List.Item w="calc(100% - 20px)">{t("20210331.sec6.p5")}</List.Item>
           <List.Item w="calc(100% - 20px)">{t("20210331.sec6.p6")}</List.Item>
           {i18n.language === "en" ? (
-            <List.Item w="calc(100% - 20px)"> </List.Item>
+            <List.Item w="calc(100% - 20px)">
+              The fourth paramter is the extra array of paramters to be used in{" "}
+              <Code>paint</Code> (Chrome 89+)
+            </List.Item>
           ) : (
             <List.Item w="calc(100% - 20px)">
-              第四个参数是在css中调用<Code>paint</Code>时的参数数组。（Chrome
+              第四个参数是在css中调用<Code>paint</Code>时的参数数组。(Chrome
               89+)
             </List.Item>
           )}

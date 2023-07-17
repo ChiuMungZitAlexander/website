@@ -17,7 +17,7 @@ const BLOGS_EN = [
   {
     id: "20210331",
     title: "Draw Xiaomi new logo by pure CSS",
-    digest: `Previous synopsis  Xiaomi released their new logo today and it is said that this was charged RMB 2M. Mr Leibs always does good at marketing. There are also rumors that one-line code is not worth 2M.`,
+    digest: `Synopsis  Xiaomi released their new logo today and it is said that this was charged RMB 2M. Mr Leibs always does good at marketing. There are also rumors that one-line code is not worth 2M.`,
     tag: "tech",
     thumb: "/blogs/20210331/thumb.png",
     min_read: 12,
