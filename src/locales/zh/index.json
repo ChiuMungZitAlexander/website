@@ -1,0 +1,28 @@
+{
+  "about": "关于",
+  "about.title": "Alexander ZHÀO | 关于",
+  "about.intro.1": "我是 Alexander ZHÀO",
+  "about.intro.2": "Web3开发者",
+  "about.intro.2.sub": "(Typescript/Solidity/Rust)",
+  "about.intro.3": "中音萨克斯手",
+
+  "blogs": "博客",
+  "blogs.title": "Alexander ZHÀO | 博客",
+  "blogs.min_read_one": "分钟阅读",
+  "blogs.min_read_other": "分钟阅读",
+  "blogs.tech": "技术",
+  "blogs.journal": "随笔",
+  "blogs.pay_wechat": "微信打赏",
+  "blogs.pay_wechat.desc": "长按手机屏幕",
+  "blogs.eth": "以太坊地址",
+  "blogs.buy_me_coffee": "帮我买杯咖啡吧 ☕️",
+
+  "music": "音乐",
+  "music.title": "Alexander ZHÀO | 音乐",
+
+  "404.not_found": "未找到页面",
+  "404.desc": "",
+
+  "coming_soon": "即将上线",
+  "more": "更多"
+}

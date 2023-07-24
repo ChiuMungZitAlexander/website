@@ -1,30 +1,19 @@
-import { useState } from "react";
-import { useTranslation } from "react-i18next";
-import {
-  Container,
-  ScrollArea,
-  Title,
-  Flex,
-  Card,
-  Image,
-  Text,
-  ActionIcon,
-  AspectRatio,
-  createStyles,
-  rem,
-  useMantineColorScheme,
-} from "@mantine/core";
-import { IconPlayerPlay } from "@tabler/icons-react";
+import * as React from "react";
+import { graphql } from "gatsby";
+import { useTranslation } from "gatsby-plugin-react-i18next";
+import { Title, Container, Grid, rem } from "@mantine/core";
 
-import WaveSurferPlayer from "../../components/player";
+import Layout, { MAX_WIDTH } from "@/layouts";
+import WaveSurferPlayer from "@/components/player";
 
-import type { PlayList } from "../../types/playlist";
+import type { PlayList } from "@/types/playlist";
 
 const ALBUMS = [
   {
     id: "album_0",
     name: "Album 0",
-    thumb: "/albums/album_0/thumb.jpg",
+    // thumb: "/albums/album_0/thumb.jpg",
+    thumb: "",
     list: [
       {
         index: 0,
@@ -36,112 +25,64 @@ const ALBUMS = [
   },
 ];
 
-const useStyles = createStyles((theme) => ({
-  container: {
-    "&:hover": {
-      ".icon-container": {
-        display: "block",
-      },
-    },
-
-    [theme.fn.smallerThan("sm")]: {
-      "&": {
-        ".icon-container": {
-          display: "block !important",
-        },
-      },
-    },
-  },
-
-  card: {
-    [theme.fn.largerThan("xl")]: {
-      width: "calc((100% - 56px) / 8)",
-    },
-    [theme.fn.largerThan("lg")]: {
-      width: "calc((100% - 40px) / 6)",
-    },
-    [theme.fn.largerThan("sm")]: {
-      width: "calc((100% - 24px) / 4)",
-    },
-    maxWidth: "360px",
-    width: "calc((100% - 8px) / 2)",
-  },
-
-  iconContainer: {
-    display: "none",
-    left: "50%",
-    opacity: 0.5,
-    position: "absolute",
-    top: "50%",
-    transform: "translate(-50%,-50%)",
-  },
-
-  icon: {},
-}));
-
-const Music = () => {
-  const { theme, classes, cx } = useStyles();
-  const { colorScheme } = useMantineColorScheme();
+const MusicPage = () => {
   const { t } = useTranslation();
 
-  const [playList] = useState<PlayList>(ALBUMS[0]);
+  const [playList] = React.useState<PlayList>(ALBUMS[0]);
 
   return (
-    <Container maw={rem(1080)} pb={rem(128)} pt={rem(96)}>
-      <Title order={3} transform="capitalize">
+    <Layout>
+      <Title order={3} tt="capitalize">
         {t("music")}
       </Title>
-      <ScrollArea>
-        <Flex gap={rem(8)} pt={rem(32)} wrap="wrap">
-          {ALBUMS.map((_album) => (
-            <Card
-              className={classes.card}
-              key={_album.id}
-              padding="sm"
-              radius="md"
-              shadow="sm"
-              withBorder
-            >
-              <Card.Section className={classes.container} pos="relative">
-                <AspectRatio m={0} p={0} ratio={1}>
-                  <Image alt={_album.name} src={_album.thumb} />
-                </AspectRatio>
-                <div className={cx(classes.iconContainer, "icon-container")}>
-                  <ActionIcon
-                    className={classes.icon}
-                    size={rem(64)}
-                    variant="transparent"
-                  >
-                    <IconPlayerPlay size={rem(64)} />
-                  </ActionIcon>
-                </div>
-              </Card.Section>
-              <Flex direction="column" pt={rem(8)}>
-                <Text size="lg" weight={700}>
-                  {_album.name}
-                </Text>
-                <Text color={theme.colors.gray[6]} size="sm">
-                  {_album.date}
-                </Text>
-              </Flex>
-            </Card>
-          ))}
-        </Flex>
-      </ScrollArea>
+      <Container fluid pb={rem(120)} pt="lg" px={0}>
+        <Grid>
+          <Grid.Col lg={3} md={6}>
+            1
+          </Grid.Col>
+          <Grid.Col lg={3} md={6}>
+            2
+          </Grid.Col>
+          <Grid.Col lg={3} md={6}>
+            3
+          </Grid.Col>
+          <Grid.Col lg={3} md={6}>
+            4
+          </Grid.Col>
+        </Grid>
+      </Container>
       <Container
-        bg={colorScheme === "dark" ? theme.colors.dark[7] : "#fff"}
         bottom={0}
+        fluid
         left={0}
-        maw={rem(1080)}
+        maw={rem(MAX_WIDTH)}
         pb={16}
         pos="fixed"
         px={16}
         right={0}
+        sx={(theme) => ({
+          backgroundColor:
+            theme.colorScheme === "dark" ? theme.colors.dark[7] : "#fff",
+        })}
       >
         <WaveSurferPlayer playlist={playList} />
       </Container>
-    </Container>
+    </Layout>
   );
 };
 
-export default Music;
+export default MusicPage;
+
+export const query = graphql`
+  query ($language: String!) {
+    locales: allLocale(filter: { language: { eq: $language } }) {
+      edges {
+        node {
+          ns
+          data
+          language
+        }
+      }
+    }
+  }
+`;

@@ -1,10 +1,9 @@
-import {
+import React, {
   useRef,
   useState,
   useEffect,
   useCallback,
   RefObject,
-  useMemo,
 } from "react";
 import {
   ActionIcon,
@@ -124,14 +123,14 @@ const useStyles = createStyles((theme) => ({
 // WaveSurfer hook
 const useWavesurfer = (
   containerRef: RefObject<HTMLElement>,
-  options: Omit<WaveSurferOptions, "container">
+  options?: Omit<WaveSurferOptions, "container">,
 ) => {
   const [wavesurfer, setWavesurfer] = useState<WaveSurfer | null>(null);
 
   // Initialize wavesurfer when the container mounts
   // or any of the props change
   useEffect(() => {
-    if (!containerRef.current) return;
+    if (!containerRef.current || !options) return;
 
     const ws = WaveSurfer.create({
       ...options,
@@ -160,25 +159,27 @@ const WaveSurferPlayer = ({
   waveSurferOptions,
 }: WaveSurferPlayerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
+
   const isMobile = useMediaQuery("(max-width: 48em)");
   const { classes, theme } = useStyles();
 
   const [currentSong, setCurrentSong] = useState(playlist.list[0]);
+  const [wsOptions, setWsOptions] = useState<
+    Omit<WaveSurferOptions, "container"> | undefined
+  >(undefined);
 
-  // useMemo to prevent useWavesurfer infinite call
-  const wsOptions = useMemo(
-    () =>
-      ({
-        autoplay: false,
-        barWidth: 2,
-        height: "auto",
-        progressColor: drawProgressGradient(),
-        url: currentSong.src,
-        waveColor: drawGradient(),
-        ...waveSurferOptions,
-      }) as Omit<WaveSurferOptions, "container">,
-    [waveSurferOptions, currentSong.src]
-  );
+  useEffect(() => {
+    setWsOptions({
+      autoplay: false,
+      barWidth: 2,
+      height: "auto",
+      progressColor: drawProgressGradient(),
+      url: currentSong.src,
+      waveColor: drawGradient(),
+      ...waveSurferOptions,
+    });
+  }, []);
+
   const wavesurfer = useWavesurfer(containerRef, wsOptions);
 
   const [isPlaying, setIsPlaying] = useState(false);
@@ -229,10 +230,8 @@ const WaveSurferPlayer = ({
           alt=""
           radius="lg"
           height={96}
-          placeholder={<IconDisc className={classes.placeholder} size={48} />}
           src={playlist.thumb}
           width={96}
-          withPlaceholder
         />
         <div className={classes.playIconContainer}>
           <ActionIcon className={classes.icon} size="3xl" variant="transparent">
@@ -302,6 +301,8 @@ const WaveSurferPlayer = ({
 export default WaveSurferPlayer;
 
 const drawGradient = () => {
+  if (!document) return;
+
   const canvas = document.createElement("canvas");
   canvas.height = 48;
   const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
@@ -311,7 +312,7 @@ const drawGradient = () => {
     0,
     0,
     0,
-    canvas.height * window.devicePixelRatio
+    canvas.height * window.devicePixelRatio,
   );
   gradient.addColorStop(0, "#656666"); // Top color
   gradient.addColorStop((canvas.height * 0.6) / canvas.height, "#656666"); // Top color
@@ -324,6 +325,8 @@ const drawGradient = () => {
 };
 
 const drawProgressGradient = () => {
+  if (!document) return;
+
   const canvas = document.createElement("canvas");
   canvas.height = 48;
   const ctx = canvas.getContext("2d") as CanvasRenderingContext2D;
@@ -332,24 +335,24 @@ const drawProgressGradient = () => {
     0,
     0,
     0,
-    canvas.height * window.devicePixelRatio
+    canvas.height * window.devicePixelRatio,
   );
   progressGradient.addColorStop(0, "#EE772F"); // Top color
   progressGradient.addColorStop(
     (canvas.height * 0.6) / canvas.height,
-    "#EB4926"
+    "#EB4926",
   ); // Top color
   progressGradient.addColorStop(
     (canvas.height * 0.6 + 1) / canvas.height,
-    "#ffffff"
+    "#ffffff",
   ); // White line
   progressGradient.addColorStop(
     (canvas.height * 0.6 + 2) / canvas.height,
-    "#ffffff"
+    "#ffffff",
   ); // White line
   progressGradient.addColorStop(
     (canvas.height * 0.6 + 3) / canvas.height,
-    "#F6B094"
+    "#F6B094",
   ); // Bottom color
   progressGradient.addColorStop(1, "#F6B094"); // Bottom color
 

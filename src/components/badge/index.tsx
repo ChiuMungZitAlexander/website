@@ -1,5 +1,6 @@
+import * as React from "react";
 import { Badge as MantineBadge, Center, rem } from "@mantine/core";
-import { IconCode, IconNotebook, IconEyeglass } from "@tabler/icons-react";
+import { IconCode, IconNotebook, IconHourglassHigh } from "@tabler/icons-react";
 
 export type BadgeType = "tech" | "journal" | "min_read";
 
@@ -36,7 +37,7 @@ const Badge = ({ type, children }: BadgeProps) => {
           color: "gray",
           leftSection: (
             <Center>
-              <IconEyeglass size={rem(16)} />
+              <IconHourglassHigh size={rem(16)} />
             </Center>
           ),
         };

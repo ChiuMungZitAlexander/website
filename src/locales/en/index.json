@@ -1,0 +1,28 @@
+{
+  "about": "about",
+  "about.title": "Alexander ZHÀO | About",
+  "about.intro.1": "I'm Alexander ZHÀO",
+  "about.intro.2": "Web3 developer",
+  "about.intro.2.sub": "(Typescript/Solidity/Rust)",
+  "about.intro.3": "Alto saxophonist",
+
+  "blogs": "blogs",
+  "blogs.title": "Alexander ZHÀO | Blogs",
+  "blogs.min_read_one": "minute read",
+  "blogs.min_read_other": "minutes read",
+  "blogs.tech": "tech",
+  "blogs.journal": "journal",
+  "blogs.pay_wechat": "Wechat reward",
+  "blogs.pay_wechat.desc": "Tap and hold",
+  "blogs.eth": "ETH",
+  "blogs.buy_me_coffee": "Buy me a coffee ☕️",
+
+  "music": "music",
+  "music.title": "Alexander ZHÀO | Music",
+
+  "404.not_found": "Page not found",
+  "404.desc": "",
+
+  "coming_soon": "coming soon",
+  "more": "more"
+}

@@ -1,3 +1,8 @@
+node_modules/
+.cache/
+public
+src/gatsby-types.d.ts
+
 # Logs
 logs
 *.log
@@ -53,15 +58,16 @@ typings/
 *.tgz
 
 # dotenv environment variable files
-.env*
+.env.*
+!.env.example
 
 # Mac files
 .DS_Store
 
 # Yarn
+.yarn/*
 yarn-error.log
-.pnp/
-.pnp.js
+.pnp.*
 # Yarn Integrity file
 .yarn-integrity
 
@@ -69,7 +75,4 @@ yarn-error.log
 dist/
 
 **/.yalc
-**/yalc.lock
 
-# Package-lock.json
-**/*/package-lock.json
