@@ -39,8 +39,8 @@ dependencies:
     specifier: ^6.14.1
     version: 6.14.1(react-dom@18.2.0)(react@18.2.0)
   wavesurfer.js:
-    specifier: 7.0.3
-    version: 7.0.3
+    specifier: 7.0.6
+    version: 7.0.6
 
 devDependencies:
   '@types/node':
@@ -2441,8 +2441,8 @@ packages:
     engines: {node: '>=0.10.0'}
     dev: false
 
-  /wavesurfer.js@7.0.3:
-    resolution: {integrity: sha512-gJ3P+Bd3Q4E8qETjjg0pneaVqm2J7jegG2Cc6vqEF5YDDKQ3m8sKsvVfgVhJkacKkO9jFAGDu58Hw4zLr7xD0A==}
+  /wavesurfer.js@7.0.6:
+    resolution: {integrity: sha512-Pkg0iBnIsgl9k4F938S9/RBEqklt9jPeeo59mmKimbUoxcKr11l7rsu9qHkGJvkl1hhx33lcSz0cA9F/qwFngQ==}
     dev: false
 
   /which@2.0.2:
