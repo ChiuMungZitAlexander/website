@@ -19,7 +19,7 @@ const config: GatsbyConfig = {
   // Learn more at: https://gatsby.dev/graphql-typegen
   graphqlTypegen: true,
   plugins: [
-    "gatsby-plugin-image",
+    `gatsby-plugin-image`,
     {
       resolve: "gatsby-plugin-manifest",
       options: {
@@ -62,9 +62,10 @@ const config: GatsbyConfig = {
       resolve: `gatsby-plugin-react-i18next`,
       options: {
         localeJsonSourceName: `locales`, // name given to `gatsby-source-filesystem` plugin.
-        languages: [`en`, `zh`],
+        languages: [`zh`, `en`],
         defaultLanguage: `zh`,
         fallbackLanguage: `zh`,
+        redirect: false,
         siteUrl: process.env.GATSBY_SITE_URL,
         // if you are using trailingSlash gatsby config include it here, as well (the default is 'always')
         trailingSlash: "always",
@@ -107,6 +108,17 @@ const config: GatsbyConfig = {
       },
     },
     `gatsby-plugin-mantine`,
+    {
+      resolve: `gatsby-plugin-emotion`,
+      options: {
+        // Accepts the following options, all of which are defined by `@emotion/babel-plugin` plugin.
+        // The values for each key in this example are the defaults the plugin uses.
+        sourceMap: process.env.NODE_ENV === "development",
+        autoLabel: "dev-only",
+        labelFormat: `[local]`,
+        cssPropOptimization: true,
+      },
+    },
   ],
 };
 
