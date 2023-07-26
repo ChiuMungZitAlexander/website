@@ -20,12 +20,7 @@ import {
   useMantineColorScheme,
   type CSSObject,
 } from "@mantine/core";
-import {
-  useHeadroom,
-  useDisclosure,
-  useMediaQuery,
-  useWindowScroll,
-} from "@mantine/hooks";
+import { useDisclosure, useMediaQuery, useWindowScroll } from "@mantine/hooks";
 import {
   IconBrandGithub,
   IconBrandFacebook,
@@ -98,6 +93,7 @@ type LayoutProps = SingleNode & {
 
 export const MAX_WIDTH = 1440;
 export const HEADER_HEIGHT = 72;
+const HEADER_ROOM = 120;
 
 const Layout = ({
   children,
@@ -109,12 +105,31 @@ const Layout = ({
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
   const { classes } = useStyles();
 
-  const pinned = useHeadroom({ fixedAt: 120 });
   const [opened, { toggle }] = useDisclosure(false);
-  const [scroll, scrollTo] = useWindowScroll();
+  const [{ y }, scrollTo] = useWindowScroll();
 
   const { t } = useTranslation();
   const { language, changeLanguage } = useI18next();
+
+  const lastScrollTop = React.useRef(0);
+
+  const [pinned, setPinned] = React.useState(true);
+
+  React.useEffect(() => {
+    if (y <= HEADER_ROOM) {
+      setPinned(true);
+      lastScrollTop.current = y <= 0 ? 0 : y;
+      return;
+    }
+
+    if (y > lastScrollTop.current) {
+      setPinned(false);
+    } else if (y < lastScrollTop.current) {
+      setPinned(true);
+    }
+
+    lastScrollTop.current = y <= 0 ? 0 : y;
+  }, [y]);
 
   return (
     <AppShell
@@ -490,17 +505,17 @@ const Layout = ({
       <Container maw={rem(MAX_WIDTH)} pt={rem(72 + 24)} p={0}>
         {children}
       </Container>
-      <Affix position={{ bottom: rem(16), right: rem(16) }}>
-        <Transition mounted={scroll.y > 0} transition="slide-up">
+      <Affix position={{ bottom: rem(32), right: rem(32) }}>
+        <Transition mounted={y > 0} transition="slide-up">
           {(transitionStyles) => (
             <>
               {showGoBackAffix && (
                 <ActionIcon
                   color="primary"
-                  mb="md"
+                  mb="lg"
                   onClick={() => navigate(-1)}
                   radius="xl"
-                  size="md"
+                  size="lg"
                   style={transitionStyles}
                   variant="filled"
                 >
@@ -511,7 +526,7 @@ const Layout = ({
                 color="primary"
                 onClick={() => scrollTo({ y: 0 })}
                 radius="xl"
-                size="md"
+                size="lg"
                 style={transitionStyles}
                 variant="filled"
               >

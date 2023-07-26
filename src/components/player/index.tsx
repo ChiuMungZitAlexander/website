@@ -19,7 +19,6 @@ import {
   IconPlayerPause,
   IconPlayerSkipForward,
   IconPlayerSkipBack,
-  IconDisc,
 } from "@tabler/icons-react";
 import WaveSurfer from "wavesurfer.js";
 import Marquee from "react-fast-marquee";
