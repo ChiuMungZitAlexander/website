@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { useTranslation } from "gatsby-plugin-react-i18next";
+import { useTranslation, Link } from "gatsby-plugin-react-i18next";
 import {
   GatsbyImage,
   StaticImage,
@@ -15,9 +15,11 @@ import {
   Group,
   Flex,
   Text,
-  rem,
   Divider,
+  ActionIcon,
+  rem,
 } from "@mantine/core";
+import { IconArrowLeft } from "@tabler/icons-react";
 
 import Layout from "@/layouts";
 import Badge, { type BadgeType } from "@/components/badge";
@@ -34,7 +36,7 @@ const Blog = ({ data }: BlogProps) => {
   const { t } = useTranslation();
 
   return (
-    <Layout showGoBackAffix>
+    <Layout showGoBackAffix goBackPath="/blogs">
       {data?.markdownRemark && (
         <Container maw={rem(1080)} p={0} pb="md">
           <Box h={rem(192)} pos="relative" style={{ overflow: "hidden" }}>
@@ -48,13 +50,20 @@ const Blog = ({ data }: BlogProps) => {
               objectFit="cover"
               style={{ height: "100%", width: "100%" }}
             />
+            <Box left={rem(16)} pos="absolute" top={rem(16)}>
+              <Link to="/blogs">
+                <ActionIcon color="blue" radius="xl" size="xl" variant="filled">
+                  <IconArrowLeft />
+                </ActionIcon>
+              </Link>
+            </Box>
             <MantineBadge
-              bottom={8}
+              bottom={rem(8)}
               color="gray"
               opacity={0.5}
               pos="absolute"
               radius="xs"
-              right={8}
+              right={rem(8)}
               size="sm"
               variant="filled"
             >
