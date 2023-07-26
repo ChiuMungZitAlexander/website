@@ -14,14 +14,13 @@ export const onRenderBody = ({
 }: RenderBodyArgs) => {
   setPreBodyComponents([
     <div className="loader-container" id="loader-container" key="loader">
-      <div className="loadingio-spinner-dual-ball-qis32421gx">
-        <div className="ldio-ofdtqfwc82f">
-          <div></div>
-          <div></div>
-          <div></div>
-        </div>
+      <div className="lds-ellipsis">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
       </div>
     </div>,
   ]);
-  // setPostBodyComponents([<script key="preloader" src="/preloader.js" />]);
+  setPostBodyComponents([<script key="preloader" src="/preloader.js" />]);
 };
