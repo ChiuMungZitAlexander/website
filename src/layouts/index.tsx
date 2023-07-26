@@ -39,8 +39,6 @@ import {
   IconArrowBack,
 } from "@tabler/icons-react";
 
-import { MantineUIProvider } from "@/contexts/mantine";
-
 import type { SingleNode } from "@/types/node";
 
 const LINKS = [
@@ -527,10 +525,4 @@ const Layout = ({
   );
 };
 
-const LayoutWrapper = (props: LayoutProps) => (
-  <MantineUIProvider>
-    <Layout {...props} />
-  </MantineUIProvider>
-);
-
-export default LayoutWrapper;
+export default Layout;
