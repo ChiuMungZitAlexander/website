@@ -1,5 +1,4 @@
 import * as React from "react";
-import { navigate } from "gatsby";
 import { Link, useTranslation, useI18next } from "gatsby-plugin-react-i18next";
 import { StaticImage } from "gatsby-plugin-image";
 import {
@@ -89,6 +88,7 @@ const useStyles = createStyles((theme) => ({
 type LayoutProps = SingleNode & {
   headerStyles?: CSSObject;
   showGoBackAffix?: boolean;
+  goBackPath?: string;
 };
 
 export const MAX_WIDTH = 1440;
@@ -99,6 +99,7 @@ const Layout = ({
   children,
   headerStyles,
   showGoBackAffix = false,
+  goBackPath,
 }: LayoutProps) => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
@@ -510,17 +511,18 @@ const Layout = ({
           {(transitionStyles) => (
             <>
               {showGoBackAffix && (
-                <ActionIcon
-                  color="primary"
-                  mb="lg"
-                  onClick={() => navigate(-1)}
-                  radius="xl"
-                  size="lg"
-                  style={transitionStyles}
-                  variant="filled"
-                >
-                  <IconArrowBack size="1.125rem" />
-                </ActionIcon>
+                <Link to={goBackPath || "/"}>
+                  <ActionIcon
+                    color="primary"
+                    mb="lg"
+                    radius="xl"
+                    size="lg"
+                    style={transitionStyles}
+                    variant="filled"
+                  >
+                    <IconArrowBack size="1.125rem" />
+                  </ActionIcon>
+                </Link>
               )}
               <ActionIcon
                 color="primary"
