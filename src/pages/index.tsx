@@ -7,12 +7,13 @@ import {
   Flex,
   Text,
   Anchor,
+  ActionIcon,
   rem,
   createStyles,
   keyframes,
 } from "@mantine/core";
 import { useWindowScroll } from "@mantine/hooks";
-import { IconArrowBigDownLine } from "@tabler/icons-react";
+import { IconArrowBigDownLine, IconPlayerPlay } from "@tabler/icons-react";
 
 import Layout from "@/layouts";
 
@@ -33,38 +34,76 @@ const useStyles = createStyles(() => ({
   icon: {
     animation: `${bounce} 2s ease-in-out infinite`,
   },
+
+  visible: {
+    visibility: "visible",
+    opacity: 1,
+    transition: "opacity 1s linear",
+  },
+
+  hidden: {
+    visibility: "hidden",
+    opacity: 0,
+    transition: "visibility 1s linear, opacity 1s linear",
+  },
 }));
 
 const IndexPage = ({ data }: IndexPageProps) => {
   const { t } = useTranslation();
 
   const [{ y }] = useWindowScroll();
-  const { classes } = useStyles();
+  const { classes, cx } = useStyles();
 
   const [isMobileDevice, setIsMobileDevice] = React.useState(false);
+
+  const onPlay = () => {
+    const dom = document.getElementById("video");
+    if (dom) {
+      (dom as HTMLVideoElement).play();
+    }
+  };
 
   React.useEffect(() => {
     setIsMobileDevice(/Mobi/i.test(navigator.userAgent));
   }, []);
 
   return (
-    <Layout headerStyles={{ backgroundColor: "transparent" }}>
+    <Layout fixedHeader>
       <>
-        <Box h="100vh" mt={rem(-(72 + 24))} mx={rem(-24)}>
+        <Box
+          h="calc(100vh - 72px - 24px)"
+          mt={rem(-24)}
+          mx={rem(-24)}
+          pos="relative"
+        >
+          {isMobileDevice && (
+            <Box
+              left="calc(50% - 32px)"
+              pos="absolute"
+              style={{ zIndex: 1100 }}
+              top="calc(40% - 32px)"
+            >
+              <ActionIcon
+                onClick={() => onPlay()}
+                size={rem(64)}
+                variant="transparent"
+              >
+                <IconPlayerPlay color="#ffffff" opacity={0.5} size={rem(64)} />
+              </ActionIcon>
+            </Box>
+          )}
           <video
             autoPlay
-            controls={isMobileDevice ? true : false}
+            controls={false}
             height="80%"
+            id="video"
             loop
             muted
             playsInline
             poster="https://picsum.photos/1200"
             style={{
-              left: 0,
               objectFit: "cover",
-              position: "absolute",
-              right: 0,
-              top: 0,
+              zIndex: 1099,
             }}
             width="100%"
           >
@@ -73,10 +112,12 @@ const IndexPage = ({ data }: IndexPageProps) => {
               type="video/mp4"
             />
           </video>
-          <Flex align="center" direction="column-reverse" h="100%">
+          <Flex align="center" direction="column-reverse" h="20%">
             <IconArrowBigDownLine
-              className={classes.icon}
-              display={y > 120 ? "none" : "block"}
+              className={cx(
+                classes.icon,
+                y > 120 ? classes.hidden : classes.visible,
+              )}
             />
           </Flex>
         </Box>

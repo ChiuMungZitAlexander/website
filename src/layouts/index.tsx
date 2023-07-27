@@ -88,13 +88,19 @@ const useStyles = createStyles((theme) => ({
 type LayoutProps = SingleNode & {
   headerStyles?: CSSObject;
   goBackPath?: string;
+  fixedHeader?: boolean;
 };
 
 export const MAX_WIDTH = 1440;
 export const HEADER_HEIGHT = 72;
 const HEADER_ROOM = 120;
 
-const Layout = ({ children, headerStyles, goBackPath }: LayoutProps) => {
+const Layout = ({
+  children,
+  headerStyles,
+  goBackPath,
+  fixedHeader = false,
+}: LayoutProps) => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -144,7 +150,9 @@ const Layout = ({ children, headerStyles, goBackPath }: LayoutProps) => {
                   theme.colorScheme === "dark" ? theme.colors.dark[7] : "#fff",
                 display: "flex",
                 justifyContent: "space-between",
-                transform: `translate3d(0, ${pinned ? 0 : rem(-110)}, 0)`,
+                transform: fixedHeader
+                  ? "none"
+                  : `translate3d(0, ${pinned ? 0 : rem(-110)}, 0)`,
                 transition: "transform 400ms ease",
                 zIndex: 9999,
                 ...headerStyles,
@@ -336,7 +344,9 @@ const Layout = ({ children, headerStyles, goBackPath }: LayoutProps) => {
                   theme.colorScheme === "dark" ? theme.colors.dark[7] : "#fff",
                 display: "flex",
                 justifyContent: "space-between",
-                transform: `translate3d(0, ${pinned ? 0 : rem(-110)}, 0)`,
+                transform: fixedHeader
+                  ? "none"
+                  : `translate3d(0, ${pinned ? 0 : rem(-110)}, 0)`,
                 transition: "transform 400ms ease",
                 zIndex: 9999,
                 ...headerStyles,
