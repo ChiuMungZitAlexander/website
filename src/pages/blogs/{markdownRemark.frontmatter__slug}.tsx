@@ -36,7 +36,7 @@ const Blog = ({ data }: BlogProps) => {
   const { t } = useTranslation();
 
   return (
-    <Layout showGoBackAffix goBackPath="/blogs">
+    <Layout goBackPath="/blogs">
       {data?.markdownRemark && (
         <Container maw={rem(1080)} p={0} pb="md">
           <Box h={rem(192)} pos="relative" style={{ overflow: "hidden" }}>

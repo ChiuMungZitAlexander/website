@@ -87,7 +87,6 @@ const useStyles = createStyles((theme) => ({
 
 type LayoutProps = SingleNode & {
   headerStyles?: CSSObject;
-  showGoBackAffix?: boolean;
   goBackPath?: string;
 };
 
@@ -95,12 +94,7 @@ export const MAX_WIDTH = 1440;
 export const HEADER_HEIGHT = 72;
 const HEADER_ROOM = 120;
 
-const Layout = ({
-  children,
-  headerStyles,
-  showGoBackAffix = false,
-  goBackPath,
-}: LayoutProps) => {
+const Layout = ({ children, headerStyles, goBackPath }: LayoutProps) => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
   const { colorScheme, toggleColorScheme } = useMantineColorScheme();
@@ -512,8 +506,8 @@ const Layout = ({
         <Transition mounted={y > 0} transition="slide-up">
           {(transitionStyles) => (
             <>
-              {showGoBackAffix && (
-                <Link to={goBackPath || "/"}>
+              {!!goBackPath && (
+                <Link to={goBackPath}>
                   <ActionIcon
                     color="primary"
                     mb="lg"
