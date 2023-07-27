@@ -24,7 +24,7 @@ import WaveSurfer from "wavesurfer.js";
 import Marquee from "react-fast-marquee";
 
 import type { WaveSurferOptions } from "wavesurfer.js";
-import type { PlayList } from "../../types/playlist";
+import type { Album } from "@/types/album";
 
 const useStyles = createStyles((theme) => ({
   container: {
@@ -147,14 +147,14 @@ const useWavesurfer = (
 };
 
 type WaveSurferPlayerProps = {
-  playlist: PlayList;
+  album: Album;
   waveSurferOptions?: WaveSurferOptions;
 };
 
 // Create a React component that will render wavesurfer.
 // Props are wavesurfer options.
 const WaveSurferPlayer = ({
-  playlist,
+  album,
   waveSurferOptions,
 }: WaveSurferPlayerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
@@ -162,7 +162,7 @@ const WaveSurferPlayer = ({
   const isMobile = useMediaQuery("(max-width: 48em)");
   const { classes, theme } = useStyles();
 
-  const [currentSong, setCurrentSong] = useState(playlist.list[0]);
+  const [currentSong, setCurrentSong] = useState(album.songs[0]);
   const [wsOptions, setWsOptions] = useState<
     Omit<WaveSurferOptions, "container"> | undefined
   >(undefined);
@@ -213,13 +213,13 @@ const WaveSurferPlayer = ({
   const onNextSong = () => {
     if (currentSong.index <= 1) return;
 
-    setCurrentSong(playlist.list[currentSong.index + 1]);
+    setCurrentSong(album.songs[currentSong.index + 1]);
   };
 
   const onPrevSong = () => {
-    if (currentSong.index >= playlist.list.length - 1) return;
+    if (currentSong.index >= album.songs.length - 1) return;
 
-    setCurrentSong(playlist.list[currentSong.index - 1]);
+    setCurrentSong(album.songs[currentSong.index - 1]);
   };
 
   return (
@@ -229,7 +229,7 @@ const WaveSurferPlayer = ({
           alt=""
           radius="lg"
           height={96}
-          src={playlist.thumb}
+          src={album.thumbnail}
           width={96}
         />
         <div className={classes.playIconContainer}>
@@ -284,7 +284,7 @@ const WaveSurferPlayer = ({
             </ActionIcon>
             <ActionIcon
               className={classes.icon}
-              disabled={currentSong.index >= playlist.list.length - 1}
+              disabled={currentSong.index >= album.songs.length - 1}
               onClick={() => onNextSong()}
               variant="transparent"
             >

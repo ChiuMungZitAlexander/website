@@ -336,15 +336,17 @@ const Layout = ({
               py="md"
               pos="fixed"
               right={0}
-              sx={{
+              sx={(theme) => ({
                 alignItems: "center",
+                backgroundColor:
+                  theme.colorScheme === "dark" ? theme.colors.dark[7] : "#fff",
                 display: "flex",
                 justifyContent: "space-between",
                 transform: `translate3d(0, ${pinned ? 0 : rem(-110)}, 0)`,
                 transition: "transform 400ms ease",
                 zIndex: 9999,
                 ...headerStyles,
-              }}
+              })}
               top={0}
             >
               <Group p={0} spacing="sm">

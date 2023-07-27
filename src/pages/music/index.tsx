@@ -1,72 +1,68 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { Title, Container, Grid, rem } from "@mantine/core";
+import { GatsbyImage, IGatsbyImageData, getImage } from "gatsby-plugin-image";
+import { Title, Center, Grid, AspectRatio, Text, rem } from "@mantine/core";
 
-import Layout, { MAX_WIDTH } from "@/layouts";
-import WaveSurferPlayer from "@/components/player";
+import Layout from "@/layouts";
 
-import type { PlayList } from "@/types/playlist";
+import type { Album } from "@/types/album";
 
-const ALBUMS = [
-  {
-    id: "album_0",
-    name: "Album 0",
-    // thumb: "/albums/album_0/thumb.jpg",
-    thumb: "",
-    list: [
-      {
-        index: 0,
-        title: "Zik Joeng Zeoi Liu",
-        src: "/albums/album_0/zik_yoeng_zeoi_liu.mp3",
-      },
-    ],
-    date: "2019-03-21",
-  },
-];
+type MusicPageProps = {
+  data?: {
+    allAlbum?: {
+      edges?: {
+        node: Album;
+      }[];
+    };
+  };
+};
 
-const MusicPage = () => {
+const MusicPage = ({ data }: MusicPageProps) => {
   const { t } = useTranslation();
 
-  const [playList] = React.useState<PlayList>(ALBUMS[0]);
+  const albums = React.useMemo(
+    () => data?.allAlbum?.edges?.map((_edge) => _edge.node) || [],
+    [data?.allAlbum?.edges],
+  );
 
   return (
     <Layout>
-      <Title order={3} tt="capitalize">
+      <Title mb="lg" order={3} tt="capitalize">
         {t("music")}
       </Title>
-      <Container fluid pb={rem(120)} pt="lg" px={0}>
-        <Grid>
-          <Grid.Col lg={3} md={6}>
-            1
+      <Center py={rem(80)}>
+        <Text>hello</Text>
+      </Center>
+      <Grid pb="sm" gutter="md">
+        {albums.map((_album) => (
+          <Grid.Col
+            key={_album.key}
+            span={6}
+            xs={6}
+            sm={6}
+            md={3}
+            lg={2}
+            xl={2}
+          >
+            <AspectRatio ratio={1}>
+              <GatsbyImage
+                alt="avatar"
+                image={getImage(data?.imageSharp || null) as IGatsbyImageData}
+                imgStyle={{
+                  display: "block",
+                  height: "100%",
+                  width: "100%",
+                }}
+                objectFit="cover"
+              />
+            </AspectRatio>
+            <Title order={4} truncate>
+              {_album.name}
+            </Title>
           </Grid.Col>
-          <Grid.Col lg={3} md={6}>
-            2
-          </Grid.Col>
-          <Grid.Col lg={3} md={6}>
-            3
-          </Grid.Col>
-          <Grid.Col lg={3} md={6}>
-            4
-          </Grid.Col>
-        </Grid>
-      </Container>
-      <Container
-        bottom={0}
-        fluid
-        left={0}
-        maw={rem(MAX_WIDTH)}
-        pb={16}
-        pos="fixed"
-        px={16}
-        right={0}
-        sx={(theme) => ({
-          backgroundColor:
-            theme.colorScheme === "dark" ? theme.colors.dark[7] : "#fff",
-        })}
-      >
-        <WaveSurferPlayer playlist={playList} />
-      </Container>
+        ))}
+      </Grid>
     </Layout>
   );
 };
@@ -75,6 +71,22 @@ export default MusicPage;
 
 export const query = graphql`
   query ($language: String!) {
+    allAlbum {
+      edges {
+        node {
+          id
+          key
+          name
+          thumbnail
+          songs {
+            index
+            name
+            src
+          }
+          date
+        }
+      }
+    }
     locales: allLocale(filter: { language: { eq: $language } }) {
       edges {
         node {
