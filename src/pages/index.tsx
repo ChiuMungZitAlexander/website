@@ -16,6 +16,7 @@ import { useWindowScroll, useViewportSize } from "@mantine/hooks";
 import { IconArrowBigDownLine, IconPlayerPlay } from "@tabler/icons-react";
 
 import Layout from "@/layouts";
+import SEO from "@/components/seo";
 
 type IndexPageProps = {
   data?: {
@@ -102,6 +103,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
   return (
     <Layout fixedHeader headerStyles={{ backgroundColor: "transparent" }}>
       <>
+        <SEO title={t("about.title")} />
         <Box
           h="100vh"
           left={0}
