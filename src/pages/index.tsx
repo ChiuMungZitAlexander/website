@@ -1,5 +1,5 @@
 import * as React from "react";
-import { graphql } from "gatsby";
+import { graphql, Script } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
 import { GatsbyImage, IGatsbyImageData, getImage } from "gatsby-plugin-image";
 import {
@@ -12,7 +12,7 @@ import {
   createStyles,
   keyframes,
 } from "@mantine/core";
-import { useWindowScroll } from "@mantine/hooks";
+import { useWindowScroll, useViewportSize } from "@mantine/hooks";
 import { IconArrowBigDownLine, IconPlayerPlay } from "@tabler/icons-react";
 
 import Layout from "@/layouts";
@@ -51,6 +51,7 @@ const useStyles = createStyles(() => ({
 const IndexPage = ({ data }: IndexPageProps) => {
   const { t } = useTranslation();
 
+  const { height, width } = useViewportSize();
   const [{ y }] = useWindowScroll();
   const { classes, cx } = useStyles();
 
@@ -110,25 +111,47 @@ const IndexPage = ({ data }: IndexPageProps) => {
                 </ActionIcon>
               </Box>
             )}
-            <video
-              autoPlay
-              controls={false}
-              height="100%"
-              id="video"
-              loop
-              muted
-              playsInline
-              poster="https://picsum.photos/1200"
-              style={{
-                objectFit: "cover",
-              }}
-              width="100%"
-            >
-              <source
-                src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
-                type="video/mp4"
-              />
-            </video>
+            {width / height > 1 ? (
+              <video
+                autoPlay
+                controls={false}
+                height="100%"
+                id="video"
+                loop
+                muted
+                playsInline
+                poster={`${process.env.GATSBY_CDN_URL}/poster_landscape.jpg`}
+                style={{
+                  objectFit: "cover",
+                }}
+                width="100%"
+              >
+                <source
+                  src={`${process.env.GATSBY_CDN_URL}/home_landscape.mp4`}
+                  type="video/mp4"
+                />
+              </video>
+            ) : (
+              <video
+                autoPlay
+                controls={false}
+                height="100%"
+                id="video"
+                loop
+                muted
+                playsInline
+                poster={`${process.env.GATSBY_CDN_URL}/poster_portrait.jpg`}
+                style={{
+                  objectFit: "cover",
+                }}
+                width="100%"
+              >
+                <source
+                  src={`${process.env.GATSBY_CDN_URL}/home_portrait.mp4`}
+                  type="video/mp4"
+                />
+              </video>
+            )}
           </Box>
           <Flex align="center" direction="column-reverse" h="20%">
             <IconArrowBigDownLine
@@ -146,21 +169,34 @@ const IndexPage = ({ data }: IndexPageProps) => {
           justify="center"
           mt="100vh"
         >
+          <Script
+            id="first-unique-id"
+            dangerouslySetInnerHTML={{
+              __html: `if (CSS && 'paintWorklet' in CSS) CSS.paintWorklet.addModule('https://unpkg.com/smooth-corners')`,
+            }}
+          />
+
           <GatsbyImage
             alt="avatar"
             image={getImage(data?.imageSharp || null) as IGatsbyImageData}
             imgStyle={{
-              borderRadius: "32px",
               display: "block",
               height: "128px",
+              maskImage: "paint(smooth-corners)",
+              WebkitMaskImage: "paint(smooth-corners)",
               width: "128px",
+              // eslint-disable-next-line @typescript-eslint/ban-ts-comment
+              // @ts-ignore
+              "--smooth-corners": 3,
             }}
             objectFit="cover"
+            style={{ marginBottom: rem(16) }}
           />
           <Text
             align="center"
             c="gray.5"
             fw={700}
+            lh={1}
             sx={{
               fontSize: "48px",
               "@media (max-width: 48em)": {
@@ -169,6 +205,21 @@ const IndexPage = ({ data }: IndexPageProps) => {
             }}
           >
             {t("about.intro.1")}
+          </Text>
+          <Text
+            align="center"
+            c="gray.5"
+            fw={700}
+            lh={1}
+            mb="md"
+            sx={{
+              fontSize: "48px",
+              "@media (max-width: 48em)": {
+                fontSize: "32px",
+              },
+            }}
+          >
+            {t("whoami")}
           </Text>
           <Text
             align="center"
