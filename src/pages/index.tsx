@@ -38,13 +38,13 @@ const useStyles = createStyles(() => ({
   visible: {
     visibility: "visible",
     opacity: 1,
-    transition: "opacity 1s linear",
+    transition: "opacity 0.5s linear",
   },
 
   hidden: {
     visibility: "hidden",
     opacity: 0,
-    transition: "visibility 1s linear, opacity 1s linear",
+    transition: "visibility 0.5s linear, opacity 0.5s linear",
   },
 }));
 
@@ -56,7 +56,9 @@ const IndexPage = ({ data }: IndexPageProps) => {
   const { classes, cx } = useStyles();
 
   const [isMobileDevice, setIsMobileDevice] = React.useState(false);
+  const [isReady, setIsReady] = React.useState(false);
   const [isPlaying, setIsPlaying] = React.useState(false);
+  const [isPortrait, setIsPortrait] = React.useState<null | boolean>(null);
 
   const onPlay = () => {
     const dom = document.getElementById("video");
@@ -70,14 +72,13 @@ const IndexPage = ({ data }: IndexPageProps) => {
   }, []);
 
   React.useEffect(() => {
-    const dom = document.getElementById("video");
-
-    if (dom) {
-      (dom as HTMLVideoElement).addEventListener("play", () => {
-        setIsPlaying(true);
-      });
+    if (!height || !width) {
+      setIsPortrait(null);
+      return;
     }
-  }, []);
+
+    setIsPortrait(height / width < 1);
+  }, [height, width]);
 
   return (
     <Layout fixedHeader headerStyles={{ backgroundColor: "transparent" }}>
@@ -92,7 +93,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
           w="100%"
         >
           <Box h="80%" pos="relative">
-            {isMobileDevice && !isPlaying && (
+            {isMobileDevice && isReady && !isPlaying && (
               <Box
                 left="calc(50% - 32px)"
                 pos="absolute"
@@ -111,53 +112,60 @@ const IndexPage = ({ data }: IndexPageProps) => {
                 </ActionIcon>
               </Box>
             )}
-            {width / height > 1 ? (
-              <video
-                autoPlay
-                controls={false}
-                height="100%"
-                id="video"
-                loop
-                muted
-                playsInline
-                poster={`${process.env.GATSBY_CDN_URL}/poster_landscape.jpg`}
-                style={{
-                  objectFit: "cover",
-                }}
-                width="100%"
-              >
-                <source
-                  src={`${process.env.GATSBY_CDN_URL}/home_landscape.mp4`}
-                  type="video/mp4"
-                />
-              </video>
-            ) : (
-              <video
-                autoPlay
-                controls={false}
-                height="100%"
-                id="video"
-                loop
-                muted
-                playsInline
-                poster={`${process.env.GATSBY_CDN_URL}/poster_portrait.jpg`}
-                style={{
-                  objectFit: "cover",
-                }}
-                width="100%"
-              >
-                <source
-                  src={`${process.env.GATSBY_CDN_URL}/home_portrait.mp4`}
-                  type="video/mp4"
-                />
-              </video>
-            )}
+            {isPortrait !== null &&
+              (width / height > 1 ? (
+                <video
+                  autoPlay
+                  controls={false}
+                  height="100%"
+                  id="video"
+                  loop
+                  muted
+                  onCanPlay={() => setIsReady(true)}
+                  onPlay={() => setIsPlaying(true)}
+                  onPlaying={() => setIsPlaying(true)}
+                  playsInline
+                  poster={`${process.env.GATSBY_CDN_URL}/poster_landscape.jpg`}
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  width="100%"
+                >
+                  <source
+                    src={`${process.env.GATSBY_CDN_URL}/home_landscape.mp4`}
+                    type="video/mp4"
+                  />
+                </video>
+              ) : (
+                <video
+                  autoPlay
+                  controls={false}
+                  height="100%"
+                  id="video"
+                  loop
+                  muted
+                  onCanPlay={() => setIsReady(true)}
+                  onPlay={() => setIsPlaying(true)}
+                  onPlaying={() => setIsPlaying(true)}
+                  playsInline
+                  poster={`${process.env.GATSBY_CDN_URL}/poster_portrait.jpg`}
+                  style={{
+                    objectFit: "cover",
+                  }}
+                  width="100%"
+                >
+                  <source
+                    src={`${process.env.GATSBY_CDN_URL}/home_portrait.mp4`}
+                    type="video/mp4"
+                  />
+                </video>
+              ))}
           </Box>
           <Flex align="center" direction="column-reverse" h="20%">
             <IconArrowBigDownLine
               className={cx(
                 classes.icon,
-                y > 120 ? classes.hidden : classes.visible,
+                y > 72 ? classes.hidden : classes.visible,
               )}
             />
           </Flex>
@@ -172,7 +180,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
           <Script
             id="first-unique-id"
             dangerouslySetInnerHTML={{
-              __html: `if (CSS && 'paintWorklet' in CSS) CSS.paintWorklet.addModule('https://unpkg.com/smooth-corners')`,
+              __html: `if (CSS && 'paintWorklet' in CSS) CSS.paintWorklet.addModule('/paint.js')`,
             }}
           />
 
@@ -180,6 +188,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
             alt="avatar"
             image={getImage(data?.imageSharp || null) as IGatsbyImageData}
             imgStyle={{
+              borderRadius: "25%",
               display: "block",
               height: "128px",
               maskImage: "paint(smooth-corners)",
