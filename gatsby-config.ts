@@ -12,6 +12,7 @@ const config: GatsbyConfig = {
   },
   siteMetadata: {
     title: `Alexander ZHÀO`,
+    description: `Alexander Zhao personal site`,
     siteUrl: process.env.GATSBY_SITE_URL,
   },
   // More easily incorporate content into your pages through automatic TypeScript type generation and better GraphQL IntelliSense.
