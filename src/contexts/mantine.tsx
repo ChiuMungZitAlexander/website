@@ -4,16 +4,18 @@ import {
   ColorSchemeProvider,
   ColorScheme,
 } from "@mantine/core";
-import { useHotkeys, useLocalStorage } from "@mantine/hooks";
+import { useHotkeys, useLocalStorage, useColorScheme } from "@mantine/hooks";
 
 type MantineUIProviderProps = {
   children: React.ReactNode;
 };
 
 export const MantineUIProvider = ({ children }: MantineUIProviderProps) => {
+  const preferredColorScheme = useColorScheme();
+
   const [colorScheme, setColorScheme] = useLocalStorage<ColorScheme>({
     key: "mantine-color-scheme",
-    defaultValue: "light",
+    defaultValue: preferredColorScheme,
     getInitialValueInEffect: true,
   });
 
