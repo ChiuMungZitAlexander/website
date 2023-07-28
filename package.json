@@ -54,7 +54,7 @@
     "@morphis-labs/eslint-config": "^1.0.9",
     "@tanstack/eslint-plugin-query": "^5.0.0-beta.0",
     "@types/node": "^20.4.5",
-    "@types/react": "^18.2.16",
+    "@types/react": "^18.2.17",
     "@types/react-dom": "^18.2.7",
     "dotenv": "^16.3.1",
     "prettier": "3.0.0",
