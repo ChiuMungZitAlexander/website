@@ -1,7 +1,9 @@
 {
+  "whoami": "Alexander ZHÀO",
+
   "about": "关于",
   "about.title": "Alexander ZHÀO | 关于",
-  "about.intro.1": "我是 Alexander ZHÀO",
+  "about.intro.1": "我是",
   "about.intro.2": "Web3开发者",
   "about.intro.2.sub": "(Typescript/Solidity/Rust)",
   "about.intro.3": "中音萨克斯手",
