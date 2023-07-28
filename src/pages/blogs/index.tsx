@@ -14,6 +14,7 @@ import {
 
 import Layout from "@/layouts";
 import Badge, { type BadgeType } from "@/components/badge";
+import SEO from "@/components/seo";
 
 import { MarkdownRemarkData } from "@/types/md";
 
@@ -41,61 +42,66 @@ const BlogsPage = ({ data }: BlogsPageProps) => {
 
   return (
     <Layout>
-      <Title mb="lg" order={3} tt="capitalize">
-        {t("blogs")}
-      </Title>
-      <Grid pb="sm">
-        {blogs.map((_blog) => (
-          <Grid.Col key={_blog.id} lg={4} sm={6}>
-            <Link to={`/blogs${_blog.frontmatter.slug}`}>
-              <Card padding="md" radius="md" shadow="sm" withBorder>
-                <Card.Section
-                  h={rem(120)}
-                  pos="relative"
-                  style={{ overflow: "hidden" }}
-                >
-                  <GatsbyImage
-                    alt={_blog.frontmatter.slug}
-                    image={
-                      getImage(_blog.frontmatter.thumbnail) as IGatsbyImageData
-                    }
-                    objectFit="cover"
-                    objectPosition="top"
-                    style={{ height: "100%" }}
-                  />
-                  <MantineBadge
-                    bottom={8}
-                    color="gray"
-                    opacity={0.5}
-                    pos="absolute"
-                    radius="xs"
-                    right={8}
-                    size="sm"
-                    variant="filled"
+      <>
+        <SEO title={t("blogs.title")} />
+        <Title mb="lg" order={3} tt="capitalize">
+          {t("blogs")}
+        </Title>
+        <Grid pb="sm">
+          {blogs.map((_blog) => (
+            <Grid.Col key={_blog.id} lg={4} sm={6}>
+              <Link to={`/blogs${_blog.frontmatter.slug}`}>
+                <Card padding="md" radius="md" shadow="sm" withBorder>
+                  <Card.Section
+                    h={rem(120)}
+                    pos="relative"
+                    style={{ overflow: "hidden" }}
                   >
-                    {_blog.frontmatter.date}
-                  </MantineBadge>
-                </Card.Section>
-                <Text fw={700} lh={2.5} truncate>
-                  {_blog.frontmatter.title}
-                </Text>
-                <Group mb="xs" noWrap spacing="xs">
-                  <Badge type={_blog.frontmatter.type as BadgeType}>
-                    {t(`blogs.${_blog.frontmatter.type}`)}
-                  </Badge>
-                  <Badge type="min_read">
-                    {_blog.timeToRead}{" "}
-                    {t("blogs.min_read", { count: _blog.timeToRead })}
-                  </Badge>
-                </Group>
-                <Text color="dimmed" lineClamp={2} size="sm">
-                  {_blog.excerpt}
-                </Text>
-              </Card>
-            </Link>
-          </Grid.Col>
-        ))}
-      </Grid>
+                    <GatsbyImage
+                      alt={_blog.frontmatter.slug}
+                      image={
+                        getImage(
+                          _blog.frontmatter.thumbnail,
+                        ) as IGatsbyImageData
+                      }
+                      objectFit="cover"
+                      objectPosition="top"
+                      style={{ height: "100%" }}
+                    />
+                    <MantineBadge
+                      bottom={8}
+                      color="gray"
+                      opacity={0.5}
+                      pos="absolute"
+                      radius="xs"
+                      right={8}
+                      size="sm"
+                      variant="filled"
+                    >
+                      {_blog.frontmatter.date}
+                    </MantineBadge>
+                  </Card.Section>
+                  <Text fw={700} lh={2.5} truncate>
+                    {_blog.frontmatter.title}
+                  </Text>
+                  <Group mb="xs" noWrap spacing="xs">
+                    <Badge type={_blog.frontmatter.type as BadgeType}>
+                      {t(`blogs.${_blog.frontmatter.type}`)}
+                    </Badge>
+                    <Badge type="min_read">
+                      {_blog.timeToRead}{" "}
+                      {t("blogs.min_read", { count: _blog.timeToRead })}
+                    </Badge>
+                  </Group>
+                  <Text color="dimmed" lineClamp={2} size="sm">
+                    {_blog.excerpt}
+                  </Text>
+                </Card>
+              </Link>
+            </Grid.Col>
+          ))}
+        </Grid>
+      </>
     </Layout>
   );
 };
