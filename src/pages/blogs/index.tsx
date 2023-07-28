@@ -9,8 +9,11 @@ import {
   Text,
   Group,
   Badge as MantineBadge,
+  Center,
+  Blockquote,
   rem,
 } from "@mantine/core";
+import { IconDeviceImac } from "@tabler/icons-react";
 
 import Layout from "@/layouts";
 import Badge, { type BadgeType } from "@/components/badge";
@@ -47,6 +50,15 @@ const BlogsPage = ({ data }: BlogsPageProps) => {
         <Title mb="lg" order={3} tt="capitalize">
           {t("blogs")}
         </Title>
+        <Center py={rem(80)}>
+          <Blockquote
+            c="gray.6"
+            maw={728}
+            icon={<IconDeviceImac color="#228be6" size="1.5rem" />}
+          >
+            {t("blogs.quote")}
+          </Blockquote>
+        </Center>
         <Grid pb="sm">
           {blogs.map((_blog) => (
             <Grid.Col key={_blog.id} lg={4} sm={6}>

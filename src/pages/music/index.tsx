@@ -1,7 +1,8 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { Title, Center, Text, Stack, Flex, Image, rem } from "@mantine/core";
+import { Title, Center, Group, Image, Blockquote, rem } from "@mantine/core";
+import { IconMusicShare } from "@tabler/icons-react";
 
 import Layout from "@/layouts";
 import SEO from "@/components/seo";
@@ -17,25 +18,26 @@ const MusicPage = () => {
           {t("music")}
         </Title>
         <Center py={rem(80)}>
-          <Text>hello</Text>
+          <Blockquote
+            c="gray.6"
+            maw={728}
+            icon={<IconMusicShare color="#228be6" size="1.5rem" />}
+          >
+            {t("music.quote")}
+          </Blockquote>
         </Center>
         <Title mb="lg" order={3} tt="capitalize">
           {t("music.albums")}
         </Title>
-        <Stack spacing={0}>
-          <Flex h={rem(96)} wrap="nowrap">
-            <Center bg="blue" h={rem(96)} w={rem(96)}>
-              1
-            </Center>
-            <Image
-              alt="album_zero"
-              height={rem(96)}
-              src="https://picsum.photos/200"
-              width={rem(96)}
-              withPlaceholder
-            />
-          </Flex>
-        </Stack>
+        <Group>
+          <Image
+            alt="album_zero"
+            height={rem(196)}
+            src="https://picsum.photos/200"
+            width={rem(196)}
+            withPlaceholder
+          />
+        </Group>
       </>
     </Layout>
   );

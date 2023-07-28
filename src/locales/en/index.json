@@ -9,6 +9,7 @@
   "about.intro.3": "Alto saxophonist",
 
   "blogs": "blogs",
+  "blogs.quote": "My first programming language is QuickBASIC. I was unexpectedly awared the provincal second prize by a QuickBASIC slot machine program at my fifth grade. I learned C, Java and Javascript at university. I was the contributor of React and MDN community, and the author os vanilux.js as well. My current job is dev lead of Morphis Labs. I consider programming a kind of passion rather than just a job.",
   "blogs.title": "Alexander ZHÀO | Blogs",
   "blogs.min_read_one": "minute read",
   "blogs.min_read_other": "minutes read",
@@ -20,6 +21,7 @@
   "blogs.buy_me_coffee": "Buy me a coffee ☕️",
 
   "music": "music",
+  "music.quote": "My music life started from an alto saxophone -- a gift from my father. Then I learned piano, bass and musical arrangement. My genre tends to be pop jazz. I'm now the member of musicians' association of Bengbu, Anhui, and the member of HKWMC.",
   "music.title": "Alexander ZHÀO | Music",
   "music.albums": "Albums",
 
