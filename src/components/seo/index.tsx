@@ -17,19 +17,17 @@ const useSiteMetadata = () => {
 };
 
 type SEOProps = {
-  lang: string;
   title?: string;
   description?: string;
   children?: React.ReactNode;
 };
 
-const SEO = ({ lang, title, description, children }: SEOProps) => {
+const SEO = ({ title, description, children }: SEOProps) => {
   const { title: defaultTitle, description: defaultDescription } =
     useSiteMetadata();
 
   return (
     <>
-      <html lang={lang} />
       <title>{title || defaultTitle}</title>
       <meta name="description" content={description || defaultDescription} />
       {children}
