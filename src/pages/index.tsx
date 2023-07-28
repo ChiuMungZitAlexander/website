@@ -185,8 +185,6 @@ const IndexPage = ({ data }: IndexPageProps) => {
               ))}
           </Box>
           <Flex align="center" direction="column-reverse" h="20%">
-            <div>isReady {String(isReady)}</div>
-            <div>isPlaying {String(isPlaying)}</div>
             <IconArrowBigDownLine
               className={cx(
                 classes.icon,
