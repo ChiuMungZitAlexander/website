@@ -1,14 +1,19 @@
 import * as React from "react";
-import { HeadFC, PageProps, graphql } from "gatsby";
-import { Link } from "gatsby-plugin-react-i18next";
+import { graphql } from "gatsby";
+import { Link, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
 import { StaticImage } from "gatsby-plugin-image";
 import { Container, Flex, Title, Text, Button } from "@mantine/core";
 
 import { MAX_WIDTH } from "@/layouts";
+import SEO from "@/components/seo";
 
-const NotFoundPage: React.FC<PageProps> = () => {
+const NotFoundPage = () => {
+  const { t } = useTranslation();
+  const { language } = useI18next();
+
   return (
     <Container h="100vh" maw={MAX_WIDTH}>
+      <SEO lang={language} title={t("404.title")} />
       <Flex align="center" direction="column" h="100%" justify="center">
         <Flex align="center" gap={2} wrap="nowrap">
           <Title fz={120} lh={1} order={1}>
@@ -36,8 +41,6 @@ const NotFoundPage: React.FC<PageProps> = () => {
 };
 
 export default NotFoundPage;
-
-export const Head: HeadFC = () => <title>Not found</title>;
 
 export const query = graphql`
   query ($language: String!) {
