@@ -154,7 +154,7 @@ const Layout = ({
                   ? "none"
                   : `translate3d(0, ${pinned ? 0 : rem(-110)}, 0)`,
                 transition: "transform 400ms ease",
-                zIndex: 9999,
+                zIndex: 1900,
                 ...headerStyles,
               })}
               top={0}
@@ -180,6 +180,7 @@ const Layout = ({
                 }}
                 transitionProps={{ transition: "fade", duration: 200 }}
                 withCloseButton={false}
+                zIndex={1300}
               >
                 <Flex align="center" direction="column" h="100%" pb="lg">
                   <Flex
@@ -348,12 +349,12 @@ const Layout = ({
                   ? "none"
                   : `translate3d(0, ${pinned ? 0 : rem(-110)}, 0)`,
                 transition: "transform 400ms ease",
-                zIndex: 9999,
+                zIndex: 1900,
                 ...headerStyles,
               })}
               top={0}
             >
-              <Group p={0} spacing="sm">
+              <Group p={0} spacing="sm" w={250}>
                 {LINKS.map((_link) => (
                   <Link
                     activeClassName={classes.linkActive}
@@ -396,7 +397,7 @@ const Layout = ({
                 placeholder="blurred"
                 src="../images/logo.png"
               />
-              <Group noWrap position="right" spacing={0}>
+              <Group noWrap position="right" spacing={0} w={250}>
                 <a
                   href="https://github.com/ChiuMungZitAlexander"
                   rel="noreferrer"
