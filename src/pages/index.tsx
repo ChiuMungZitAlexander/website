@@ -55,6 +55,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
   const { classes, cx } = useStyles();
 
   const [isMobileDevice, setIsMobileDevice] = React.useState(false);
+  const [isPlaying, setIsPlaying] = React.useState(false);
 
   const onPlay = () => {
     const dom = document.getElementById("video");
@@ -67,51 +68,68 @@ const IndexPage = ({ data }: IndexPageProps) => {
     setIsMobileDevice(/Mobi/i.test(navigator.userAgent));
   }, []);
 
+  React.useEffect(() => {
+    const dom = document.getElementById("video");
+
+    if (dom) {
+      (dom as HTMLVideoElement).addEventListener("play", () => {
+        setIsPlaying(true);
+      });
+    }
+  }, []);
+
   return (
-    <Layout fixedHeader>
+    <Layout fixedHeader headerStyles={{ backgroundColor: "transparent" }}>
       <>
         <Box
-          h="calc(100vh - 72px - 24px)"
-          mt={rem(-24)}
-          mx={rem(-24)}
-          pos="relative"
+          h="100vh"
+          left={0}
+          pos="absolute"
+          right={0}
+          style={{ zIndex: 800 }}
+          top={0}
+          w="100%"
         >
-          {isMobileDevice && (
-            <Box
-              left="calc(50% - 32px)"
-              pos="absolute"
-              style={{ zIndex: 1100 }}
-              top="calc(40% - 32px)"
-            >
-              <ActionIcon
-                onClick={() => onPlay()}
-                size={rem(64)}
-                variant="transparent"
+          <Box h="80%" pos="relative">
+            {isMobileDevice && !isPlaying && (
+              <Box
+                left="calc(50% - 32px)"
+                pos="absolute"
+                top="calc(50% - 32px)"
               >
-                <IconPlayerPlay color="#ffffff" opacity={0.5} size={rem(64)} />
-              </ActionIcon>
-            </Box>
-          )}
-          <video
-            autoPlay
-            controls={false}
-            height="80%"
-            id="video"
-            loop
-            muted
-            playsInline
-            poster="https://picsum.photos/1200"
-            style={{
-              objectFit: "cover",
-              zIndex: 1099,
-            }}
-            width="100%"
-          >
-            <source
-              src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
-              type="video/mp4"
-            />
-          </video>
+                <ActionIcon
+                  onClick={() => onPlay()}
+                  size={rem(64)}
+                  variant="transparent"
+                >
+                  <IconPlayerPlay
+                    color="#ffffff"
+                    opacity={0.5}
+                    size={rem(64)}
+                  />
+                </ActionIcon>
+              </Box>
+            )}
+            <video
+              autoPlay
+              controls={false}
+              height="100%"
+              id="video"
+              loop
+              muted
+              playsInline
+              poster="https://picsum.photos/1200"
+              style={{
+                objectFit: "cover",
+              }}
+              width="100%"
+            >
+              <source
+                src="https://samplelib.com/lib/preview/mp4/sample-5s.mp4"
+                type="video/mp4"
+              />
+            </video>
+          </Box>
           <Flex align="center" direction="column-reverse" h="20%">
             <IconArrowBigDownLine
               className={cx(
@@ -121,7 +139,13 @@ const IndexPage = ({ data }: IndexPageProps) => {
             />
           </Flex>
         </Box>
-        <Flex align="center" direction="column" h="100vh" justify="center">
+        <Flex
+          align="center"
+          direction="column"
+          h="100vh"
+          justify="center"
+          mt="100vh"
+        >
           <GatsbyImage
             alt="avatar"
             image={getImage(data?.imageSharp || null) as IGatsbyImageData}
