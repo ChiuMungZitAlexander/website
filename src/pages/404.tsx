@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { Link, useI18next, useTranslation } from "gatsby-plugin-react-i18next";
+import { Link, useTranslation } from "gatsby-plugin-react-i18next";
 import { StaticImage } from "gatsby-plugin-image";
 import { Container, Flex, Title, Text, Button } from "@mantine/core";
 
@@ -9,11 +9,10 @@ import SEO from "@/components/seo";
 
 const NotFoundPage = () => {
   const { t } = useTranslation();
-  const { language } = useI18next();
 
   return (
     <Container h="100vh" maw={MAX_WIDTH}>
-      <SEO lang={language} title={t("404.title")} />
+      <SEO title={t("404.title")} />
       <Flex align="center" direction="column" h="100%" justify="center">
         <Flex align="center" gap={2} wrap="nowrap">
           <Title fz={120} lh={1} order={1}>

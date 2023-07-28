@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { useTranslation, useI18next, Link } from "gatsby-plugin-react-i18next";
+import { useTranslation, Link } from "gatsby-plugin-react-i18next";
 import {
   GatsbyImage,
   StaticImage,
@@ -35,12 +35,11 @@ type BlogProps = {
 
 const Blog = ({ data }: BlogProps) => {
   const { t } = useTranslation();
-  const { language } = useI18next();
 
   return (
     <Layout goBackPath="/blogs">
       <>
-        <SEO lang={language} title={t("blogs.title")} />
+        <SEO title={t("blogs.title")} />
         {data?.markdownRemark && (
           <Container maw={rem(1080)} p={0} pb="md">
             <Box h={rem(192)} pos="relative" style={{ overflow: "hidden" }}>

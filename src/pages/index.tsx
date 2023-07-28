@@ -1,6 +1,6 @@
 import * as React from "react";
 import { graphql, Script } from "gatsby";
-import { useTranslation, useI18next } from "gatsby-plugin-react-i18next";
+import { useTranslation } from "gatsby-plugin-react-i18next";
 import { GatsbyImage, IGatsbyImageData, getImage } from "gatsby-plugin-image";
 import {
   Box,
@@ -51,7 +51,6 @@ const useStyles = createStyles(() => ({
 
 const IndexPage = ({ data }: IndexPageProps) => {
   const { t } = useTranslation();
-  const { language } = useI18next();
 
   const { height, width } = useViewportSize();
   const [{ y }] = useWindowScroll();
@@ -104,7 +103,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
   return (
     <Layout fixedHeader headerStyles={{ backgroundColor: "transparent" }}>
       <>
-        <SEO lang={language} title={t("about.title")} />
+        <SEO title={t("about.title")} />
         <Box
           h="100vh"
           left={0}

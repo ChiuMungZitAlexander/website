@@ -1,19 +1,18 @@
 import * as React from "react";
 import { graphql } from "gatsby";
-import { useTranslation, useI18next } from "gatsby-plugin-react-i18next";
-import { Title, Center, Text, Grid, rem } from "@mantine/core";
+import { useTranslation } from "gatsby-plugin-react-i18next";
+import { Title, Center, Text, Stack, Flex, Image, rem } from "@mantine/core";
 
 import Layout from "@/layouts";
 import SEO from "@/components/seo";
 
 const MusicPage = () => {
   const { t } = useTranslation();
-  const { language } = useI18next();
 
   return (
     <Layout>
       <>
-        <SEO lang={language} title={t("music.title")} />
+        <SEO title={t("music.title")} />
         <Title mb="lg" order={3} tt="capitalize">
           {t("music")}
         </Title>
@@ -23,9 +22,20 @@ const MusicPage = () => {
         <Title mb="lg" order={3} tt="capitalize">
           {t("music.albums")}
         </Title>
-        <Grid>
-          <Grid.Col></Grid.Col>
-        </Grid>
+        <Stack spacing={0}>
+          <Flex h={rem(96)} wrap="nowrap">
+            <Center bg="blue" h={rem(96)} w={rem(96)}>
+              1
+            </Center>
+            <Image
+              alt="album_zero"
+              height={rem(96)}
+              src="https://picsum.photos/200"
+              width={rem(96)}
+              withPlaceholder
+            />
+          </Flex>
+        </Stack>
       </>
     </Layout>
   );

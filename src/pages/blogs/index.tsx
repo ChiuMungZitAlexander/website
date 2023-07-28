@@ -43,7 +43,7 @@ const BlogsPage = ({ data }: BlogsPageProps) => {
   return (
     <Layout>
       <>
-        <SEO lang={language} title={t("blogs.title")} />
+        <SEO title={t("blogs.title")} />
         <Title mb="lg" order={3} tt="capitalize">
           {t("blogs")}
         </Title>
