@@ -72,6 +72,25 @@ const IndexPage = ({ data }: IndexPageProps) => {
   }, []);
 
   React.useEffect(() => {
+    document.addEventListener(
+      "WeixinJSBridgeReady",
+      () => {
+        onPlay();
+      },
+      false,
+    );
+
+    return () =>
+      document.removeEventListener(
+        "WeixinJSBridgeReady",
+        () => {
+          onPlay();
+        },
+        false,
+      );
+  }, []);
+
+  React.useEffect(() => {
     if (!height || !width) {
       setIsPortrait(null);
       return;
@@ -121,7 +140,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
                   id="video"
                   loop
                   muted
-                  onCanPlay={() => setIsReady(true)}
+                  onLoadedMetadata={() => setIsReady(true)}
                   onPlay={() => setIsPlaying(true)}
                   onPlaying={() => setIsPlaying(true)}
                   playsInline
@@ -129,6 +148,8 @@ const IndexPage = ({ data }: IndexPageProps) => {
                   style={{
                     objectFit: "cover",
                   }}
+                  // eslint-disable-next-line react/no-unknown-property
+                  x5-video-player-type="h5-page"
                   width="100%"
                 >
                   <source
@@ -144,7 +165,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
                   id="video"
                   loop
                   muted
-                  onCanPlay={() => setIsReady(true)}
+                  onLoadedMetadata={() => setIsReady(true)}
                   onPlay={() => setIsPlaying(true)}
                   onPlaying={() => setIsPlaying(true)}
                   playsInline
@@ -152,6 +173,8 @@ const IndexPage = ({ data }: IndexPageProps) => {
                   style={{
                     objectFit: "cover",
                   }}
+                  // eslint-disable-next-line react/no-unknown-property
+                  x5-video-player-type="h5-page"
                   width="100%"
                 >
                   <source
@@ -162,6 +185,8 @@ const IndexPage = ({ data }: IndexPageProps) => {
               ))}
           </Box>
           <Flex align="center" direction="column-reverse" h="20%">
+            <div>isReady {String(isReady)}</div>
+            <div>isPlaying {String(isPlaying)}</div>
             <IconArrowBigDownLine
               className={cx(
                 classes.icon,
@@ -183,7 +208,6 @@ const IndexPage = ({ data }: IndexPageProps) => {
               __html: `if (CSS && 'paintWorklet' in CSS) CSS.paintWorklet.addModule('/paint.js')`,
             }}
           />
-
           <GatsbyImage
             alt="avatar"
             image={getImage(data?.imageSharp || null) as IGatsbyImageData}
