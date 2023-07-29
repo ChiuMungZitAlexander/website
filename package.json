@@ -28,7 +28,7 @@
     "@mantine/core": "^6.0.17",
     "@mantine/hooks": "^6.0.17",
     "@mdx-js/react": "^2.3.0",
-    "@tabler/icons-react": "^2.29.0",
+    "@tabler/icons-react": "^2.30.0",
     "@tanstack/react-query": "^5.0.0-beta.2",
     "gatsby": "^5.11.0",
     "gatsby-plugin-emotion": "^8.11.0",
@@ -43,12 +43,12 @@
     "gatsby-source-filesystem": "^5.11.0",
     "gatsby-transformer-remark": "^6.11.0",
     "gatsby-transformer-sharp": "^5.11.0",
-    "i18next": "^23.3.0",
+    "i18next": "^23.4.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-fast-marquee": "^1.6.0",
     "react-i18next": "^13.0.2",
-    "wavesurfer.js": "^7.0.6"
+    "wavesurfer.js": "^7.1.1"
   },
   "devDependencies": {
     "@morphis-labs/eslint-config": "^1.0.9",
