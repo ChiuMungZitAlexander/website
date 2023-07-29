@@ -73,20 +73,12 @@ const IndexPage = ({ data }: IndexPageProps) => {
   }, []);
 
   React.useEffect(() => {
-    document.addEventListener(
-      "WeixinJSBridgeReady",
-      () => {
-        onPlay();
-      },
-      false,
-    );
+    document.addEventListener("WeixinJSBridgeReady", () => onPlay(), false);
 
     return () =>
       document.removeEventListener(
         "WeixinJSBridgeReady",
-        () => {
-          onPlay();
-        },
+        () => onPlay(),
         false,
       );
   }, []);
