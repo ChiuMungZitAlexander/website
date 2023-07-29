@@ -33,7 +33,7 @@ const MusicPage = () => {
           <Image
             alt="album_zero"
             height={rem(196)}
-            src="https://picsum.photos/200"
+            src={`${process.env.GATSBY_CDN_URL}/albums/album_zero/thumbnail.jpeg`}
             width={rem(196)}
             withPlaceholder
           />
