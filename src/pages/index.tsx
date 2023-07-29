@@ -60,6 +60,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
   const [isReady, setIsReady] = React.useState(false);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [isPortrait, setIsPortrait] = React.useState<null | boolean>(null);
+  const [userAgent, setUserAgent] = React.useState("");
 
   const onPlay = () => {
     const dom = document.getElementById("video");
@@ -70,6 +71,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
 
   React.useEffect(() => {
     setIsMobileDevice(/Mobi/i.test(navigator.userAgent));
+    setUserAgent(navigator.userAgent);
   }, []);
 
   React.useEffect(() => {
@@ -179,6 +181,11 @@ const IndexPage = ({ data }: IndexPageProps) => {
               ))}
           </Box>
           <Flex align="center" direction="column-reverse" h="20%">
+            <div>isMobileDevice:{String(isMobileDevice)}</div>
+            <div>isReady:{String(isReady)}</div>
+            <div>isPlaying:{String(isPlaying)}</div>
+            <div>isPortrait:{String(isPortrait)}</div>
+            <div>userAgent:{String(userAgent)}</div>
             <IconArrowBigDownLine
               className={cx(
                 classes.icon,
