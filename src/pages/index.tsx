@@ -56,11 +56,9 @@ const IndexPage = ({ data }: IndexPageProps) => {
   const [{ y }] = useWindowScroll();
   const { classes, cx } = useStyles();
 
-  const [isMobileDevice, setIsMobileDevice] = React.useState(false);
   const [isReady, setIsReady] = React.useState(false);
   const [isPlaying, setIsPlaying] = React.useState(false);
   const [isPortrait, setIsPortrait] = React.useState<null | boolean>(null);
-  const [userAgent, setUserAgent] = React.useState("");
 
   const onPlay = () => {
     const dom = document.getElementById("video");
@@ -68,11 +66,6 @@ const IndexPage = ({ data }: IndexPageProps) => {
       (dom as HTMLVideoElement).play();
     }
   };
-
-  React.useEffect(() => {
-    setIsMobileDevice(/Mobi/i.test(navigator.userAgent));
-    setUserAgent(navigator.userAgent);
-  }, []);
 
   React.useEffect(() => {
     document.addEventListener("WeixinJSBridgeReady", () => onPlay(), false);
@@ -91,7 +84,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
       return;
     }
 
-    setIsPortrait(height / width < 1);
+    setIsPortrait(height / width > 1);
   }, [height, width]);
 
   return (
@@ -108,10 +101,11 @@ const IndexPage = ({ data }: IndexPageProps) => {
           w="100%"
         >
           <Box h="80%" pos="relative">
-            {isMobileDevice && isReady && !isPlaying && (
+            {isReady && !isPlaying && (
               <Box
                 left="calc(50% - 32px)"
                 pos="absolute"
+                style={{ zIndex: 1200 }}
                 top="calc(50% - 32px)"
               >
                 <ActionIcon
@@ -128,7 +122,7 @@ const IndexPage = ({ data }: IndexPageProps) => {
               </Box>
             )}
             {isPortrait !== null &&
-              (width / height > 1 ? (
+              (!isPortrait ? (
                 <video
                   autoPlay
                   controls={false}
@@ -181,11 +175,6 @@ const IndexPage = ({ data }: IndexPageProps) => {
               ))}
           </Box>
           <Flex align="center" direction="column-reverse" h="20%">
-            <div>isMobileDevice:{String(isMobileDevice)}</div>
-            <div>isReady:{String(isReady)}</div>
-            <div>isPlaying:{String(isPlaying)}</div>
-            <div>isPortrait:{String(isPortrait)}</div>
-            <div>userAgent:{String(userAgent)}</div>
             <IconArrowBigDownLine
               className={cx(
                 classes.icon,
