@@ -7,29 +7,37 @@ import React, {
 } from "react";
 import {
   ActionIcon,
+  Badge,
   Group,
   Image,
   Text,
   createStyles,
+  keyframes,
   rem,
 } from "@mantine/core";
 import { useMediaQuery } from "@mantine/hooks";
-import {
-  IconPlayerPlay,
-  IconPlayerPause,
-  IconPlayerSkipForward,
-  IconPlayerSkipBack,
-} from "@tabler/icons-react";
+import { IconPlayerPlay, IconPlayerPause } from "@tabler/icons-react";
 import WaveSurfer from "wavesurfer.js";
 import Marquee from "react-fast-marquee";
 
 import type { WaveSurferOptions } from "wavesurfer.js";
-import type { Album } from "@/types/album";
+import type { Song } from "@/types/album";
+
+const rotate = keyframes({
+  from: { transform: "rotate(0deg)" },
+  to: { transform: "rotate(360deg)" },
+});
 
 const useStyles = createStyles((theme) => ({
   container: {
     display: "flex",
     paddingTop: rem(16),
+    transition: "transform .3s ease-out",
+    transform: "translateY(0px)",
+  },
+
+  containerHidden: {
+    transform: "translateY(140px)",
   },
 
   thumb: {
@@ -117,6 +125,14 @@ const useStyles = createStyles((theme) => ({
     top: "calc(60% - 12px)",
     zIndex: 9999,
   },
+
+  albumThumbnail: {
+    animation: `${rotate} 16s linear infinite`,
+
+    "&.paused": {
+      animationPlayState: "paused",
+    },
+  },
 }));
 
 // WaveSurfer hook
@@ -147,37 +163,38 @@ const useWavesurfer = (
 };
 
 type WaveSurferPlayerProps = {
-  album: Album;
+  thumbnail: string;
+  song: Song | null;
   waveSurferOptions?: WaveSurferOptions;
 };
 
 // Create a React component that will render wavesurfer.
 // Props are wavesurfer options.
 const WaveSurferPlayer = ({
-  album,
+  thumbnail,
+  song,
   waveSurferOptions,
 }: WaveSurferPlayerProps) => {
   const containerRef = useRef<HTMLDivElement>(null);
 
   const isMobile = useMediaQuery("(max-width: 48em)");
-  const { classes, theme } = useStyles();
+  const { classes, theme, cx } = useStyles();
 
-  const [currentSong, setCurrentSong] = useState(album.songs[0]);
   const [wsOptions, setWsOptions] = useState<
     Omit<WaveSurferOptions, "container"> | undefined
   >(undefined);
 
   useEffect(() => {
     setWsOptions({
-      autoplay: false,
+      autoplay: true,
       barWidth: 2,
       height: "auto",
       progressColor: drawProgressGradient(),
-      url: currentSong.src,
+      url: song ? `${process.env.GATSBY_CDN_URL}${song.src_path}` : "",
       waveColor: drawGradient(),
       ...waveSurferOptions,
     });
-  }, []);
+  }, [song, waveSurferOptions]);
 
   const wavesurfer = useWavesurfer(containerRef, wsOptions);
 
@@ -187,6 +204,8 @@ const WaveSurferPlayer = ({
 
   // On play button click
   const onPlayClick = useCallback(() => {
+    if (!song?.src_path) return;
+
     wavesurfer?.isPlaying() ? wavesurfer?.pause() : wavesurfer?.play();
   }, [wavesurfer]);
 
@@ -210,26 +229,15 @@ const WaveSurferPlayer = ({
     };
   }, [wavesurfer]);
 
-  const onNextSong = () => {
-    if (currentSong.index <= 1) return;
-
-    setCurrentSong(album.songs[currentSong.index + 1]);
-  };
-
-  const onPrevSong = () => {
-    if (currentSong.index >= album.songs.length - 1) return;
-
-    setCurrentSong(album.songs[currentSong.index - 1]);
-  };
-
   return (
-    <div className={classes.container}>
+    <div className={cx(classes.container, !song && classes.containerHidden)}>
       <div className={classes.thumb} onClick={() => onPlayClick()}>
         <Image
           alt=""
-          radius="lg"
+          className={cx(classes.albumThumbnail, !isPlaying && "paused")}
           height={96}
-          src={album.thumbnail}
+          radius="50%"
+          src={thumbnail}
           width={96}
         />
         <div className={classes.playIconContainer}>
@@ -258,7 +266,7 @@ const WaveSurferPlayer = ({
                   fz={rem(24)}
                   truncate
                 >
-                  {currentSong.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                  {song?.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
                 </Text>
               </Marquee>
             ) : (
@@ -269,27 +277,14 @@ const WaveSurferPlayer = ({
                 fz={rem(24)}
                 truncate
               >
-                {currentSong.title}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+                {song?.name}&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
               </Text>
             )}
           </div>
           <Group style={{ flexShrink: 0 }}>
-            <ActionIcon
-              className={classes.icon}
-              disabled={currentSong.index <= 1}
-              onClick={() => onPrevSong()}
-              variant="transparent"
-            >
-              <IconPlayerSkipBack />
-            </ActionIcon>
-            <ActionIcon
-              className={classes.icon}
-              disabled={currentSong.index >= album.songs.length - 1}
-              onClick={() => onNextSong()}
-              variant="transparent"
-            >
-              <IconPlayerSkipForward />
-            </ActionIcon>
+            <Badge color="gray" variant="light">
+              {wavesurfer?.getDecodedData()?.sampleRate || "-"} Hz
+            </Badge>
           </Group>
         </div>
       </div>
@@ -336,10 +331,10 @@ const drawProgressGradient = () => {
     0,
     canvas.height * window.devicePixelRatio,
   );
-  progressGradient.addColorStop(0, "#EE772F"); // Top color
+  progressGradient.addColorStop(0, "#228BE6"); // Top color
   progressGradient.addColorStop(
     (canvas.height * 0.6) / canvas.height,
-    "#EB4926",
+    "#339AF0",
   ); // Top color
   progressGradient.addColorStop(
     (canvas.height * 0.6 + 1) / canvas.height,
@@ -351,9 +346,9 @@ const drawProgressGradient = () => {
   ); // White line
   progressGradient.addColorStop(
     (canvas.height * 0.6 + 3) / canvas.height,
-    "#F6B094",
+    "#A5D8FF",
   ); // Bottom color
-  progressGradient.addColorStop(1, "#F6B094"); // Bottom color
+  progressGradient.addColorStop(1, "#A5D8FF"); // Bottom color
 
   return progressGradient;
 };

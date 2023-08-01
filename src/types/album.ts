@@ -1,13 +1,16 @@
 export type Album = {
-  key: string;
+  id: string;
   name: string;
   date: string;
-  thumbnail: string;
-  songs: Song[];
+  desc: string;
+  thumbnail_path: string;
+  song_count: number;
+  song_list: Song[];
 };
 
 export type Song = {
+  id: string;
   index: number;
-  title: string;
-  src: string;
+  name: string;
+  src_path: string;
 };

@@ -1,14 +1,27 @@
 import * as React from "react";
 import { graphql } from "gatsby";
 import { useTranslation } from "gatsby-plugin-react-i18next";
-import { Title, Center, Group, Image, Blockquote, rem } from "@mantine/core";
+import { Link } from "gatsby-plugin-react-i18next";
+import {
+  Title,
+  Center,
+  Group,
+  Image,
+  Blockquote,
+  LoadingOverlay,
+  rem,
+} from "@mantine/core";
 import { IconMusicShare } from "@tabler/icons-react";
 
 import Layout from "@/layouts";
 import SEO from "@/components/seo";
 
+import { useAlbums } from "@/hooks/useAlbums";
+
 const MusicPage = () => {
   const { t } = useTranslation();
+
+  const { data, isLoading } = useAlbums();
 
   return (
     <Layout>
@@ -29,14 +42,19 @@ const MusicPage = () => {
         <Title mb="lg" order={3} tt="capitalize">
           {t("music.albums")}
         </Title>
-        <Group>
-          <Image
-            alt="album_zero"
-            height={rem(196)}
-            src={`${process.env.GATSBY_CDN_URL}/albums/album_zero/thumbnail.jpeg`}
-            width={rem(196)}
-            withPlaceholder
-          />
+        <Group mih={120} pb="sm" pos="relative">
+          <LoadingOverlay visible={isLoading} />
+          {data?.map((_album) => (
+            <Link key={_album.id} to={`/music/${_album.id}`}>
+              <Image
+                alt={_album.name}
+                height={rem(196)}
+                src={`${process.env.GATSBY_CDN_URL}${_album.thumbnail_path}`}
+                width={rem(196)}
+                withPlaceholder
+              />
+            </Link>
+          ))}
         </Group>
       </>
     </Layout>
