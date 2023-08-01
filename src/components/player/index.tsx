@@ -188,7 +188,7 @@ const WaveSurferPlayer = ({
 
   useEffect(() => {
     setWsOptions({
-      autoplay: false,
+      autoplay: true,
       barWidth: 2,
       height: "auto",
       progressColor: drawProgressGradient(),
@@ -224,13 +224,27 @@ const WaveSurferPlayer = ({
       wavesurfer.on("play", () => setIsPlaying(true)),
       wavesurfer.on("pause", () => setIsPlaying(false)),
       wavesurfer.on("timeupdate", (currentTime) => setCurrentTime(currentTime)),
-      wavesurfer.on("ready", () => wavesurfer?.play()),
     ];
 
     return () => {
       subscriptions.forEach((unsub) => unsub());
     };
   }, [wavesurfer]);
+
+  React.useEffect(() => {
+    document.addEventListener(
+      "WeixinJSBridgeReady",
+      () => wavesurfer?.play(),
+      false,
+    );
+
+    return () =>
+      document.removeEventListener(
+        "WeixinJSBridgeReady",
+        () => wavesurfer?.play(),
+        false,
+      );
+  }, []);
 
   return (
     <div className={cx(classes.container, !song && classes.containerHidden)}>
