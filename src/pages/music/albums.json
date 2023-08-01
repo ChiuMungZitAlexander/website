@@ -1,0 +1,66 @@
+[
+  {
+    "id": "album_zero",
+    "name": "Album Zero",
+    "date": "2019-03-21T00:00:00.000Z",
+    "desc": "First saxophone album",
+    "thumbnail_path": "/albums/album_zero/thumbnail.jpeg",
+    "song_count": 9,
+    "song_list": [
+      {
+        "id": "lambada",
+        "index": 1,
+        "name": "Lambada",
+        "src_path": ""
+      },
+      {
+        "id": "zik_joeng_zeoi_liu",
+        "index": 2,
+        "name": "Zik Joeng Zeoi Liu 夕陽醉了",
+        "src_path": "/albums/album_zero/zik_joeng_zeoi_liu.mp3"
+      },
+      {
+        "id": "qin_hua_ci",
+        "index": 3,
+        "name": "Qin Hua Ci青花瓷",
+        "src_path": ""
+      },
+      {
+        "id": "you_are_beautiful",
+        "index": 4,
+        "name": "You are beautiful",
+        "src_path": ""
+      },
+      {
+        "id": "i_feel_good",
+        "index": 5,
+        "name": "I Feel Good",
+        "src_path": ""
+      },
+      {
+        "id": "ting_hai",
+        "index": 6,
+        "name": "Ting Hai 聽海",
+        "src_path": ""
+      },
+      {
+        "id": "take_me_to_your_heart",
+        "index": 7,
+        "name": "Take Me To Your Heart",
+        "src_path": ""
+      },
+      {
+        "id": "taiyou_ni_hoero",
+        "index": 8,
+        "name": "太陽にほえろ",
+        "src_path": "/albums/album_zero/taiyou_ni_hoero.mp3"
+      },
+      {
+        "id": "despacito",
+        "index": 9,
+        "name": "Despacito",
+        "src_path": ""
+      }
+    ]
+  }
+]

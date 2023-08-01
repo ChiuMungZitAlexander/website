@@ -30,8 +30,10 @@ const rotate = keyframes({
 
 const useStyles = createStyles((theme) => ({
   container: {
+    backgroundColor:
+      theme.colorScheme === "dark" ? theme.colors.dark[7] : "#fff",
     display: "flex",
-    paddingTop: rem(16),
+    padding: rem(16),
     transition: "transform .3s ease-out",
     transform: "translateY(0px)",
   },
