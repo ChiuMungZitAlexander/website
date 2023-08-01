@@ -14,13 +14,12 @@
   "scripts": {
     "develop": "gatsby develop",
     "start": "gatsby develop",
-    "build": "gatsby build",
+    "build": "gatsby clean && gatsby build",
     "serve": "gatsby serve",
     "clean": "gatsby clean",
     "lint": "npx eslint ./src",
     "typecheck": "tsc --noEmit",
-    "cloud:clear": "cloudbase hosting delete -r gz -e site-8grn0ily1a82a28c",
-    "cloud:deploy": "cloudbase hosting deploy ./public -r gz -e site-8grn0ily1a82a28c"
+    "deploy": "cloudbase hosting delete -r gz -e site-8grn0ily1a82a28c && cloudbase hosting deploy ./public -r gz -e site-8grn0ily1a82a28c"
   },
   "dependencies": {
     "@emotion/react": "^11.11.1",
