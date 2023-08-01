@@ -89,6 +89,7 @@ type LayoutProps = SingleNode & {
   headerStyles?: CSSObject;
   goBackPath?: string;
   fixedHeader?: boolean;
+  showScrollToTop?: boolean;
 };
 
 export const MAX_WIDTH = 1440;
@@ -100,6 +101,7 @@ const Layout = ({
   headerStyles,
   goBackPath,
   fixedHeader = false,
+  showScrollToTop = true,
 }: LayoutProps) => {
   const isSmallScreen = useMediaQuery("(max-width: 768px)");
 
@@ -531,16 +533,18 @@ const Layout = ({
                   </ActionIcon>
                 </Link>
               )}
-              <ActionIcon
-                color="primary"
-                onClick={() => scrollTo({ y: 0 })}
-                radius="xl"
-                size="lg"
-                style={transitionStyles}
-                variant="filled"
-              >
-                <IconArrowUp size="1.125rem" />
-              </ActionIcon>
+              {showScrollToTop && (
+                <ActionIcon
+                  color="primary"
+                  onClick={() => scrollTo({ y: 0 })}
+                  radius="xl"
+                  size="lg"
+                  style={transitionStyles}
+                  variant="filled"
+                >
+                  <IconArrowUp size="1.125rem" />
+                </ActionIcon>
+              )}
             </>
           )}
         </Transition>
