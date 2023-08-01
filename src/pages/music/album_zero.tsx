@@ -50,7 +50,7 @@ const AlbumZeroPage = () => {
       <>
         <SEO title={t("music.title")} />
         <Container
-          h="calc(100vh - 6rem)"
+          h="calc(100vh - 6rem - 132px)"
           maw={768}
           pb={132}
           px={0}
