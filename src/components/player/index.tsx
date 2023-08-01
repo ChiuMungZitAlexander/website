@@ -187,12 +187,19 @@ const WaveSurferPlayer = ({
   >(undefined);
 
   useEffect(() => {
+    if (!song) {
+      setWsOptions(undefined);
+      return;
+    }
+
+    setCurrentTime(0);
+    setDuration(0);
     setWsOptions({
       autoplay: true,
       barWidth: 2,
       height: "auto",
       progressColor: drawProgressGradient(),
-      url: song ? `${process.env.GATSBY_CDN_URL}${song.src_path}` : "",
+      url: `${process.env.GATSBY_CDN_URL}${song.src_path}`,
       waveColor: drawGradient(),
       ...waveSurferOptions,
     });
@@ -230,21 +237,6 @@ const WaveSurferPlayer = ({
       subscriptions.forEach((unsub) => unsub());
     };
   }, [wavesurfer]);
-
-  React.useEffect(() => {
-    document.addEventListener(
-      "WeixinJSBridgeReady",
-      () => wavesurfer?.play(),
-      false,
-    );
-
-    return () =>
-      document.removeEventListener(
-        "WeixinJSBridgeReady",
-        () => wavesurfer?.play(),
-        false,
-      );
-  }, []);
 
   return (
     <div className={cx(classes.container, !song && classes.containerHidden)}>
