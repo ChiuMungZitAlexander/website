@@ -188,7 +188,7 @@ const WaveSurferPlayer = ({
 
   useEffect(() => {
     setWsOptions({
-      autoplay: true,
+      autoplay: false,
       barWidth: 2,
       height: "auto",
       progressColor: drawProgressGradient(),
@@ -224,6 +224,7 @@ const WaveSurferPlayer = ({
       wavesurfer.on("play", () => setIsPlaying(true)),
       wavesurfer.on("pause", () => setIsPlaying(false)),
       wavesurfer.on("timeupdate", (currentTime) => setCurrentTime(currentTime)),
+      wavesurfer.on("ready", () => wavesurfer?.play()),
     ];
 
     return () => {

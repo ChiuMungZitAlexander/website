@@ -45,7 +45,7 @@ const AlbumZeroPage = () => {
       <>
         <SEO title={t("music.title")} />
         <Container maw={768} pb={rem(16)} px={0}>
-          <Stack align="center" pb={rem(song ? 64 : 0)}>
+          <Stack align="center" mb={rem(song ? 144 : 0)}>
             <Group align="flex-start" mb="md" noWrap spacing={rem(8)} w="100%">
               <Link to="/music">
                 <ActionIcon color="gray" variant="transparent">
@@ -128,6 +128,7 @@ const AlbumZeroPage = () => {
             mx="auto"
             pos="fixed"
             right={0}
+            style={{ zIndex: song ? 1300 : -1 }}
           >
             <WaveSurferPlayer
               thumbnail={`${process.env.GATSBY_CDN_URL}${album.thumbnail_path}`}
