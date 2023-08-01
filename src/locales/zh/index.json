@@ -24,6 +24,10 @@
   "music.quote": "我的音乐生涯始于父亲的礼物——一个中音萨克斯风。此后也学习过钢琴、贝斯和编曲。曲风偏向于流行爵士。现任安徽省蚌埠市音乐家协会会员，香港西洋乐管乐协会会员。",
   "music.title": "Alexander ZHÀO | 音乐",
   "music.albums": "专辑",
+  "music.album.unknown": "未知专辑",
+  "music.album.back_button": "回到音乐",
+  "music.album.song_count": "{{count}}首曲目",
+  "music.album.available_song_count": "{{count}}首可播放",
 
   "404.title": "Alexander ZHÀO | 404",
   "404.not_found": "未找到页面",
