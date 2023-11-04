@@ -1,62 +1,41 @@
 {
-  "name": "my-gatsby-site",
-  "version": "1.0.0",
+  "name": "website_nextjs",
+  "version": "2.0.0",
   "private": true,
-  "description": "my-gatsby-site",
   "engines": {
-    "node": ">=16.18.0",
-    "yarn": ">=3.6.1"
+    "node": ">=18.17.0",
+    "pnpm": ">=8.9.2"
   },
-  "author": "Alexander Zhao <alexandermzchiu@gmail.com>",
-  "keywords": [
-    "gatsby"
-  ],
+  "author": "Alexander Zhao<alexandermzchiu@gmail.com>",
   "scripts": {
-    "develop": "gatsby develop",
-    "start": "gatsby develop",
-    "build": "gatsby clean && gatsby build",
-    "serve": "gatsby serve",
-    "clean": "gatsby clean",
-    "lint": "npx eslint ./src",
-    "typecheck": "tsc --noEmit",
-    "deploy": "cloudbase hosting delete -r gz -e site-8grn0ily1a82a28c && cloudbase hosting deploy ./public -r gz -e site-8grn0ily1a82a28c"
+    "dev": "next dev --port 3005",
+    "build": "next build",
+    "start": "next start --port 3006",
+    "lint": "next lint"
   },
   "dependencies": {
-    "@emotion/react": "^11.11.1",
-    "@emotion/server": "^11.11.0",
-    "@mantine/core": "^6.0.17",
-    "@mantine/hooks": "^6.0.17",
-    "@mdx-js/react": "^2.3.0",
-    "@tabler/icons-react": "^2.30.0",
-    "@tanstack/react-query": "^5.0.0-beta.2",
-    "gatsby": "^5.11.0",
-    "gatsby-plugin-emotion": "^8.11.0",
-    "gatsby-plugin-image": "^3.11.0",
-    "gatsby-plugin-manifest": "^5.11.0",
-    "gatsby-plugin-mantine": "^5.0.0",
-    "gatsby-plugin-mdx": "^5.11.0",
-    "gatsby-plugin-react-i18next": "^3.0.1",
-    "gatsby-plugin-sharp": "^5.11.0",
-    "gatsby-remark-copy-linked-files": "^6.11.0",
-    "gatsby-remark-images": "^7.11.0",
-    "gatsby-source-filesystem": "^5.11.0",
-    "gatsby-transformer-remark": "^6.11.0",
-    "gatsby-transformer-sharp": "^5.11.0",
-    "i18next": "^23.4.1",
+    "@nextui-org/react": "^2.2.8",
+    "@notionhq/client": "^2.2.13",
+    "@t3-oss/env-nextjs": "^0.7.1",
+    "embla-carousel-autoplay": "8.0.0-rc14",
+    "embla-carousel-react": "8.0.0-rc14",
+    "framer-motion": "^10.16.4",
+    "next": "14.0.1",
+    "next-intl": "3.0.0-beta.19",
+    "next-themes": "^0.2.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
-    "react-fast-marquee": "^1.6.0",
-    "react-i18next": "^13.0.3",
-    "wavesurfer.js": "^7.1.1"
+    "zod": "^3.22.4"
   },
   "devDependencies": {
-    "@morphis-labs/eslint-config": "^1.0.9",
-    "@tanstack/eslint-plugin-query": "^5.0.0-beta.0",
-    "@types/node": "^20.4.5",
-    "@types/react": "^18.2.18",
-    "@types/react-dom": "^18.2.7",
-    "dotenv": "^16.3.1",
-    "prettier": "3.0.0",
-    "typescript": "^5.1.6"
+    "@types/node": "^20.9.0",
+    "@types/react": "^18.2.37",
+    "@types/react-dom": "^18.2.15",
+    "autoprefixer": "^10.4.16",
+    "eslint": "^8.53.0",
+    "eslint-config-next": "14.0.1",
+    "postcss": "^8.4.31",
+    "tailwindcss": "^3.3.5",
+    "typescript": "^5.2.2"
   }
 }

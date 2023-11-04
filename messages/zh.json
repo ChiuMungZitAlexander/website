@@ -1,0 +1,47 @@
+{
+  "common": {
+    "about": "关于",
+    "blogs": "博客",
+    "coming_soon": "即将上线",
+    "more": "更多"
+  },
+
+  "home": {
+    "title": "Alexander ZHÀO | 关于",
+    "intro_1": "我是",
+    "intro_2": "Web3开发者",
+    "intro_2_sub": "(Typescript/Solidity/Rust)",
+    "intro_3": "中音萨克斯手"
+  },
+
+  "blogs": {
+    "title": "Alexander ZHÀO | 博客",
+    "quote": "我的第一门编程语言是QuickBASIC。10岁那年用QuickBASIC写了一个老虎机莫名其妙地获得了省二等奖。大学毕业后我曾贡献于React和MDN社区，也是vanilux.js的作者。现任Morphis Labs dev lead。相比于工作，我更愿意把编程当作一种热情。",
+    "min_read_one": "分钟阅读",
+    "min_read_other": "分钟阅读",
+    "tech": "技术",
+    "journal": "随笔",
+    "pay_wechat": "微信打赏",
+    "pay_wechat.desc": "长按手机屏幕",
+    "eth": "以太坊地址",
+    "buy_me_coffee": "帮我买杯咖啡吧 ☕️"
+  },
+
+  "music": {
+    "quote": "我的音乐生涯始于父亲的礼物——一个中音萨克斯风。此后也学习过钢琴、贝斯和编曲。曲风偏向于流行爵士。现任安徽省蚌埠市音乐家协会会员，香港西洋乐管乐协会会员。",
+    "title": "Alexander ZHÀO | 音乐",
+    "albums": "专辑",
+    "album_unknown": "未知专辑",
+    "album_back_button": "回到音乐",
+    "album_song_count_one": "{{count}}首曲目",
+    "album_song_count_other": "{{count}}首曲目",
+    "album_available_song_count_one": "{{count}}首可播放",
+    "album_available_song_count_other": "{{count}}首可播放"
+  },
+
+  "404": {
+    "title": "Alexander ZHÀO | 404",
+    "not_found": "未找到页面",
+    "desc": ""
+  }
+}
